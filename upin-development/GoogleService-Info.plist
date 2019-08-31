@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1091143405752-uh6s93bad98ua4r13b693nkfcalg093q.apps.googleusercontent.com</string>
+	<string>1091143405752-3dgk46pkk58def8qgnqtdaqgoi67nin7.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1091143405752-uh6s93bad98ua4r13b693nkfcalg093q</string>
+	<string>com.googleusercontent.apps.1091143405752-3dgk46pkk58def8qgnqtdaqgoi67nin7</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAxxkjw6UzeeyWSU9uE_7ONFsX1O1TL1Kc</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Upin.upin-development</string>
+	<string>upin.development</string>
 	<key>PROJECT_ID</key>
 	<string>upin-243f2</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1091143405752:ios:26ca3fa0ce1ce603</string>
+	<string>1:1091143405752:ios:39ee0ada6813838a</string>
 	<key>DATABASE_URL</key>
 	<string>https://upin-243f2.firebaseio.com</string>
 </dict>

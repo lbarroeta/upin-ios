@@ -36,6 +36,10 @@ extension AuthErrorCode {
             return "Your password is too weak. The password must be 6 characters long or more."
         case .wrongPassword:
             return "Your password or email is incorrect."
+        case .missingPhoneNumber:
+            return "Must add a phone number"
+        case .invalidPhoneNumber:
+            return "Invalid phone number, please verify."
         default:
             return "Sorry, something went wrong."
         }

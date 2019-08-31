@@ -17,6 +17,7 @@
 		4626C0F1231731630030FA85 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626C0F0231731630030FA85 /* Keyboard.swift */; };
 		4626C0F3231731720030FA85 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626C0F2231731710030FA85 /* Alerts.swift */; };
 		4626C0F52317318B0030FA85 /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626C0F42317318B0030FA85 /* FirebaseErrorHandler.swift */; };
+		462B4823231AC796009B6895 /* PhoneCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B4822231AC795009B6895 /* PhoneCodeVC.swift */; };
 		46A43CB6231864BA00D6ACDF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A43CB5231864BA00D6ACDF /* Home.storyboard */; };
 		46A43CB92318651B00D6ACDF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CB82318651B00D6ACDF /* HomeVC.swift */; };
 		46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */; };
@@ -48,6 +49,7 @@
 		4626C0F0231731630030FA85 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		4626C0F2231731710030FA85 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		4626C0F42317318B0030FA85 /* FirebaseErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorHandler.swift; sourceTree = "<group>"; };
+		462B4822231AC795009B6895 /* PhoneCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCodeVC.swift; sourceTree = "<group>"; };
 		46A43CB4231862E700D6ACDF /* upin-development.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "upin-development.entitlements"; sourceTree = "<group>"; };
 		46A43CB5231864BA00D6ACDF /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		46A43CB82318651B00D6ACDF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				46B00B8C231724B6007E9FDC /* SignInVC.swift */,
 				46B00B8E2317256D007E9FDC /* ForgotPasswordVC.swift */,
 				4626C0E523172B140030FA85 /* SignUpVC.swift */,
+				462B4822231AC795009B6895 /* PhoneCodeVC.swift */,
 				4626C0E723172B270030FA85 /* PolicyVC.swift */,
 				4626C0E923172BEC0030FA85 /* GenderVC.swift */,
 				4626C0EB23172FF60030FA85 /* ProfilePictureVC.swift */,
@@ -366,6 +369,7 @@
 				46B00B6E23171D62007E9FDC /* ViewController.swift in Sources */,
 				4626C0F52317318B0030FA85 /* FirebaseErrorHandler.swift in Sources */,
 				4626C0E423172A860030FA85 /* Colors.swift in Sources */,
+				462B4823231AC796009B6895 /* PhoneCodeVC.swift in Sources */,
 				46A43CB92318651B00D6ACDF /* HomeVC.swift in Sources */,
 				46B00B8F2317256D007E9FDC /* ForgotPasswordVC.swift in Sources */,
 				46B00B6C23171D62007E9FDC /* AppDelegate.swift in Sources */,
