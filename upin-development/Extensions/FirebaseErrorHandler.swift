@@ -40,8 +40,12 @@ extension AuthErrorCode {
             return "Must add a phone number"
         case .invalidPhoneNumber:
             return "Invalid phone number, please verify."
+        case .userDisabled:
+            return "User has been disabled, please try again later."
+        case .webSignInUserInteractionFailure:
+            return "Unable to sign in please try again."
         default:
-            return "Sorry, something went wrong."
+            return "Sorry, something went wrong, please try again."
         }
     }
 }

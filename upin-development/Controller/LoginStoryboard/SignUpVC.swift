@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class SignUpVC: UIViewController {
     
@@ -33,20 +34,6 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-//        guard let email = emailTextField.text, let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
-//            let password = passwordTextField.text, !email.isEmpty, !firstName.isEmpty, !lastName.isEmpty, !password.isEmpty else {
-//                simpleAlert(title: "Error", msg: "Must complete all fields to advance...")
-//                return
-//        }
-//
-//        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-//            if let error = error {
-//                self.authErrorHandle(error: error)
-//                return
-//            }
-//            self.createUserOnFirebase()
-//        }
-        
         
         guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text,
         let phoneNumber = phoneNumberTextField.text, let password = passwordTextField.text, !firstName.isEmpty,
@@ -55,80 +42,37 @@ class SignUpVC: UIViewController {
             return
         }
         
-        guard let userPhoneNumber = phoneNumberTextField.text else { return }
         
         
-        PhoneAuthProvider.provider().verifyPhoneNumber(userPhoneNumber, uiDelegate: nil) { (verificationId, error) in
-            if let error = error {
-                self.authErrorHandle(error: error)
-                print(error.localizedDescription)
-                return
-            }
+        self.signUpAlert(title: "Phone number", msg: "Is this your phone number? \(phoneNumberTextField.text!)", handlerOK: { (action) in
+            PhoneAuthProvider.provider().verifyPhoneNumber(self.phoneNumberTextField.text!, uiDelegate: nil, completion: { (verificationID, error) in
+                if let error = error {
+                    self.authErrorHandle(error: error)
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                self.userDefault.setValue(verificationID, forKey: "verificationID")
+                self.performSegue(withIdentifier: "PhoneCodeVC", sender: self)
+                
+            })
             
-            guard let verifiedId = verificationId else { return }
-    
-            self.userDefault.set(verifiedId, forKey: "verificationId")
-            self.userDefault.synchronize()
-            self.userPhoneNumber = self.phoneNumberTextField.text!
-            self.performSegue(withIdentifier: "testSegue", sender: self)
-        }
-    
+            let hud = JGProgressHUD(style: .dark)
+            hud.textLabel.text = "Loading"
+            hud.show(in: self.view)
+            hud.dismiss(afterDelay: 5.0)
+            
+            
+        }, handlerCancel: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         var vc = segue.destination as! PhoneCodeVC
-        vc.userPhoneNumber = self.userPhoneNumber
-    }
-    
-//    @IBAction func verifyCodePressed(_ sender: Any) {
-//
-//        guard let otpCode = phoneCodeTextField.text else { return }
-//        guard let verificationId = userDefault.string(forKey: "verificationId") else { return }
-//
-//
-//        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: otpCode)
-//
-//        Auth.auth().signInAndRetrieveData(with: credential) { (success, error) in
-//            if let error = error {
-//                self.authErrorHandle(error: error)
-//                print(error.localizedDescription)
-//            }
-//
-//            self.presentHomeStoryboard()
-//        }
-//
-//    }
-    
-    fileprivate func presentHomeStoryboard() {
-        let storyboard = UIStoryboard(name: Storyboards.HomeStoryboard, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: HomeViewControllers.HomeVC)
-        present(controller, animated: true, completion: nil)
-    }
-    
-    
-    func createUserOnFirebase() {
-        guard let user = Auth.auth().currentUser else { return }
-        guard let email = emailTextField.text, let firstName = firstNameTextField.text, let lastName = lastNameTextField.text,
-        let password = passwordTextField.text, !email.isEmpty, !firstName.isEmpty, !lastName.isEmpty, !password.isEmpty else {
-            simpleAlert(title: "Error", msg: "Must complete all fields to advance...")
-            return
-        }
-        
-        var userData = [String: Any]()
-        userData = [
-            "id": user.uid,
-            "firstName": firstName,
-            "lastName": lastName,
-            "email": email,
-            "created_at": Timestamp()
-        ]
-        
-        Firestore.firestore().collection("users").document(user.uid).setData(userData) { (error) in
-            if let error = error {
-                self.authErrorHandle(error: error)
-                return
-            }
-        }
+        vc.userPhoneNumber = self.phoneNumberTextField.text!
+        vc.finalUserId = self.userId
+        vc.firstName = self.firstNameTextField.text!
+        vc.lastName = self.lastNameTextField.text!
+        vc.email = self.emailTextField.text!
     }
 
     @IBAction func backButtonPressed(_ sender: Any) {

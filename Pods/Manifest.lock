@@ -5,6 +5,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.2):
     - BoringSSL-GRPC/Interface (= 0.0.2)
   - BoringSSL-GRPC/Interface (0.0.2)
+  - CropViewController (2.4.0)
   - Firebase/Analytics (5.18.0):
     - Firebase/Core
   - Firebase/Auth (5.18.0):
@@ -114,6 +115,8 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.17.0)
   - GTMSessionFetcher/Core (1.2.1)
+  - JGProgressHUD (2.0.3)
+  - Kingfisher (5.2.0)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -123,15 +126,19 @@ PODS:
   - Protobuf (3.7.0)
 
 DEPENDENCIES:
+  - CropViewController
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
+  - JGProgressHUD
+  - Kingfisher (~> 5.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BoringSSL-GRPC
+    - CropViewController
     - Firebase
     - FirebaseAnalytics
     - FirebaseAnalyticsInterop
@@ -147,12 +154,15 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - JGProgressHUD
+    - Kingfisher
     - leveldb-library
     - nanopb
     - Protobuf
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
+  CropViewController: a090820b15fc3da68e694d7c192a4708c576828b
   Firebase: 02f3281965c075426141a0ce1277e9de6649cab9
   FirebaseAnalytics: 23851fe602c872130a2c5c55040b302120346cc2
   FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
@@ -168,10 +178,12 @@ SPEC CHECKSUMS:
   "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
   gRPC-Core: 4028031ed2c5267cca0d846c876d8046b1ecb9b6
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  Kingfisher: 07067cfacf371117330dceb4b4b8f5c4b691ab42
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: 8aa8ce8ce9fe02ea9a39850f9f54cb5576917a7d
+PODFILE CHECKSUM: 5ba420822cbfc0443c7ab39aa79871622735ab85
 
 COCOAPODS: 1.6.1

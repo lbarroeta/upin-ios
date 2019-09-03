@@ -23,6 +23,7 @@
 		46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */; };
 		46A43CBF2318707800D6ACDF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CBE2318707800D6ACDF /* ProfileVC.swift */; };
 		46A43CC1231879AC00D6ACDF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CC0231879AC00D6ACDF /* SettingsVC.swift */; };
+		46AF9506231E0CD900F70679 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46AF9505231E0CD900F70679 /* User.swift */; };
 		46B00B6C23171D62007E9FDC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B6B23171D62007E9FDC /* AppDelegate.swift */; };
 		46B00B6E23171D62007E9FDC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B6D23171D62007E9FDC /* ViewController.swift */; };
 		46B00B7123171D62007E9FDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B00B6F23171D62007E9FDC /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		46B00B8B2317248D007E9FDC /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B8A2317248D007E9FDC /* ActionButton.swift */; };
 		46B00B8D231724B6007E9FDC /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B8C231724B6007E9FDC /* SignInVC.swift */; };
 		46B00B8F2317256D007E9FDC /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B8E2317256D007E9FDC /* ForgotPasswordVC.swift */; };
+		46CFABE6231E3C1100A3D7B8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CFABE5231E3C1100A3D7B8 /* Images.swift */; };
 		D44E3845FFC4669DEE0DD8C5 /* Pods_upin_development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +58,7 @@
 		46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		46A43CBE2318707800D6ACDF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		46A43CC0231879AC00D6ACDF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		46AF9505231E0CD900F70679 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		46B00B6823171D62007E9FDC /* upin-development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "upin-development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B00B6B23171D62007E9FDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B00B6D23171D62007E9FDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		46B00B8A2317248D007E9FDC /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		46B00B8C231724B6007E9FDC /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		46B00B8E2317256D007E9FDC /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		46CFABE5231E3C1100A3D7B8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		82A17A7ECCEC8498F181D778 /* Pods-upin-development.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.debug.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.debug.xcconfig"; sourceTree = "<group>"; };
 		E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_upin_development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EB23FD1A36EA0F1C9BAD63 /* Pods-upin-development.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.release.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.release.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			children = (
 				46B00B85231723D3007E9FDC /* GradientView.swift */,
 				46B00B8A2317248D007E9FDC /* ActionButton.swift */,
+				46CFABE5231E3C1100A3D7B8 /* Images.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 		46B00B84231723BF007E9FDC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				46AF9505231E0CD900F70679 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,12 +199,12 @@
 		46B00B8723172459007E9FDC /* LoginStoryboard */ = {
 			isa = PBXGroup;
 			children = (
+				4626C0E723172B270030FA85 /* PolicyVC.swift */,
 				46B00B882317246C007E9FDC /* LoginVC.swift */,
 				46B00B8C231724B6007E9FDC /* SignInVC.swift */,
 				46B00B8E2317256D007E9FDC /* ForgotPasswordVC.swift */,
 				4626C0E523172B140030FA85 /* SignUpVC.swift */,
 				462B4822231AC795009B6895 /* PhoneCodeVC.swift */,
-				4626C0E723172B270030FA85 /* PolicyVC.swift */,
 				4626C0E923172BEC0030FA85 /* GenderVC.swift */,
 				4626C0EB23172FF60030FA85 /* ProfilePictureVC.swift */,
 				4626C0ED231730420030FA85 /* BiographyVC.swift */,
@@ -332,8 +338,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-upin-development/Pods-upin-development-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -345,8 +354,11 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -378,6 +390,7 @@
 				46B00B892317246C007E9FDC /* LoginVC.swift in Sources */,
 				46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */,
 				4626C0E2231728850030FA85 /* StoryboardsAndVCs.swift in Sources */,
+				46CFABE6231E3C1100A3D7B8 /* Images.swift in Sources */,
 				4626C0E823172B270030FA85 /* PolicyVC.swift in Sources */,
 				46B00B86231723D3007E9FDC /* GradientView.swift in Sources */,
 				4626C0EC23172FF60030FA85 /* ProfilePictureVC.swift in Sources */,
@@ -387,6 +400,7 @@
 				4626C0F3231731720030FA85 /* Alerts.swift in Sources */,
 				4626C0F1231731630030FA85 /* Keyboard.swift in Sources */,
 				46A43CC1231879AC00D6ACDF /* SettingsVC.swift in Sources */,
+				46AF9506231E0CD900F70679 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

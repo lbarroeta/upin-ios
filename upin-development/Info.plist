@@ -60,5 +60,11 @@
 	</array>
 	<key>FirebaseAppDelegateProxyEnabled</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Upin requires to permission to upload your profile picture.</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Upin requires to permission to upload your profile picture.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Upin requires to permission to upload your profile picture.</string>
 </dict>
 </plist>

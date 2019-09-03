@@ -11,5 +11,8 @@ target 'upin-development' do
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
     pod 'Firebase/Firestore'
+    pod 'JGProgressHUD'
+    pod 'Kingfisher', '~> 5.0'
+    pod 'CropViewController'
 
 end

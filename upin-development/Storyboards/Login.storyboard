@@ -578,7 +578,7 @@
                         <outlet property="nextButton" destination="kZ5-IR-EdI" id="t79-bV-1aG"/>
                         <outlet property="passwordTextField" destination="xbP-hJ-dZp" id="9uE-x8-nLj"/>
                         <outlet property="phoneNumberTextField" destination="Vid-sB-8qT" id="iSw-d0-30J"/>
-                        <segue destination="lRT-Mi-Dsr" kind="presentation" identifier="testSegue" id="w64-Vc-Ds3"/>
+                        <segue destination="lRT-Mi-Dsr" kind="presentation" identifier="PhoneCodeVC" id="w64-Vc-Ds3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofF-LU-TbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -611,20 +611,20 @@
                                         <barButtonItem key="rightBarButtonItem" title="Next" id="ZjZ-Ar-gh3">
                                             <color key="tintColor" red="0.25490196079999999" green="0.86666666670000003" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <action selector="nextButtonPressed:" destination="lRT-Mi-Dsr" id="xqc-J4-gu6"/>
+                                                <action selector="nextButtonPressed:" destination="lRT-Mi-Dsr" id="MfA-SH-4LR"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D0V-Sg-tsl">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D0V-Sg-tsl">
                                 <rect key="frame" x="20" y="256" width="335" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="gku-Lc-hLH"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type your verification code" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4s-0O-tkc">
                                 <rect key="frame" x="20" y="139" width="335" height="67"/>
@@ -652,10 +652,21 @@
                                     <constraint firstAttribute="width" constant="250" id="7OQ-q6-JEs"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEu-rY-4UM">
+                                <rect key="frame" x="137" y="396" width="101" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Resend code?">
+                                    <color key="titleColor" red="0.37379318480000001" green="0.86837601659999997" blue="0.69243878130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resendCodeButtonPressed:" destination="lRT-Mi-Dsr" eventType="touchUpInside" id="QSG-aA-O9k"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="D0V-Sg-tsl" firstAttribute="top" secondItem="D4s-0O-tkc" secondAttribute="bottom" constant="50" id="5Az-ds-CgR"/>
+                            <constraint firstItem="wEu-rY-4UM" firstAttribute="centerY" secondItem="nq4-zg-VOz" secondAttribute="centerY" id="A6b-VE-1Wl"/>
                             <constraint firstItem="JxO-Uf-Kcg" firstAttribute="top" secondItem="D0V-Sg-tsl" secondAttribute="bottom" constant="20" id="KI7-K1-fCt"/>
                             <constraint firstItem="6RB-MK-TOJ" firstAttribute="leading" secondItem="nq4-zg-VOz" secondAttribute="leading" id="Q3f-8n-juE"/>
                             <constraint firstItem="6RB-MK-TOJ" firstAttribute="top" secondItem="nq4-zg-VOz" secondAttribute="top" id="Vxg-iI-d0P"/>
@@ -664,14 +675,17 @@
                             <constraint firstItem="D4s-0O-tkc" firstAttribute="top" secondItem="6RB-MK-TOJ" secondAttribute="bottom" constant="50" id="dp2-Dx-0AV"/>
                             <constraint firstItem="6RB-MK-TOJ" firstAttribute="trailing" secondItem="nq4-zg-VOz" secondAttribute="trailing" id="h8e-Wm-3kW"/>
                             <constraint firstItem="JxO-Uf-Kcg" firstAttribute="centerX" secondItem="nq4-zg-VOz" secondAttribute="centerX" id="hCW-0a-rvL"/>
+                            <constraint firstItem="wEu-rY-4UM" firstAttribute="centerX" secondItem="nq4-zg-VOz" secondAttribute="centerX" id="hxW-Pc-RJ6"/>
                             <constraint firstItem="D4s-0O-tkc" firstAttribute="leading" secondItem="nq4-zg-VOz" secondAttribute="leading" constant="20" id="mOE-3i-WFY"/>
                             <constraint firstItem="D0V-Sg-tsl" firstAttribute="leading" secondItem="nq4-zg-VOz" secondAttribute="leading" constant="20" id="sUT-HS-2bO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nq4-zg-VOz"/>
                     </view>
                     <connections>
+                        <outlet property="codeTextField" destination="D0V-Sg-tsl" id="jbb-vk-aAe"/>
                         <outlet property="phoneNumberLabel" destination="8Es-JG-R2y" id="Fnd-fc-dZB"/>
                         <outlet property="phoneTextField" destination="D0V-Sg-tsl" id="Edv-hh-jbj"/>
+                        <segue destination="bV5-Rl-xxH" kind="presentation" identifier="GenderAndBirthdayVC" id="5py-sK-pQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UBC-UY-Pew" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -783,7 +797,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="Next" id="ffv-Fr-ipR">
                                             <color key="tintColor" red="0.25490196079999999" green="0.86666666670000003" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="zLn-ht-Uj3" kind="show" id="6Wj-yk-LcT"/>
+                                                <action selector="nextButtonPressed:" destination="bV5-Rl-xxH" id="JBm-fS-sju"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -870,8 +884,11 @@
                         <viewLayoutGuide key="safeArea" id="1Z9-8v-a7S"/>
                     </view>
                     <connections>
+                        <outlet property="birthdateTextField" destination="uKr-XX-bdD" id="1PT-pq-wDP"/>
                         <outlet property="genderSegmentedControl" destination="mv3-Xm-A3E" id="YUj-4U-VHR"/>
+                        <outlet property="nextButton" destination="ffv-Fr-ipR" id="3qT-h5-SsT"/>
                         <outlet property="otherGenderTextField" destination="QHO-dD-lb6" id="zqJ-21-SjN"/>
+                        <segue destination="zLn-ht-Uj3" kind="presentation" identifier="ProfilePictureVC" id="4XX-K2-3Q9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5py-mf-PkE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -881,7 +898,7 @@
         <!--Profile PictureVC-->
         <scene sceneID="gr9-r5-xtg">
             <objects>
-                <viewController id="zLn-ht-Uj3" customClass="ProfilePictureVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfilePictureVC" id="zLn-ht-Uj3" customClass="ProfilePictureVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y9y-6r-fu3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -903,7 +920,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="Next" id="iKL-62-8aN">
                                             <color key="tintColor" red="0.37379318480000001" green="0.86837601659999997" blue="0.69243878130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
-                                                <segue destination="QIA-Yz-6ZV" kind="show" id="RPO-5H-AWw"/>
+                                                <action selector="nextButtonPressed:" destination="zLn-ht-Uj3" id="MKe-2p-JzN"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -915,7 +932,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="atS-BB-VwD">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="atS-BB-VwD" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
                                 <rect key="frame" x="137.66666666666666" y="229" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="n4N-Hl-w9J"/>
@@ -928,14 +945,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0rb-o5-47L">
                                         <rect key="frame" x="0.0" y="0.0" width="45" height="78"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R6-2g-G4C">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="ecG-aa-T6U" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
                                                 <rect key="frame" x="2.6666666666666714" y="0.0" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="eJy-w9-a1o"/>
-                                                    <constraint firstAttribute="width" constant="40" id="mPg-Uy-eNe"/>
+                                                    <constraint firstAttribute="height" constant="40" id="6MI-IJ-lDU"/>
+                                                    <constraint firstAttribute="width" constant="40" id="YqH-vC-54d"/>
                                                 </constraints>
-                                                <state key="normal" image="profilePicLogo"/>
-                                            </button>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwa-Mu-rbn">
                                                 <rect key="frame" x="0.0" y="48" width="45" height="30"/>
                                                 <state key="normal" title="Delete">
@@ -947,14 +963,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XMK-YI-wq8">
                                         <rect key="frame" x="95" y="0.0" width="45" height="78"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obq-S2-y97">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="pEp-LH-Vo7">
                                                 <rect key="frame" x="2.6666666666666572" y="0.0" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="Qbo-Nr-cgs"/>
-                                                    <constraint firstAttribute="height" constant="40" id="dCg-9W-JrN"/>
+                                                    <constraint firstAttribute="height" constant="40" id="JrV-cX-os5"/>
+                                                    <constraint firstAttribute="width" constant="40" id="cLF-jT-LnD"/>
                                                 </constraints>
-                                                <state key="normal" image="profilePicLogo"/>
-                                            </button>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FUA-Ba-Dbe">
                                                 <rect key="frame" x="0.0" y="48" width="45" height="30"/>
                                                 <state key="normal" title="Delete">
@@ -966,14 +981,13 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9Q4-Mq-Prj">
                                         <rect key="frame" x="190" y="0.0" width="45" height="78"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pov-bk-4eE">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="y0B-X4-vZe">
                                                 <rect key="frame" x="2.6666666666666856" y="0.0" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="cAq-Ql-3bJ"/>
-                                                    <constraint firstAttribute="height" constant="40" id="rxj-hm-0rX"/>
+                                                    <constraint firstAttribute="height" constant="40" id="AcG-EV-mBm"/>
+                                                    <constraint firstAttribute="width" constant="40" id="vnJ-j4-ddJ"/>
                                                 </constraints>
-                                                <state key="normal" image="profilePicLogo"/>
-                                            </button>
+                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IDA-Q7-c0n">
                                                 <rect key="frame" x="0.0" y="48" width="45" height="30"/>
                                                 <state key="normal" title="Delete">
@@ -1000,6 +1014,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vCH-AU-Zdt"/>
                     </view>
+                    <connections>
+                        <outlet property="firstProfileImage" destination="ecG-aa-T6U" id="UIf-aA-vIo"/>
+                        <outlet property="mainProfileImage" destination="atS-BB-VwD" id="ZpW-In-Loq"/>
+                        <outlet property="nextButton" destination="iKL-62-8aN" id="aWC-On-WMh"/>
+                        <outlet property="secondProfileImage" destination="pEp-LH-Vo7" id="uuk-as-pQ9"/>
+                        <outlet property="thirdProfileImage" destination="y0B-X4-vZe" id="Z76-Mq-af6"/>
+                        <segue destination="QIA-Yz-6ZV" kind="presentation" identifier="BiographyVC" id="qbS-AR-bhE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5c-qd-2ms" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1008,7 +1030,7 @@
         <!--BiographyVC-->
         <scene sceneID="rIr-IM-cWz">
             <objects>
-                <viewController id="QIA-Yz-6ZV" customClass="BiographyVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BiographyVC" id="QIA-Yz-6ZV" customClass="BiographyVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jaw-C4-L99">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1029,6 +1051,9 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Next" id="j96-cR-MY9">
                                             <color key="tintColor" red="0.37379318480000001" green="0.86837601659999997" blue="0.69243878130000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="nextButtonPressed:" destination="QIA-Yz-6ZV" id="gXW-o3-CQV"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -1046,6 +1071,15 @@
                                     <constraint firstAttribute="height" constant="100" id="IZl-b7-llS"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Tell us about yourself..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s12-JP-U8Y">
+                                <rect key="frame" x="20" y="386" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="AYQ-fP-lZ9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1053,13 +1087,22 @@
                             <constraint firstItem="afl-50-LTA" firstAttribute="centerX" secondItem="Am7-cz-gf2" secondAttribute="centerX" id="LOS-0Z-Gc1"/>
                             <constraint firstItem="lem-z1-5yo" firstAttribute="leading" secondItem="jaw-C4-L99" secondAttribute="leading" id="NIL-Jt-Va3"/>
                             <constraint firstItem="Am7-cz-gf2" firstAttribute="leading" secondItem="uJO-kc-CKV" secondAttribute="leading" constant="100" id="W1A-nA-WTv"/>
+                            <constraint firstItem="uJO-kc-CKV" firstAttribute="trailing" secondItem="s12-JP-U8Y" secondAttribute="trailing" constant="20" id="aHp-dV-hLc"/>
                             <constraint firstItem="uJO-kc-CKV" firstAttribute="trailing" secondItem="lem-z1-5yo" secondAttribute="trailing" id="d53-Pl-J9u"/>
                             <constraint firstItem="Am7-cz-gf2" firstAttribute="top" secondItem="lem-z1-5yo" secondAttribute="bottom" constant="50" id="g7Y-JD-703"/>
                             <constraint firstItem="lem-z1-5yo" firstAttribute="top" secondItem="uJO-kc-CKV" secondAttribute="top" id="nYk-3D-7KD"/>
+                            <constraint firstItem="s12-JP-U8Y" firstAttribute="centerX" secondItem="uJO-kc-CKV" secondAttribute="centerX" id="sKe-Xc-1fx"/>
+                            <constraint firstItem="s12-JP-U8Y" firstAttribute="centerY" secondItem="uJO-kc-CKV" secondAttribute="centerY" id="snl-jo-TdI"/>
                             <constraint firstItem="uJO-kc-CKV" firstAttribute="trailing" secondItem="Am7-cz-gf2" secondAttribute="trailing" constant="100" id="vLW-ww-i9t"/>
+                            <constraint firstItem="s12-JP-U8Y" firstAttribute="leading" secondItem="uJO-kc-CKV" secondAttribute="leading" constant="20" id="yNs-AO-bQt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uJO-kc-CKV"/>
                     </view>
+                    <connections>
+                        <outlet property="biographyTextField" destination="s12-JP-U8Y" id="U9m-K7-YsD"/>
+                        <outlet property="mainProfileImage" destination="afl-50-LTA" id="gnL-ir-ZFc"/>
+                        <outlet property="nextButton" destination="j96-cR-MY9" id="OWa-1J-SLB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGM-tb-TFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

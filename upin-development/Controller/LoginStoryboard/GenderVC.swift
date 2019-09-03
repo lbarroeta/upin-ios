@@ -7,20 +7,81 @@
 //
 
 import UIKit
+import Firebase
 
 class GenderVC: UIViewController {
 
     @IBOutlet weak var genderSegmentedControl: UISegmentedControl!
     @IBOutlet weak var otherGenderTextField: UITextField!
+    @IBOutlet weak var birthdateTextField: UITextField!
+    @IBOutlet weak var nextButton: UIBarButtonItem!
+    
+    private var birthdatePicker: UIDatePicker?
+    
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
+        setDatePicker()
+        segmentedControlChanged(genderSegmentedControl!)
+        birthdateTextField.inputView = birthdatePicker
+    }
+    
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        updateGenderAndBirthdate()
+        self.performSegue(withIdentifier: "ProfilePictureVC", sender: self)
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func updateGenderAndBirthdate() {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        var userData = [String: Any]()
+        
+        if self.genderSegmentedControl.selectedSegmentIndex == 0 {
+            userData = [
+                "gender": "Male",
+                "birthdate": birthdateTextField.text!
+            ]
+        } else if self.genderSegmentedControl.selectedSegmentIndex == 1 {
+            userData = [
+                "gender": "Female",
+                "birthdate": birthdateTextField.text!
+            ]
+        } else {
+            userData = [
+                "gender": "Other",
+                "otherGenderDescription": otherGenderTextField.text!,
+                "birthdate": birthdateTextField.text!
+            ]
+        }
+        
+        Firestore.firestore().collection("users").document(user.uid).updateData(userData) { (error) in
+            if let error = error {
+                self.authErrorHandle(error: error)
+                print(error.localizedDescription)
+                return
+            }
+        }
+        
+    }
+    
+    func setDatePicker() {
+        birthdatePicker = UIDatePicker()
+        birthdatePicker?.datePickerMode = .date
+        birthdatePicker?.addTarget(self, action: #selector(dateChanged(birthdatePicker:)), for: .valueChanged)
+        birthdatePicker?.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    }
+    
+    @objc func dateChanged(birthdatePicker: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        birthdateTextField.text = dateFormatter.string(from: birthdatePicker.date)
+    }
 
     @IBAction func segmentedControlChanged(_ sender: Any) {
         switch genderSegmentedControl.selectedSegmentIndex {
