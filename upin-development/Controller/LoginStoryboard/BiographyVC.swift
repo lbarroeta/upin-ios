@@ -10,15 +10,18 @@ import UIKit
 import Firebase
 import Kingfisher
 
-class BiographyVC: UIViewController {
+class BiographyVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var mainProfileImage: UIImageView!
     @IBOutlet weak var biographyTextField: UITextField!
     @IBOutlet weak var nextButton: UIBarButtonItem!
+    @IBOutlet weak var numberLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboard()
         fetchCurrentUserProfileImage()
+        biographyTextField.delegate = self
         
     }
     
@@ -47,7 +50,6 @@ class BiographyVC: UIViewController {
                 return
             }
             
-            self.presentHomeStoryboard()
         }
     }
     
@@ -68,10 +70,15 @@ class BiographyVC: UIViewController {
         }
     }
     
-    fileprivate func presentHomeStoryboard() {
-        let storyboard = UIStoryboard(name: "Home", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: HomeViewControllers.HomeVC)
-        present(controller, animated: true, completion: nil)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
+        }
+        
+        let updateText = currentText.replacingCharacters(in: stringRange, with: string)
+        numberLabel.text = "\(0 + updateText.count)"
+        return updateText.count < 300
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
