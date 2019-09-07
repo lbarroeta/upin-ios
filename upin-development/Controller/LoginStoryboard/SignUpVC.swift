@@ -17,7 +17,6 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var nextButton: UINavigationItem!
     
     let userDefault = UserDefaults.standard
@@ -36,8 +35,8 @@ class SignUpVC: UIViewController {
     @IBAction func nextButtonPressed(_ sender: Any) {
         
         guard let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text,
-        let phoneNumber = phoneNumberTextField.text, let password = passwordTextField.text, !firstName.isEmpty,
-        !lastName.isEmpty, !email.isEmpty, !phoneNumber.isEmpty, !password.isEmpty else {
+        let phoneNumber = phoneNumberTextField.text, !firstName.isEmpty,
+        !lastName.isEmpty, !email.isEmpty, !phoneNumber.isEmpty else {
             simpleAlert(title: "Error", msg: "Must complete all fields to advance...")
             return
         }
@@ -67,7 +66,7 @@ class SignUpVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var vc = segue.destination as! PhoneCodeVC
+        let vc = segue.destination as! PhoneCodeVC
         vc.userPhoneNumber = self.phoneNumberTextField.text!
         vc.finalUserId = self.userId
         vc.firstName = self.firstNameTextField.text!
@@ -79,5 +78,15 @@ class SignUpVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func goToPolicy(_ sender: Any) {
+        presentPolicyVC()
+    }
+    
+    
+    fileprivate func presentPolicyVC() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: LoginViewControllers.PolicyVC)
+        present(controller, animated: true, completion: nil)
+    }
 
 }

@@ -16,6 +16,7 @@ struct Storyboards {
 struct LoginViewControllers {
     static let LoginVC = "LoginVC"
     static let GenderVC = "GenderAndBirthdayVC"
+    static let PolicyVC = "PolicyVC"
 }
 
 struct HomeViewControllers {

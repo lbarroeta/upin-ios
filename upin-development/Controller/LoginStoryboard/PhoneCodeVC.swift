@@ -12,9 +12,13 @@ import JGProgressHUD
 
 class PhoneCodeVC: UIViewController {
     
-    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var phoneNumberLabel: UILabel!
-    @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet weak var firstNumberTextField: UITextField!
+    @IBOutlet weak var secondNumberTextField: UITextField!
+    @IBOutlet weak var thirdNumberTextField: UITextField!
+    @IBOutlet weak var fourNumberTextField: UITextField!
+    @IBOutlet weak var fifthNumberTextField: UITextField!
+    @IBOutlet weak var sixNumberTextField: UITextField!
     
     let userDefault = UserDefaults.standard
     
@@ -29,26 +33,27 @@ class PhoneCodeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.hideKeyboard()
         phoneNumberLabel.text = userPhoneNumber
     }
-    
 
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func nextButtonPressed(_ sender: Any) {
-    
-        guard let code = codeTextField.text, !code.isEmpty else {
-            simpleAlert(title: "Error", msg: "Must introduce code to advance...")
+        
+        guard let firstTextField = firstNumberTextField.text, let secondTextField = secondNumberTextField.text, let thirdTextField = thirdNumberTextField.text,
+        let fourTextField = fourNumberTextField.text, let fifthTextField = fifthNumberTextField.text, let sixTextField = sixNumberTextField.text, !firstTextField.isEmpty,
+        !secondTextField.isEmpty, !thirdTextField.isEmpty, !fourTextField.isEmpty, !fifthTextField.isEmpty, !sixTextField.isEmpty else {
+            simpleAlert(title: "Error", msg: "Must correctly introduce the code to advance...")
             return
         }
         
-        guard let otpCode = codeTextField.text else { return }
+        let verificationCode: String = "\(firstTextField)\(secondTextField)\(thirdTextField)\(fourTextField)\(fifthTextField)\(sixTextField)"
+        
         let defaults = UserDefaults.standard
-        let credential: PhoneAuthCredential = PhoneAuthProvider.provider().credential(withVerificationID: defaults.string(forKey: "verificationID")!, verificationCode: otpCode)
+        let credential: PhoneAuthCredential = PhoneAuthProvider.provider().credential(withVerificationID: defaults.string(forKey: "verificationID")!, verificationCode: verificationCode)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (success, error) in
             if let error = error {
@@ -58,7 +63,6 @@ class PhoneCodeVC: UIViewController {
             
             self.performSegue(withIdentifier: "GenderAndBirthdayVC", sender: self)
             self.createUserOnFirebase()
-            
         }
         
     }
@@ -102,12 +106,6 @@ class PhoneCodeVC: UIViewController {
             
         }
         
-    }
-    
-    fileprivate func presentHomeStoryboard() {
-        let storyboard = UIStoryboard(name: Storyboards.HomeStoryboard, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: HomeViewControllers.HomeVC)
-        present(controller, animated: true, completion: nil)
     }
     
 }

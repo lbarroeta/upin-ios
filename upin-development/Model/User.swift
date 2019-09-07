@@ -16,4 +16,15 @@ struct User:Codable {
     var birthdate: String = ""
     var gender: String = ""
     var otherGender: String = ""
+    var profilePictures: String = ""
+    
+    init(data: [String: Any]) {
+        self.id = data["id"] as? String ?? ""
+        self.firstName = data["firstName"] as? String ?? ""
+        self.lastName = data["lastName"] as? String ?? ""
+        self.email = data["email"] as? String ?? ""
+        self.birthdate = data["birthdate"] as? String ?? ""
+        self.gender = data["gender"] as? String ?? ""
+        self.profilePictures = data["profilePictures"] as? String ?? ""
+    }
 }

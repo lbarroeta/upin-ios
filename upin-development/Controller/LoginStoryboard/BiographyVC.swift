@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Kingfisher
 
 class BiographyVC: UIViewController {
 
@@ -15,12 +16,10 @@ class BiographyVC: UIViewController {
     @IBOutlet weak var biographyTextField: UITextField!
     @IBOutlet weak var nextButton: UIBarButtonItem!
     
-    var listener: ListenerRegistration!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        fetchCurrentUserProfileImage()
+        
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -30,7 +29,7 @@ class BiographyVC: UIViewController {
         }
         
         updateBiographyOnFirebase()
-        
+
     }
     
     
@@ -52,17 +51,21 @@ class BiographyVC: UIViewController {
         }
     }
     
-    func userProfilePictureListener() {
+    func fetchCurrentUserProfileImage() {
         guard let currentUser = Auth.auth().currentUser else { return }
-        listener = Firestore.firestore().collection("users").document(currentUser.uid).addSnapshotListener({ (snapshot, error) in
+        
+        Firestore.firestore().collection("users").document(currentUser.uid).getDocument { (snapshot, error) in
             if let error = error {
-                self.authErrorHandle(error: error)
                 print(error.localizedDescription)
                 return
             }
             
-            snapshot?.get("")
-        })
+            guard let data = snapshot?.data() else { return }
+            let profileImagePath = data["profilePictures"] as? [String: Any]
+            guard let mainProfileImagePath = profileImagePath?["mainProfileImage"] as? String else { return }
+            guard let mainProfileImageURL = URL(string: mainProfileImagePath) else { return }
+            self.mainProfileImage.kf.setImage(with: mainProfileImageURL)
+        }
     }
     
     fileprivate func presentHomeStoryboard() {
