@@ -19,17 +19,13 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if Auth.auth().currentUser == nil {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+            let storyboard = UIStoryboard(name: Storyboards.LoginStoryboard, bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: LoginViewControllers.LoginVC)
             present(controller, animated: true, completion: nil)
         } else {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "BiographyVC")
+            let storyboard = UIStoryboard(name: Storyboards.HomeStoryboard, bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: HomeViewControllers.HomeVC)
             present(controller, animated: true, completion: nil)
-            
-//            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-//            let controller = storyboard.instantiateViewController(withIdentifier: "HomeVC")
-//            present(controller, animated: true, completion: nil)
         }
     }
     

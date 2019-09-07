@@ -49,8 +49,9 @@ class BiographyVC: UIViewController, UITextFieldDelegate {
                 print(error.localizedDescription)
                 return
             }
-            
         }
+        
+        self.performSegue(withIdentifier: "InterestsVC", sender: self)
     }
     
     func fetchCurrentUserProfileImage() {
