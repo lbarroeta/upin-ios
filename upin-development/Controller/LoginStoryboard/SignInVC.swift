@@ -8,12 +8,16 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class SignInVC: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var signInButton: ActionButton!
+    
+    let userDefault = UserDefaults.standard
+    let hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,31 +26,31 @@ class SignInVC: UIViewController {
     
 
     @IBAction func signInButtonPressed(_ sender: Any) {
-        guard let email = emailTextField.text, let password = passwordTextField.text, !email.isEmpty, !password.isEmpty else {
-            simpleAlert(title: "Error", msg: "Must complete the fields to advance...")
+        guard let phone = phoneNumberTextField.text, !phone.isEmpty else {
+            simpleAlert(title: "Error", msg: "Must provide a phone number to advance...")
             return
         }
         
-        signInButton.animateButton(shouldLoad: true, withMessage: nil)
-        
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
-            if let error = error {
-                self.signInButton.animateButton(shouldLoad: false, withMessage: "Sign in")
-                self.authErrorHandle(error: error)
-                return
-            }
+        self.signUpAlert(title: "Phone number", msg: "Is this your phone number? \(phoneNumberTextField.text!)", handlerOK: { (action) in
+            PhoneAuthProvider.provider().verifyPhoneNumber(self.phoneNumberTextField.text!, uiDelegate: nil, completion: { (verificationID, error) in
+                if let error = error {
+                    self.authErrorHandle(error: error)
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                self.userDefault.setValue(verificationID, forKey: "verificationID")
+                self.performSegue(withIdentifier: "SignInPhoneCodeVC", sender: self)
+            })
             
-            self.presentHomeStoryboard()
-        }
+            self.hud.textLabel.text = "Loading"
+            self.hud.show(in: self.view)
+            self.hud.dismiss(afterDelay: 4.0, animated: true)
+            
+        }, handlerCancel: nil)
+        
         
         
     }
-    
-    fileprivate func presentHomeStoryboard() {
-        let storyboard = UIStoryboard(name: Storyboards.HomeStoryboard, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: HomeViewControllers.HomeVC)
-        present(controller, animated: true, completion: nil)
-    }
-    
     
 }

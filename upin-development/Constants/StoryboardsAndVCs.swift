@@ -11,6 +11,8 @@ import Foundation
 struct Storyboards {
     static let LoginStoryboard = "Login"
     static let HomeStoryboard = "Home"
+    static let SettingsStoryboard = "Settings"
+    static let ProfileStoryboard = "Profile"
 }
 
 struct LoginViewControllers {
@@ -21,5 +23,15 @@ struct LoginViewControllers {
 
 struct HomeViewControllers {
     static let HomeVC = "HomeVC"
+}
+
+struct SettingsViewControllers {
+    static let AccountVC = "AccountVC"
+    static let PrivacyPolicyVC = "PrivacyPolicyVC"
+    static let HelpVC = "HelpVC"
+}
+
+struct ProfileViewControllers {
+    static let ConnectionsVC = "ConnectionsVC"
 }
 

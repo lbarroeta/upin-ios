@@ -40,7 +40,14 @@
 		46B00B8B2317248D007E9FDC /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B8A2317248D007E9FDC /* ActionButton.swift */; };
 		46B00B8D231724B6007E9FDC /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B8C231724B6007E9FDC /* SignInVC.swift */; };
 		46B00B8F2317256D007E9FDC /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B00B8E2317256D007E9FDC /* ForgotPasswordVC.swift */; };
+		46CCD73C232456B700421688 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CCD73B232456B700421688 /* UserService.swift */; };
 		46CFABE6231E3C1100A3D7B8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CFABE5231E3C1100A3D7B8 /* Images.swift */; };
+		46E2694C2326E9920010C138 /* SignInPhoneCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2694B2326E9920010C138 /* SignInPhoneCodeVC.swift */; };
+		46E2694E232721B10010C138 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E2694D232721B10010C138 /* Settings.storyboard */; };
+		46E26952232723B50010C138 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E26951232723B50010C138 /* AccountVC.swift */; };
+		46E26954232728BF0010C138 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E26953232728BF0010C138 /* PrivacyPolicyVC.swift */; };
+		46E26956232759D10010C138 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E26955232759D10010C138 /* Profile.storyboard */; };
+		46E2695923275AC60010C138 /* ConnectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2695823275AC60010C138 /* ConnectionsVC.swift */; };
 		D44E3845FFC4669DEE0DD8C5 /* Pods_upin_development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,7 +88,14 @@
 		46B00B8A2317248D007E9FDC /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		46B00B8C231724B6007E9FDC /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		46B00B8E2317256D007E9FDC /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		46CCD73B232456B700421688 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		46CFABE5231E3C1100A3D7B8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		46E2694B2326E9920010C138 /* SignInPhoneCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPhoneCodeVC.swift; sourceTree = "<group>"; };
+		46E2694D232721B10010C138 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		46E26951232723B50010C138 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		46E26953232728BF0010C138 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
+		46E26955232759D10010C138 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		46E2695823275AC60010C138 /* ConnectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsVC.swift; sourceTree = "<group>"; };
 		82A17A7ECCEC8498F181D778 /* Pods-upin-development.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.debug.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.debug.xcconfig"; sourceTree = "<group>"; };
 		E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_upin_development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EB23FD1A36EA0F1C9BAD63 /* Pods-upin-development.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.release.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,8 +165,9 @@
 		46B00B6A23171D62007E9FDC /* upin-development */ = {
 			isa = PBXGroup;
 			children = (
-				46B00B7223171D65007E9FDC /* Assets.xcassets */,
 				46A43CB4231862E700D6ACDF /* upin-development.entitlements */,
+				46B00B7223171D65007E9FDC /* Assets.xcassets */,
+				46CCD73A2324569700421688 /* Services */,
 				4626C0EF2317314C0030FA85 /* Extensions */,
 				4626C0E02317286B0030FA85 /* Constants */,
 				46B00B84231723BF007E9FDC /* Model */,
@@ -174,6 +189,8 @@
 			children = (
 				46B00B80231722EA007E9FDC /* Login.storyboard */,
 				46A43CB5231864BA00D6ACDF /* Home.storyboard */,
+				46E2694D232721B10010C138 /* Settings.storyboard */,
+				46E26955232759D10010C138 /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -192,8 +209,10 @@
 		46B00B83231723B5007E9FDC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				46B00B8723172459007E9FDC /* LoginStoryboard */,
 				46A43CB7231864FC00D6ACDF /* Home */,
+				46B00B8723172459007E9FDC /* LoginStoryboard */,
+				46E2695723275AA70010C138 /* ProfileStoryboard */,
+				46E269502327236A0010C138 /* SettingsStoryboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -213,6 +232,7 @@
 				4626C0E723172B270030FA85 /* PolicyVC.swift */,
 				46B00B882317246C007E9FDC /* LoginVC.swift */,
 				46B00B8C231724B6007E9FDC /* SignInVC.swift */,
+				46E2694B2326E9920010C138 /* SignInPhoneCodeVC.swift */,
 				46B00B8E2317256D007E9FDC /* ForgotPasswordVC.swift */,
 				4626C0E523172B140030FA85 /* SignUpVC.swift */,
 				462B4822231AC795009B6895 /* PhoneCodeVC.swift */,
@@ -222,6 +242,31 @@
 				46532DC5232360D400F3EA7F /* InterestsVC.swift */,
 			);
 			path = LoginStoryboard;
+			sourceTree = "<group>";
+		};
+		46CCD73A2324569700421688 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				46CCD73B232456B700421688 /* UserService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		46E269502327236A0010C138 /* SettingsStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				46E26951232723B50010C138 /* AccountVC.swift */,
+				46E26953232728BF0010C138 /* PrivacyPolicyVC.swift */,
+			);
+			path = SettingsStoryboard;
+			sourceTree = "<group>";
+		};
+		46E2695723275AA70010C138 /* ProfileStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				46E2695823275AC60010C138 /* ConnectionsVC.swift */,
+			);
+			path = ProfileStoryboard;
 			sourceTree = "<group>";
 		};
 		6668486248938A9CA8B3385F /* Pods */ = {
@@ -308,10 +353,12 @@
 			files = (
 				46B00B7623171D65007E9FDC /* LaunchScreen.storyboard in Resources */,
 				46B00B7E23171E34007E9FDC /* GoogleService-Info.plist in Resources */,
+				46E26956232759D10010C138 /* Profile.storyboard in Resources */,
 				46B00B7323171D65007E9FDC /* Assets.xcassets in Resources */,
 				46A43CB6231864BA00D6ACDF /* Home.storyboard in Resources */,
 				46B00B81231722EA007E9FDC /* Login.storyboard in Resources */,
 				46B00B7123171D62007E9FDC /* Main.storyboard in Resources */,
+				46E2694E232721B10010C138 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,22 +418,27 @@
 				462B4823231AC796009B6895 /* PhoneCodeVC.swift in Sources */,
 				46A43CB92318651B00D6ACDF /* HomeVC.swift in Sources */,
 				46B00B8F2317256D007E9FDC /* ForgotPasswordVC.swift in Sources */,
+				46E26952232723B50010C138 /* AccountVC.swift in Sources */,
 				46532DC82323644700F3EA7F /* Interests.swift in Sources */,
 				46B00B6C23171D62007E9FDC /* AppDelegate.swift in Sources */,
 				4626C0EE231730420030FA85 /* BiographyVC.swift in Sources */,
 				46B00B8D231724B6007E9FDC /* SignInVC.swift in Sources */,
 				46B00B892317246C007E9FDC /* LoginVC.swift in Sources */,
+				46E2694C2326E9920010C138 /* SignInPhoneCodeVC.swift in Sources */,
 				46532DC6232360D400F3EA7F /* InterestsVC.swift in Sources */,
 				46532DCA2323656F00F3EA7F /* InterestsCell.swift in Sources */,
 				46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */,
 				4626C0E2231728850030FA85 /* StoryboardsAndVCs.swift in Sources */,
+				46CCD73C232456B700421688 /* UserService.swift in Sources */,
 				46CFABE6231E3C1100A3D7B8 /* Images.swift in Sources */,
 				4626C0E823172B270030FA85 /* PolicyVC.swift in Sources */,
 				46B00B86231723D3007E9FDC /* GradientView.swift in Sources */,
 				4626C0EC23172FF60030FA85 /* ProfilePictureVC.swift in Sources */,
+				46E26954232728BF0010C138 /* PrivacyPolicyVC.swift in Sources */,
 				4626C0E623172B140030FA85 /* SignUpVC.swift in Sources */,
 				46B00B8B2317248D007E9FDC /* ActionButton.swift in Sources */,
 				4626C0EA23172BEC0030FA85 /* GenderVC.swift in Sources */,
+				46E2695923275AC60010C138 /* ConnectionsVC.swift in Sources */,
 				4626C0F3231731720030FA85 /* Alerts.swift in Sources */,
 				4626C0F1231731630030FA85 /* Keyboard.swift in Sources */,
 				46A43CC1231879AC00D6ACDF /* SettingsVC.swift in Sources */,

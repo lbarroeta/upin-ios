@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class InterestsCell: UICollectionViewCell {
     @IBOutlet weak var mainBackgroundView: UIView!
@@ -19,13 +20,9 @@ class InterestsCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             if selectedCell == false {
-                mainBackgroundView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+                numberBackgroundView.isHidden = false
                 selectedCell = true
-            } else {
-                mainBackgroundView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                selectedCell = false
             }
-            
         }
     }
     
@@ -38,9 +35,21 @@ class InterestsCell: UICollectionViewCell {
         numberBackgroundView.layer.borderWidth = 0.5
         numberBackgroundView.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.8666666667, blue: 0.6941176471, alpha: 1)
         numberBackgroundView.layer.cornerRadius = 10
+        
+        numberBackgroundView.isHidden = true
+        
     }
     
     func configureCell(interests: Interests) {
         interestsLabel.text = interests.name
+    }
+}
+
+class ProfileInterestsCell: UICollectionViewCell {
+    
+    @IBOutlet weak var testLabel: UILabel!
+    
+    func configureCell(interests: Interests) {
+        testLabel.text = interests.name
     }
 }

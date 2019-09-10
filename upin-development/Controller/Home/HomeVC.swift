@@ -43,6 +43,12 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if UserService.userListener == nil {
+            UserService.getCurrentUserInfo()
+        }
+    }
+    
     
     func centerMapOnUserLocation() {
         guard let coordinate = locationManager.location?.coordinate else { return }
@@ -57,16 +63,4 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
     
-    @IBAction func signOut(_ sender: Any) {
-        try! Auth.auth().signOut()
-        self.presentLoginStoryboard()
-    }
-    
-    fileprivate func presentLoginStoryboard(){
-        let storyboard = UIStoryboard(name: Storyboards.LoginStoryboard, bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: LoginViewControllers.LoginVC)
-        present(controller, animated: true, completion: nil)
-    }
-    
-
 }

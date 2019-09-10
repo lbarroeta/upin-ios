@@ -11,3 +11,7 @@ import Foundation
 struct InterestsCollectionViewCell {
     static let interestsCell = "InterestsCell"
 }
+
+struct ProfileInterestsCollectionViewCell {
+    static let ProfileInterestsCell = "ProfileInterestsCell"
+}

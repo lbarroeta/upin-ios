@@ -85,11 +85,85 @@ class InterestsVC: UIViewController {
     func addInterestsToUsers() {
         guard let currentUser = Auth.auth().currentUser else { return }
         var userData = [String: Any]()
-        userData = [
-            "interests": selectedInterestsArray,
-            "registration_complete": true,
-            "first_home_attempt": true
-        ]
+        
+        if selectedInterestsArray.count == 1 {
+            userData = [
+                "registration_complete": true,
+                "first_home_attempt": true,
+                "interests": [
+                    "firstSelected": selectedInterestsArray[0]
+                ]
+            ]
+        } else if selectedInterestsArray.count == 2 {
+            userData = [
+                "registration_complete": true,
+                "first_home_attempt": true,
+                "interests": [
+                    "firstSelected": selectedInterestsArray[0],
+                    "secondSelected": selectedInterestsArray[1]
+                ]
+            ]
+        } else if selectedInterestsArray.count == 3 {
+            userData = [
+                "registration_complete": true,
+                "first_home_attempt": true,
+                "interests": [
+                    "firstSelected": selectedInterestsArray[0],
+                    "secondSelected": selectedInterestsArray[1],
+                    "thirdSelected": selectedInterestsArray[2]
+                ]
+            ]
+        } else if selectedInterestsArray.count == 4 {
+            userData = [
+                "registration_complete": true,
+                "first_home_attempt": true,
+                "interests": [
+                    "firstSelected": selectedInterestsArray[0],
+                    "secondSelected": selectedInterestsArray[1],
+                    "thirdSelected": selectedInterestsArray[2],
+                    "fourSelected": selectedInterestsArray[3]
+                ]
+            ]
+        } else if selectedInterestsArray.count == 5 {
+            userData = [
+                "registration_complete": true,
+                "first_home_attempt": true,
+                "interests": [
+                    "firstSelected": selectedInterestsArray[0],
+                    "secondSelected": selectedInterestsArray[1],
+                    "thirdSelected": selectedInterestsArray[2],
+                    "fourSelected": selectedInterestsArray[3],
+                    "fifthSelected": selectedInterestsArray[4]
+                ]
+            ]
+        } else if selectedInterestsArray.count == 6 {
+            userData = [
+                "registration_complete": true,
+                "first_home_attempt": true,
+                "interests": [
+                    "firstSelected": selectedInterestsArray[0],
+                    "secondSelected": selectedInterestsArray[1],
+                    "thirdSelected": selectedInterestsArray[2],
+                    "fourSelected": selectedInterestsArray[3],
+                    "fifthSelected": selectedInterestsArray[4],
+                    "sixthSelected": selectedInterestsArray[5]
+                ]
+            ]
+        } else if selectedInterestsArray.count == 7 {
+            userData = [
+                "registration_complete": true,
+                "first_home_attempt": true,
+                "interests": [
+                    "firstSelected": selectedInterestsArray[0],
+                    "secondSelected": selectedInterestsArray[1],
+                    "thirdSelected": selectedInterestsArray[2],
+                    "fourSelected": selectedInterestsArray[3],
+                    "fifthSelected": selectedInterestsArray[4],
+                    "sixthSelected": selectedInterestsArray[5],
+                    "seventhSelected": selectedInterestsArray[6]
+                ]
+            ]
+        }
         
         Firestore.firestore().collection("users").document(currentUser.uid).setData(userData, merge: true) { (error) in
             if let error = error {
@@ -155,9 +229,26 @@ extension InterestsVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? InterestsCell else { return }
         if !selectedInterestsArray.contains(cell.interestsLabel.text!) {
-            selectedInterestsArray.append(cell.interestsLabel.text!)
-            nextButton.isEnabled = true
-            selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
+            if 0...2 ~= selectedInterestsArray.count {
+                let index = selectedInterestsArray.count
+                
+                selectedInterestsArray.append(cell.interestsLabel.text!)
+                selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
+                nextButton.isEnabled = true
+                
+                cell.numberLabel.text = "\(index + 1)"
+                cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.9412322044, green: 0.7829019427, blue: 0.1854074299, alpha: 1)
+                cell.numberBackgroundView.backgroundColor = #colorLiteral(red: 0.9636644721, green: 0.9492474198, blue: 0.978384912, alpha: 1)
+            } else if 3...6 ~= selectedInterestsArray.count {
+                let index = selectedInterestsArray.count
+                
+                selectedInterestsArray.append(cell.interestsLabel.text!)
+                selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
+                nextButton.isEnabled = true
+                cell.numberLabel.text = "\(index + 1)"
+                cell.numberBackgroundView.backgroundColor = #colorLiteral(red: 0.9636644721, green: 0.9492474198, blue: 0.978384912, alpha: 1)
+                cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.8666666667, blue: 0.6941176471, alpha: 1)
+            }
         } else {
             selectedInterestsArray = selectedInterestsArray.filter({ $0 != cell.interestsLabel.text! })
             selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
@@ -167,6 +258,5 @@ extension InterestsVC: UICollectionViewDelegate, UICollectionViewDataSource {
             }
         }
     }
-    
     
 }

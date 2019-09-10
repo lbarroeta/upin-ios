@@ -14,5 +14,6 @@ target 'upin-development' do
     pod 'JGProgressHUD'
     pod 'Kingfisher', '~> 5.0'
     pod 'CropViewController'
+    pod 'IQKeyboardManagerSwift'
 
 end

@@ -20,17 +20,29 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var ageNumberLabel: UILabel!
     @IBOutlet weak var biographyLabel: UILabel!
     
+    
+    var interests = [Interests]()
+    var listener: ListenerRegistration!
+    
     let hud = JGProgressHUD(style: .dark)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userProfileListener()
         
+        
+        
         hud.textLabel.text = "Loading your information"
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 1.5, animated: true)
         
     }
+    
+    @IBAction func connectionsButtonPressed(_ sender: Any) {
+        presentConnectionsStoryboard()
+    }
+    
+    
     
     func userProfileListener() {
         
@@ -42,6 +54,7 @@ class ProfileVC: UIViewController {
                 return
             }
             
+            // Retrieve data from firebase
             guard let data = snapshot?.data() else { return }
             let firstName = data["firstName"] as? String ?? ""
             let lastName = data["lastName"] as? String ?? ""
@@ -49,29 +62,43 @@ class ProfileVC: UIViewController {
             let birthdate = data["birthdate"] as? String ?? ""
             let biography = data["biography"] as? String ?? ""
             
+            
+            
+            // Set profile image
             let profileImagePath = data["profilePictures"] as? [String: Any]
             guard let mainProfileImagePath = profileImagePath?["mainProfileImage"] as? String else { return }
             guard let mainProfileImageURL = URL(string: mainProfileImagePath) else { return }
             self.profilePicture.kf.setImage(with: mainProfileImageURL)
             
+            
+            // Get age from user
             let stringBirthdate: String = birthdate
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM-dd-yyyy"
             let date = dateFormatter.date(from: stringBirthdate)
-            
             let calendar = Calendar.current
             let components = calendar.dateComponents([.year], from: date!)
             let now = Date()
             let finalYear = calendar.date(from: components)
             let age = calendar.dateComponents([.year], from: finalYear!, to: now)
             
-            
+            // Set labels
             self.firstNameLabel.text = firstName
             self.lastNameLabel.text = lastName
             self.genderLabel.text = gender
             self.biographyLabel.text = biography
             self.ageNumberLabel.text = "\(age.year!)"
+            
+            
         }
     }
     
+    fileprivate func presentConnectionsStoryboard() {
+        let storyboard = UIStoryboard.init(name: Storyboards.ProfileStoryboard, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ProfileViewControllers.ConnectionsVC)
+        present(controller, animated: true, completion: nil)
+    }
+
+    
 }
+

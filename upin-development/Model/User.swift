@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User:Codable {
+struct User {
     var id: String = ""
     var firstName: String = ""
     var lastName: String = ""
@@ -16,7 +16,24 @@ struct User:Codable {
     var birthdate: String = ""
     var gender: String = ""
     var otherGender: String = ""
-    var profilePictures: String = ""
+    
+    init(id: String = "",
+         firstName: String = "",
+         lastName: String = "",
+         email: String = "",
+         birthdate: String = "",
+         gender: String = "",
+         otherGender: String = "") {
+        
+        
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.birthdate = birthdate
+        self.gender = gender
+        self.otherGender = otherGender
+    }
     
     init(data: [String: Any]) {
         self.id = data["id"] as? String ?? ""
@@ -25,6 +42,19 @@ struct User:Codable {
         self.email = data["email"] as? String ?? ""
         self.birthdate = data["birthdate"] as? String ?? ""
         self.gender = data["gender"] as? String ?? ""
-        self.profilePictures = data["profilePictures"] as? String ?? ""
+    }
+    
+    static func modelToData(user: User) -> [String: Any] {
+        let data: [String: Any] = [
+            "id": user.id,
+            "firstName": user.firstName,
+            "lastName": user.lastName,
+            "email": user.email,
+            "birthdate": user.birthdate,
+            "gender": user.gender,
+            "otherGender": user.otherGender
+        ]
+        
+        return data
     }
 }
