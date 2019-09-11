@@ -41,6 +41,11 @@ class SettingsVC: UIViewController {
         presentPrivacyPolicyVC()
     }
     
+    @IBAction func helpButtonPressed(_ sender: Any) {
+        presentHelpVC()
+    }
+    
+    
     fileprivate func presentAccountVC() {
         let storyboard = UIStoryboard(name: Storyboards.SettingsStoryboard, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: SettingsViewControllers.AccountVC)
@@ -50,6 +55,12 @@ class SettingsVC: UIViewController {
     fileprivate func presentPrivacyPolicyVC() {
         let storyboard = UIStoryboard(name: Storyboards.SettingsStoryboard, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: SettingsViewControllers.PrivacyPolicyVC)
+        present(controller, animated: true, completion: nil)
+    }
+    
+    fileprivate func presentHelpVC() {
+        let storyboard = UIStoryboard(name: Storyboards.SettingsStoryboard, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: SettingsViewControllers.HelpVC)
         present(controller, animated: true, completion: nil)
     }
     

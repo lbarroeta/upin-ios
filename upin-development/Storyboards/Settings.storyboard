@@ -196,7 +196,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NON-sz-tbK">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="1045.5"/>
-                                        <mutableString key="text">Thank you for choosing to be part of our community at, Upin ('Company', 'we', 'us' or 'our'). We are commited to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regars to your personal information, please contact us at upin@getupin.com.
+                                        <string key="text">Thank you for choosing to be part of our community at, Upin ('Company', 'we', 'us' or 'our'). We are commited to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regars to your personal information, please contact us at upin@getupin.com.
 
 When you visit our mobile application, and use our services, you trust us with your personal information. We take your privacy very seriously. In this privacy notice, we describe our privacy policy. We seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our Apps and your services.
 
@@ -217,7 +217,7 @@ This software application and Upin website is operated by Upin, Mintz Holding LL
 
 ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
 
-</mutableString>
+</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -253,6 +253,137 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAq-Co-twh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="502.89855072463774" y="154.6875"/>
+        </scene>
+        <!--HelpVC-->
+        <scene sceneID="Uvs-hz-6QK">
+            <objects>
+                <viewController storyboardIdentifier="HelpVC" id="QUz-Y0-HNv" customClass="HelpVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ih1-Oc-2Cg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAO-Tc-xYq">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVe-RF-GAv">
+                                        <rect key="frame" x="0.0" y="55" width="414" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Imp-xk-6Xa"/>
+                                        </constraints>
+                                        <color key="barTintColor" red="0.46138572690000001" green="0.88912636040000004" blue="0.79186606410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <textAttributes key="titleTextAttributes">
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </textAttributes>
+                                        <items>
+                                            <navigationItem id="Iew-H3-BGg">
+                                                <barButtonItem key="leftBarButtonItem" title="Settings" id="zyz-yQ-bEQ">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="settingsButtonPressed:" destination="QUz-Y0-HNv" id="ly4-yS-pTl"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Send" id="85g-D9-V4j">
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <action selector="sendButtonPressed:" destination="QUz-Y0-HNv" id="Jli-Hc-x3o"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                </subviews>
+                                <color key="backgroundColor" red="0.46138572690000001" green="0.88912636040000004" blue="0.79186606410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="rVe-RF-GAv" secondAttribute="trailing" id="Agc-Tm-aDk"/>
+                                    <constraint firstAttribute="height" constant="100" id="Czw-S1-tIu"/>
+                                    <constraint firstAttribute="bottom" secondItem="rVe-RF-GAv" secondAttribute="bottom" id="kCN-9o-jNB"/>
+                                    <constraint firstItem="rVe-RF-GAv" firstAttribute="leading" secondItem="iAO-Tc-xYq" secondAttribute="leading" id="sve-n4-KcX"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="r4N-YV-ZDt">
+                                <rect key="frame" x="20" y="130" width="374" height="77"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylk-wk-zdV">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send us a message or give us feedback on your experience with Upin." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfT-dk-sfH">
+                                        <rect key="frame" x="0.0" y="41" width="374" height="36"/>
+                                        <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F52-He-xHK">
+                                <rect key="frame" x="20" y="287" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Yhq-JM-X5r"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-m2-ykY">
+                                <rect key="frame" x="20" y="327" width="374" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Xjv-cW-AOx"/>
+                                </constraints>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0X-BK-h5f">
+                                <rect key="frame" x="20" y="338" width="374" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9KZ-cw-Apt"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mK4-xx-bzK">
+                                <rect key="frame" x="20" y="378" width="374" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="mn8-Ok-eGc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iAO-Tc-xYq" firstAttribute="top" secondItem="ih1-Oc-2Cg" secondAttribute="top" id="6SH-cr-22w"/>
+                            <constraint firstItem="iAO-Tc-xYq" firstAttribute="leading" secondItem="noP-Ko-ZCH" secondAttribute="leading" id="7fe-A0-xiq"/>
+                            <constraint firstItem="mK4-xx-bzK" firstAttribute="trailing" secondItem="ih1-Oc-2Cg" secondAttribute="trailingMargin" id="AwP-Jm-zyB"/>
+                            <constraint firstItem="T0X-BK-h5f" firstAttribute="top" secondItem="eNG-m2-ykY" secondAttribute="bottom" constant="10" id="Dd3-WB-LdL"/>
+                            <constraint firstItem="F52-He-xHK" firstAttribute="top" secondItem="r4N-YV-ZDt" secondAttribute="bottom" constant="80" id="P6n-gh-FZy"/>
+                            <constraint firstItem="noP-Ko-ZCH" firstAttribute="trailing" secondItem="eNG-m2-ykY" secondAttribute="trailing" constant="20" id="P8Y-NA-OHX"/>
+                            <constraint firstItem="T0X-BK-h5f" firstAttribute="leading" secondItem="noP-Ko-ZCH" secondAttribute="leading" constant="20" id="Rb9-v9-0Id"/>
+                            <constraint firstItem="r4N-YV-ZDt" firstAttribute="leading" secondItem="noP-Ko-ZCH" secondAttribute="leading" constant="20" id="TVc-p9-vkG"/>
+                            <constraint firstItem="eNG-m2-ykY" firstAttribute="top" secondItem="F52-He-xHK" secondAttribute="bottom" id="VbO-bB-sRj"/>
+                            <constraint firstItem="r4N-YV-ZDt" firstAttribute="top" secondItem="iAO-Tc-xYq" secondAttribute="bottom" constant="30" id="VnC-yP-O87"/>
+                            <constraint firstItem="mK4-xx-bzK" firstAttribute="top" secondItem="T0X-BK-h5f" secondAttribute="bottom" id="WSe-gT-a6r"/>
+                            <constraint firstItem="mK4-xx-bzK" firstAttribute="top" secondItem="T0X-BK-h5f" secondAttribute="bottom" id="b3F-Xn-NYb"/>
+                            <constraint firstItem="noP-Ko-ZCH" firstAttribute="trailing" secondItem="r4N-YV-ZDt" secondAttribute="trailing" constant="20" id="cBc-Og-xLp"/>
+                            <constraint firstItem="noP-Ko-ZCH" firstAttribute="trailing" secondItem="F52-He-xHK" secondAttribute="trailing" constant="20" id="fdH-AV-lxf"/>
+                            <constraint firstItem="F52-He-xHK" firstAttribute="leading" secondItem="noP-Ko-ZCH" secondAttribute="leading" constant="20" id="hFA-ya-J3O"/>
+                            <constraint firstItem="iAO-Tc-xYq" firstAttribute="trailing" secondItem="noP-Ko-ZCH" secondAttribute="trailing" id="kui-UN-eJF"/>
+                            <constraint firstItem="noP-Ko-ZCH" firstAttribute="trailing" secondItem="T0X-BK-h5f" secondAttribute="trailing" constant="20" id="oV7-5N-if8"/>
+                            <constraint firstItem="mK4-xx-bzK" firstAttribute="leading" secondItem="ih1-Oc-2Cg" secondAttribute="leadingMargin" id="tl4-8i-J0j"/>
+                            <constraint firstItem="eNG-m2-ykY" firstAttribute="leading" secondItem="noP-Ko-ZCH" secondAttribute="leading" constant="20" id="v6k-xI-KuS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="noP-Ko-ZCH"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageTextField" destination="T0X-BK-h5f" id="sLh-ru-aLt"/>
+                        <outlet property="sendButton" destination="85g-D9-V4j" id="VOG-WE-gHd"/>
+                        <outlet property="subjectTextField" destination="F52-He-xHK" id="QHR-sU-zTv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xeL-j2-KM8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1246" y="155"/>
         </scene>
     </scenes>
 </document>

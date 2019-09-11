@@ -13,6 +13,7 @@ struct Storyboards {
     static let HomeStoryboard = "Home"
     static let SettingsStoryboard = "Settings"
     static let ProfileStoryboard = "Profile"
+    static let MyPinsStoryboard = "MyPins"
 }
 
 struct LoginViewControllers {
@@ -33,5 +34,9 @@ struct SettingsViewControllers {
 
 struct ProfileViewControllers {
     static let ConnectionsVC = "ConnectionsVC"
+}
+
+struct MyPinsViewControllers {
+    static let StepOneVC = "StepOneVC"
 }
 

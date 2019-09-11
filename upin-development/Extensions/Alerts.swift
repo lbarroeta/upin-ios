@@ -49,6 +49,17 @@ extension UIViewController {
         }
     }
     
+    func sendHelpAlert(title: String, msg: String, handlerOk: ((UIAlertAction) -> Void)?, handlerCancel: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Send", style: .default, handler: handlerOk)
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: handlerCancel)
+        alert.addAction(action)
+        alert.addAction(actionCancel)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     
     
     

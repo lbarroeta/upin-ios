@@ -47,9 +47,10 @@ class InterestsCell: UICollectionViewCell {
 
 class ProfileInterestsCell: UICollectionViewCell {
     
-    @IBOutlet weak var testLabel: UILabel!
+    
+    @IBOutlet weak var interestsLabel: UILabel!
     
     func configureCell(interests: Interests) {
-        testLabel.text = interests.name
+        interestsLabel.text = interests.name
     }
 }

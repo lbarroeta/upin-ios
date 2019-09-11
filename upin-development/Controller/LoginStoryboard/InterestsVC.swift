@@ -44,6 +44,7 @@ class InterestsVC: UIViewController {
     
     @IBAction func nextButtonPressed(_ sender: Any) {
         self.addInterestsToUsers()
+        
     }
     
     func interestsListener() {
@@ -84,86 +85,94 @@ class InterestsVC: UIViewController {
     
     func addInterestsToUsers() {
         guard let currentUser = Auth.auth().currentUser else { return }
+        
+        
         var userData = [String: Any]()
         
-        if selectedInterestsArray.count == 1 {
-            userData = [
-                "registration_complete": true,
-                "first_home_attempt": true,
-                "interests": [
-                    "firstSelected": selectedInterestsArray[0]
-                ]
-            ]
-        } else if selectedInterestsArray.count == 2 {
-            userData = [
-                "registration_complete": true,
-                "first_home_attempt": true,
-                "interests": [
-                    "firstSelected": selectedInterestsArray[0],
-                    "secondSelected": selectedInterestsArray[1]
-                ]
-            ]
-        } else if selectedInterestsArray.count == 3 {
-            userData = [
-                "registration_complete": true,
-                "first_home_attempt": true,
-                "interests": [
-                    "firstSelected": selectedInterestsArray[0],
-                    "secondSelected": selectedInterestsArray[1],
-                    "thirdSelected": selectedInterestsArray[2]
-                ]
-            ]
-        } else if selectedInterestsArray.count == 4 {
-            userData = [
-                "registration_complete": true,
-                "first_home_attempt": true,
-                "interests": [
-                    "firstSelected": selectedInterestsArray[0],
-                    "secondSelected": selectedInterestsArray[1],
-                    "thirdSelected": selectedInterestsArray[2],
-                    "fourSelected": selectedInterestsArray[3]
-                ]
-            ]
-        } else if selectedInterestsArray.count == 5 {
-            userData = [
-                "registration_complete": true,
-                "first_home_attempt": true,
-                "interests": [
-                    "firstSelected": selectedInterestsArray[0],
-                    "secondSelected": selectedInterestsArray[1],
-                    "thirdSelected": selectedInterestsArray[2],
-                    "fourSelected": selectedInterestsArray[3],
-                    "fifthSelected": selectedInterestsArray[4]
-                ]
-            ]
-        } else if selectedInterestsArray.count == 6 {
-            userData = [
-                "registration_complete": true,
-                "first_home_attempt": true,
-                "interests": [
-                    "firstSelected": selectedInterestsArray[0],
-                    "secondSelected": selectedInterestsArray[1],
-                    "thirdSelected": selectedInterestsArray[2],
-                    "fourSelected": selectedInterestsArray[3],
-                    "fifthSelected": selectedInterestsArray[4],
-                    "sixthSelected": selectedInterestsArray[5]
-                ]
-            ]
-        } else if selectedInterestsArray.count == 7 {
-            userData = [
-                "registration_complete": true,
-                "first_home_attempt": true,
-                "interests": [
-                    "firstSelected": selectedInterestsArray[0],
-                    "secondSelected": selectedInterestsArray[1],
-                    "thirdSelected": selectedInterestsArray[2],
-                    "fourSelected": selectedInterestsArray[3],
-                    "fifthSelected": selectedInterestsArray[4],
-                    "sixthSelected": selectedInterestsArray[5],
-                    "seventhSelected": selectedInterestsArray[6]
-                ]
-            ]
-        }
+        userData = [
+            "registration_complete": true,
+            "first_sign_in": true,
+            "interests": selectedInterestsArray
+        ]
+        
+//        if selectedInterestsArray.count == 1 {
+//            userData = [
+//                "registration_complete": true,
+//                "first_home_attempt": true,
+//                "interests": [
+//                    "firstSelected": selectedInterestsArray[0]
+//                ]
+//            ]
+//        } else if selectedInterestsArray.count == 2 {
+//            userData = [
+//                "registration_complete": true,
+//                "first_home_attempt": true,
+//                "interests": [
+//                    "firstSelected": selectedInterestsArray[0],
+//                    "secondSelected": selectedInterestsArray[1]
+//                ]
+//            ]
+//        } else if selectedInterestsArray.count == 3 {
+//            userData = [
+//                "registration_complete": true,
+//                "first_home_attempt": true,
+//                "interests": [
+//                    "firstSelected": selectedInterestsArray[0],
+//                    "secondSelected": selectedInterestsArray[1],
+//                    "thirdSelected": selectedInterestsArray[2]
+//                ]
+//            ]
+//        } else if selectedInterestsArray.count == 4 {
+//            userData = [
+//                "registration_complete": true,
+//                "first_home_attempt": true,
+//                "interests": [
+//                    "firstSelected": selectedInterestsArray[0],
+//                    "secondSelected": selectedInterestsArray[1],
+//                    "thirdSelected": selectedInterestsArray[2],
+//                    "fourSelected": selectedInterestsArray[3]
+//                ]
+//            ]
+//        } else if selectedInterestsArray.count == 5 {
+//            userData = [
+//                "registration_complete": true,
+//                "first_home_attempt": true,
+//                "interests": [
+//                    "firstSelected": selectedInterestsArray[0],
+//                    "secondSelected": selectedInterestsArray[1],
+//                    "thirdSelected": selectedInterestsArray[2],
+//                    "fourSelected": selectedInterestsArray[3],
+//                    "fifthSelected": selectedInterestsArray[4]
+//                ]
+//            ]
+//        } else if selectedInterestsArray.count == 6 {
+//            userData = [
+//                "registration_complete": true,
+//                "first_home_attempt": true,
+//                "interests": [
+//                    "firstSelected": selectedInterestsArray[0],
+//                    "secondSelected": selectedInterestsArray[1],
+//                    "thirdSelected": selectedInterestsArray[2],
+//                    "fourSelected": selectedInterestsArray[3],
+//                    "fifthSelected": selectedInterestsArray[4],
+//                    "sixthSelected": selectedInterestsArray[5]
+//                ]
+//            ]
+//        } else if selectedInterestsArray.count == 7 {
+//            userData = [
+//                "registration_complete": true,
+//                "first_home_attempt": true,
+//                "interests": [
+//                    "firstSelected": selectedInterestsArray[0],
+//                    "secondSelected": selectedInterestsArray[1],
+//                    "thirdSelected": selectedInterestsArray[2],
+//                    "fourSelected": selectedInterestsArray[3],
+//                    "fifthSelected": selectedInterestsArray[4],
+//                    "sixthSelected": selectedInterestsArray[5],
+//                    "seventhSelected": selectedInterestsArray[6]
+//                ]
+//            ]
+//        }
         
         Firestore.firestore().collection("users").document(currentUser.uid).setData(userData, merge: true) { (error) in
             if let error = error {
@@ -171,10 +180,10 @@ class InterestsVC: UIViewController {
                 return
             }
         }
-        
+
         self.presentHomeStoryboard()
     }
-    
+   
     fileprivate func presentHomeStoryboard() {
         let storyboard = UIStoryboard(name: Storyboards.HomeStoryboard, bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: HomeViewControllers.HomeVC)
