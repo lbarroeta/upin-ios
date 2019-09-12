@@ -11,7 +11,7 @@ import Firebase
 import Kingfisher
 import JGProgressHUD
 
-class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ProfileVC: UIViewController {
  
 
     @IBOutlet weak var profilePicture: RoundedImage!
@@ -20,9 +20,6 @@ class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var ageNumberLabel: UILabel!
     @IBOutlet weak var biographyLabel: UILabel!
-    @IBOutlet weak var testLabel: UILabel!
-    
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     
@@ -36,8 +33,6 @@ class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         userProfileListener()
-        
-        
         
         hud.textLabel.text = "Loading your information"
         hud.show(in: self.view)
@@ -69,11 +64,7 @@ class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             let gender = data["gender"] as? String ?? ""
             let birthdate = data["birthdate"] as? String ?? ""
             let biography = data["biography"] as? String ?? ""
-           // let interests = data["interests"] as? Array ?? [""]
-            
             self.interestNames = data["interests"] as? Array ?? [""]
-            
-          //  self.interestNames += interests
             self.collectionView.reloadData()
             
             // Set profile image
@@ -101,12 +92,9 @@ class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
             self.biographyLabel.text = biography
             self.ageNumberLabel.text = "\(age.year!)"
             
-           
-            
-         //   print(interests)
-           // print(interests.count)
-            
         }
+        
+        
     }
     
     fileprivate func presentConnectionsStoryboard() {
@@ -115,37 +103,20 @@ class ProfileVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
         present(controller, animated: true, completion: nil)
     }
 
-    //MARK:-Collectionview delegate
+    
+}
+
+extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return interestNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileInterestsCell", for: indexPath) as! ProfileInterestsCell
-        
-        //cell.configureCell(interests: <#T##Interests#>)
         cell.interestsLabel.text = interestNames[indexPath.item]
         
-        
         return cell
-        
-        
-        
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if indexPath.item == 2 {
-              let size = CGSize(width: 50, height: 50)
-            return size
-            
-        }
-        let size = CGSize(width: 100, height: 100)
-        
-        return size
     }
     
     

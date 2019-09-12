@@ -48,9 +48,15 @@ class InterestsCell: UICollectionViewCell {
 class ProfileInterestsCell: UICollectionViewCell {
     
     
+    @IBOutlet weak var mainBackgroundView: UIView!
     @IBOutlet weak var interestsLabel: UILabel!
     
     func configureCell(interests: Interests) {
         interestsLabel.text = interests.name
+    }
+    
+    override func awakeFromNib() {
+        mainBackgroundView.layer.borderWidth = 1
+        mainBackgroundView.layer.cornerRadius = 20
     }
 }

@@ -59,14 +59,12 @@ class ProfilePictureVC: UIViewController {
         imageReference.putData(imageData, metadata: metaData) { (success, error) in
             if let error = error {
                 self.hud.isHidden = true
-                self.authErrorHandle(error: error)
                 print(error.localizedDescription)
                 return
             }
             
             imageReference.downloadURL(completion: { (url, error) in
                 if let error = error {
-                    self.authErrorHandle(error: error)
                     print(error.localizedDescription)
                     return
                 }
@@ -96,7 +94,6 @@ class ProfilePictureVC: UIViewController {
         let data = userData
         documentReference.setData(data, merge: true) { (error) in
             if let error = error {
-                self.authErrorHandle(error: error)
                 debugPrint(error.localizedDescription)
                 return
             }
