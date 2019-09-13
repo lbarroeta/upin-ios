@@ -18,47 +18,21 @@ class StepOneVC: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         shortDescriptionTextField.delegate = self
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-//        guard let title = pinTitleTextField.text, let description = shortDescriptionTextField.text, !title.isEmpty, !description.isEmpty else {
-//            self.simpleAlert(title: "Error", msg: "Must complete the fields to advance..")
-//            return
-//        }
-        
-        self.performSegue(withIdentifier: "ToStepTwoVC", sender: self)
-    }
-    
-    func createPinOnFirebase() {
-        guard let currentUser = Auth.auth().currentUser else { return }
-        
         guard let title = pinTitleTextField.text, let description = shortDescriptionTextField.text, !title.isEmpty, !description.isEmpty else {
-            simpleAlert(title: "Error", msg: "Must complete the fields to advance..")
+            self.simpleAlert(title: "Error", msg: "Must complete the fields to advance..")
             return
         }
         
-        var pinData = [String: Any]()
-        pinData = [
-            "host_id": currentUser.uid,
-            "pin_title": pinTitleTextField.text!,
-            "short_description": shortDescriptionTextField.text!
-        ]
-        
-        Firestore.firestore().collection("pins").document().setData(pinData) { (error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-                return
-            }
-            self.performSegue(withIdentifier: "ToStepTwoVC", sender: self)
-        }
-        
+        self.performSegue(withIdentifier: "ToStepTwoVC", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! StepTwoVC
         vc.pin_title = self.pinTitleTextField.text!
+        vc.short_description = self.shortDescriptionTextField.text!
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

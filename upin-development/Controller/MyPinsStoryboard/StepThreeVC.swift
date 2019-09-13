@@ -12,88 +12,52 @@ import JGProgressHUD
 import CoreLocation
 import MapKit
 
-class StepThreeVC: UIViewController {
+class StepThreeVC: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var pinLocationTextField: UITextField!
     @IBOutlet weak var extraDirectionsTextField: UITextField!
-    @IBOutlet weak var segueImage: UIImageView!
-    
-    var testImage: UIImage!
+    @IBOutlet weak var longitudeLabel: UILabel!
+    @IBOutlet weak var latitudeLabel: UILabel!
     
     var tableView = UITableView()
     var matchingItems: [MKMapItem] = [MKMapItem]()
     
+    // Segue variables
+    var pin_title = ""
+    var short_description = ""
+    var pinImage: UIImage!
+    
+    
     let hud = JGProgressHUD(style: .dark)
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         pinLocationTextField.delegate = self
-        
-        segueImage.image = testImage
-        segueImage.isHidden = true
     }
     
     
     @IBAction func nextButtonPressed(_ sender: Any) {
-        uploadImageToFirebaseStorage()
-        //self.performSegue(withIdentifier: "ToStepFourVC", sender: self)
+        if pinLocationTextField.text == "" {
+            self.simpleAlert(title: "Error", msg: "You must add a location...")
+        } else {
+            self.performSegue(withIdentifier: "ToStepFourVC", sender: self)
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    func uploadImageToFirebaseStorage() {
-        guard let image = segueImage.image else { return }
-        guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
-        let imageReference = Storage.storage().reference().child("/pinImages")
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        imageReference.putData(imageData, metadata: metaData) { (success, error) in
-            if let error = error {
-                self.hud.isHidden = true
-                print(error.localizedDescription)
-                return
-            }
-            
-            imageReference.downloadURL(completion: { (url, error) in
-                if let error = error {
-                    debugPrint(error.localizedDescription)
-                    return
-                }
-                
-                guard let url = url else { return }
-                self.uploadImageToFirebaseFirestore(url: url.absoluteString)
-            })
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! StepFourVC
+        vc.pin_title = pin_title
+        vc.short_description = short_description
+        vc.pin_image = pinImage
+        vc.latitude = latitudeLabel.text!
+        vc.longitude = longitudeLabel.text!
+        vc.extra_directions = extraDirectionsTextField.text!
     }
-    
-    func uploadImageToFirebaseFirestore(url: String) {
-        
-        guard let currentUser = Auth.auth().currentUser else { return }
-        
-        var documentReference: DocumentReference!
-        
-        var pinData = [String: Any]()
-        
-        pinData = [
-            "pin_photo": url,
-            "host_id": currentUser.uid
-        ]
-        
-        documentReference = Firestore.firestore().collection("pins").document()
-        
-        let data = pinData
-        documentReference.setData(data, merge: true) { (error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-                return
-            }
-        }
-        
-    }
-    
 }
 
 extension StepThreeVC: MKMapViewDelegate {
@@ -120,7 +84,6 @@ extension StepThreeVC: MKMapViewDelegate {
 
 extension StepThreeVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
         if textField == pinLocationTextField {
             tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 170)
             tableView.layer.cornerRadius = 5.0
@@ -197,8 +160,17 @@ extension StepThreeVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        pinLocationTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        let selectedResult = matchingItems[indexPath.row]
+        let latitude : Double? = selectedResult.placemark.coordinate.latitude
+        let longitude : Double? = selectedResult.placemark.coordinate.latitude
+        
+        self.longitudeLabel.text! = "\(longitude!)"
+        self.latitudeLabel.text! = "\(latitude!)"
+        
+        
         animateTableView(shouldShow: false)
-        print("selected")
+        print("This is latitude: \(latitude!), this is longitude: \(longitude!)")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

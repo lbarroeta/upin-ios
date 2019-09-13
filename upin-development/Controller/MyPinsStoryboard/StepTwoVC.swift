@@ -17,7 +17,9 @@ class StepTwoVC: UIViewController {
     
     let hud = JGProgressHUD(style: .dark)
     
+    // Segue variables
     var pin_title = ""
+    var short_description = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,60 +39,12 @@ class StepTwoVC: UIViewController {
         performSegue(withIdentifier: "ToStepThreeVC", sender: self)
     }
     
-    func uploadImageToFirebaseStorage() {
-        guard let image = pinImage.image else { return }
-        guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
-        let imageReference = Storage.storage().reference().child("/pinImages")
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        imageReference.putData(imageData, metadata: metaData) { (success, error) in
-            if let error = error {
-                self.hud.isHidden = true
-                print(error.localizedDescription)
-                return
-            }
-            
-            imageReference.downloadURL(completion: { (url, error) in
-                if let error = error {
-                    debugPrint(error.localizedDescription)
-                    return
-                }
-                
-                guard let url = url else { return }
-                self.uploadImageToFirebaseFirestore(url: url.absoluteString)
-            })
-        }
-    }
-    
-    func uploadImageToFirebaseFirestore(url: String) {
-        
-        guard let currentUser = Auth.auth().currentUser else { return }
-        var documentReference: DocumentReference!
-        
-        var pinData = [String: Any]()
-        
-        pinData = [
-            "pin_photo": url,
-            "pin_title": pin_title
-        ]
-        
-        documentReference = Firestore.firestore().collection("pins").document()
-        
-        let data = pinData
-        documentReference.setData(data, merge: true) { (error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-                return
-            }
-        }
-    
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! StepThreeVC
-        vc.testImage = pinImage.image
+        vc.pinImage = pinImage.image
+        vc.pin_title = pin_title
+        vc.short_description = short_description
     }
-    
     
     @IBAction func backButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)

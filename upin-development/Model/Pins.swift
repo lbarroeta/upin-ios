@@ -11,6 +11,10 @@ import Foundation
 struct Pins {
     var id: String
     
+    init(id: String = "") {
+        self.id = id
+    }
+    
     init(data: [String: Any]) {
         self.id = data["id"] as? String ?? ""
     }
