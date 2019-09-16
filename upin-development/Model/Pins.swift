@@ -23,7 +23,7 @@ struct Pins {
     
     
     init(data: [String: Any]) {
-        self.id = data["id"] as? String ?? ""
+        self.id = data["pin_id"] as? String ?? ""
         self.ending_time = data["ending_time"] as? String ?? ""
         self.extra_directions = data[ "extra_directions"] as? String ?? ""
         self.host_id = data["host_id"] as? String ?? ""

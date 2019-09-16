@@ -1366,6 +1366,7 @@
                             <constraint firstItem="zCZ-SS-3Iy" firstAttribute="centerX" secondItem="MMp-3B-crn" secondAttribute="centerX" id="ejl-8A-FDu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zCZ-SS-3Iy" secondAttribute="trailing" constant="20" id="g3v-hB-q5R"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="hFb-HJ-wBu"/>
                     </view>
                     <connections>
                         <outlet property="messageLabel" destination="zCZ-SS-3Iy" id="YMu-Nm-U3X"/>
@@ -1397,6 +1398,7 @@
                             <constraint firstItem="RnM-Vy-Pv8" firstAttribute="leading" secondItem="lVL-hf-n66" secondAttribute="leadingMargin" constant="20" id="UGk-2Q-bNZ"/>
                             <constraint firstItem="RnM-Vy-Pv8" firstAttribute="centerX" secondItem="lVL-hf-n66" secondAttribute="centerX" id="svI-J5-tJ3"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="RCf-68-pIp"/>
                     </view>
                     <connections>
                         <outlet property="messageLabel" destination="RnM-Vy-Pv8" id="slu-Bf-UgV"/>
@@ -1428,6 +1430,7 @@
                             <constraint firstItem="EKT-QS-46R" firstAttribute="leading" secondItem="RIf-hz-qZQ" secondAttribute="leadingMargin" constant="20" id="eUo-SD-GFt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EKT-QS-46R" secondAttribute="trailing" constant="20" id="u3Y-d7-L8Y"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="p64-vw-Hs2"/>
                     </view>
                     <connections>
                         <outlet property="messageLabel" destination="EKT-QS-46R" id="eB3-g9-aKl"/>
@@ -1459,6 +1462,7 @@
                             <constraint firstItem="zhK-0a-NeY" firstAttribute="leading" secondItem="8xt-dU-TPi" secondAttribute="leadingMargin" constant="20" id="SxI-aV-s6r"/>
                             <constraint firstItem="zhK-0a-NeY" firstAttribute="centerY" secondItem="8xt-dU-TPi" secondAttribute="centerY" id="Vfj-9s-KTS"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="T7v-QO-4G1"/>
                     </view>
                     <connections>
                         <outlet property="messageLabel" destination="zhK-0a-NeY" id="v4n-kO-HfO"/>

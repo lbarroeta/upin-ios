@@ -34,16 +34,17 @@ class NotificationsPinDetailVC: UIViewController {
     }
     
     func pinListener() {
+        
         Firestore.firestore().collection("pins").document(selectedPin.id).getDocument(completion: { (snapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
-            
+
             guard let data = snapshot?.data() else { return }
-            
-            let pin_latitude = String(data["latitude"] as! Double)
-            let pin_longitude = String(data["longitude"] as! Double)
+
+            let data_pin_latitude = String(data["latitude"] as! Double)
+            let data_pin_longitude = String(data["longitude"] as! Double)
             let pin_title = data["pin_title"] as? String
             let pin_description = data["short_description"] as? String
             let pin_end_time = data["ending_time"] as? String
@@ -51,23 +52,24 @@ class NotificationsPinDetailVC: UIViewController {
             let pin_image = data["pin_photo"] as? String
             let map_search_description = data["map_search_description"] as? String
             let extra_directions = data["extra_directions"] as? String
-            
+
             self.endingTimeLabel.text = pin_end_time
             self.startingTimeLabel.text = pin_start_time
             self.addressButton.setTitle(map_search_description!, for: .normal)
-            
+
             self.pin_ending_time = pin_end_time
             self.pin_starting_time = pin_start_time
-            
+
             self.pin_title.text = pin_title
             self.descriptionLabel.text = pin_description
             self.extraAddressLabel.text = extra_directions
-            
+
             guard let pinImageURL = URL(string: pin_image!) else { return }
             self.pin_photo.kf.setImage(with: pinImageURL)
-        
-            self.pin_latitude = pin_latitude
-            self.pin_longitude = pin_longitude
+
+            self.pin_latitude = data_pin_latitude
+            self.pin_longitude = data_pin_longitude
+
         })
     }
     

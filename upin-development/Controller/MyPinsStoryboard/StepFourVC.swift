@@ -85,9 +85,11 @@ class StepFourVC: UIViewController {
     func createPinOnFirebase(url: String) {
         guard let currentUser = Auth.auth().currentUser else { return }
         var documentReference: DocumentReference!
+        let documentId = Firestore.firestore().collection("pins").document().documentID
         var pinData = [String: Any]()
         
         pinData = [
+            "pin_id": documentId,
             "pin_title": pin_title,
             "short_description": short_description,
             "pin_photo": url,
@@ -100,7 +102,7 @@ class StepFourVC: UIViewController {
             "map_search_description": map_search_description,
         ]
         
-        documentReference = Firestore.firestore().collection("pins").document()
+        documentReference = Firestore.firestore().collection("pins").document(documentId)
         
         let data = pinData
         documentReference.setData(data, merge: true) { (error) in
