@@ -1,0 +1,21 @@
+//
+//  PreviousVC.swift
+//  upin-development
+//
+//  Created by Leonardo Barroeta on 9/16/19.
+//  Copyright © 2019 Kodim. All rights reserved.
+//
+
+import UIKit
+
+class PreviousVC: UIViewController {
+
+    @IBOutlet weak var messageLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.messageLabel.text = "You have not joined or hosted any pins in the last month."
+    }
+    
+}

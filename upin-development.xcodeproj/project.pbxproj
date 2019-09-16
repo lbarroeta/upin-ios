@@ -63,6 +63,10 @@
 		46E26954232728BF0010C138 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E26953232728BF0010C138 /* PrivacyPolicyVC.swift */; };
 		46E26956232759D10010C138 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E26955232759D10010C138 /* Profile.storyboard */; };
 		46E2695923275AC60010C138 /* ConnectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2695823275AC60010C138 /* ConnectionsVC.swift */; };
+		46F817B2232FC55400710FBD /* JoinedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B0232FC55400710FBD /* JoinedVC.swift */; };
+		46F817B7232FD10200710FBD /* CurrentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B6232FD10200710FBD /* CurrentVC.swift */; };
+		46F817B9232FD3DC00710FBD /* RequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B8232FD3DC00710FBD /* RequestedVC.swift */; };
+		46F817BB232FD49E00710FBD /* PreviousVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817BA232FD49E00710FBD /* PreviousVC.swift */; };
 		D44E3845FFC4669DEE0DD8C5 /* Pods_upin_development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +130,10 @@
 		46E26953232728BF0010C138 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
 		46E26955232759D10010C138 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		46E2695823275AC60010C138 /* ConnectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsVC.swift; sourceTree = "<group>"; };
+		46F817B0232FC55400710FBD /* JoinedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedVC.swift; sourceTree = "<group>"; };
+		46F817B6232FD10200710FBD /* CurrentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVC.swift; sourceTree = "<group>"; };
+		46F817B8232FD3DC00710FBD /* RequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedVC.swift; sourceTree = "<group>"; };
+		46F817BA232FD49E00710FBD /* PreviousVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousVC.swift; sourceTree = "<group>"; };
 		82A17A7ECCEC8498F181D778 /* Pods-upin-development.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.debug.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.debug.xcconfig"; sourceTree = "<group>"; };
 		E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_upin_development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EB23FD1A36EA0F1C9BAD63 /* Pods-upin-development.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.release.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.release.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 		46A43CB7231864FC00D6ACDF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				46F817AF232FC53F00710FBD /* MyPinsVCs */,
 				46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */,
 				46A43CB82318651B00D6ACDF /* HomeVC.swift */,
 				46A43CBE2318707800D6ACDF /* ProfileVC.swift */,
@@ -320,6 +329,17 @@
 				46E2695823275AC60010C138 /* ConnectionsVC.swift */,
 			);
 			path = ProfileStoryboard;
+			sourceTree = "<group>";
+		};
+		46F817AF232FC53F00710FBD /* MyPinsVCs */ = {
+			isa = PBXGroup;
+			children = (
+				46F817B6232FD10200710FBD /* CurrentVC.swift */,
+				46F817B0232FC55400710FBD /* JoinedVC.swift */,
+				46F817B8232FD3DC00710FBD /* RequestedVC.swift */,
+				46F817BA232FD49E00710FBD /* PreviousVC.swift */,
+			);
+			path = MyPinsVCs;
 			sourceTree = "<group>";
 		};
 		6668486248938A9CA8B3385F /* Pods */ = {
@@ -476,6 +496,7 @@
 				462B4823231AC796009B6895 /* PhoneCodeVC.swift in Sources */,
 				46A43CB92318651B00D6ACDF /* HomeVC.swift in Sources */,
 				46B00B8F2317256D007E9FDC /* ForgotPasswordVC.swift in Sources */,
+				46F817B9232FD3DC00710FBD /* RequestedVC.swift in Sources */,
 				46175D2B23294639003CE608 /* MyPinsCell.swift in Sources */,
 				46E26952232723B50010C138 /* AccountVC.swift in Sources */,
 				46532DC82323644700F3EA7F /* Interests.swift in Sources */,
@@ -492,6 +513,7 @@
 				46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */,
 				4626C0E2231728850030FA85 /* StoryboardsAndVCs.swift in Sources */,
 				46CCD73C232456B700421688 /* UserService.swift in Sources */,
+				46F817B2232FC55400710FBD /* JoinedVC.swift in Sources */,
 				46CFABE6231E3C1100A3D7B8 /* Images.swift in Sources */,
 				4626C0E823172B270030FA85 /* PolicyVC.swift in Sources */,
 				46B00B86231723D3007E9FDC /* GradientView.swift in Sources */,
@@ -504,9 +526,11 @@
 				4626C0EA23172BEC0030FA85 /* GenderVC.swift in Sources */,
 				46E2695923275AC60010C138 /* ConnectionsVC.swift in Sources */,
 				46BDB5FE232F30FC00317B00 /* NotificationsPinDetailVC.swift in Sources */,
+				46F817B7232FD10200710FBD /* CurrentVC.swift in Sources */,
 				469BADAA232B1E7B0012CBBA /* PinAnnotation.swift in Sources */,
 				4626C0F3231731720030FA85 /* Alerts.swift in Sources */,
 				46187A2F23288A500073C032 /* HelpVC.swift in Sources */,
+				46F817BB232FD49E00710FBD /* PreviousVC.swift in Sources */,
 				46175D3423294CBD003CE608 /* StepTwoVC.swift in Sources */,
 				4626C0F1231731630030FA85 /* Keyboard.swift in Sources */,
 				46A43CC1231879AC00D6ACDF /* SettingsVC.swift in Sources */,

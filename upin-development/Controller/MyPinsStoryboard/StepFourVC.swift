@@ -42,10 +42,6 @@ class StepFourVC: UIViewController {
         startingTimeTextField.inputView = startingDatePicker
         endingTimeTextField.inputView = endingDatePicker
         
-        print(map_search_description)
-        pinImage.image = pin_image
-        pinImage.isHidden = true
-        
     }
     
     
@@ -60,9 +56,9 @@ class StepFourVC: UIViewController {
     
     func uploadImageToFirebaseStorage() {
         guard let currentUser = Auth.auth().currentUser else { return }
-        guard let image = pinImage.image else { return }
+        guard let image = pin_image else { return }
         guard let imageData = image.jpegData(compressionQuality: 0.2) else { return }
-        let imageReference = Storage.storage().reference().child("/pinImages").child("/\(currentUser.uid)").child("/\(pinImage!)")
+        let imageReference = Storage.storage().reference().child("/pinImages").child("/\(currentUser.uid)").child("/\(pin_image!)")
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
         

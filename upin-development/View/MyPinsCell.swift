@@ -27,5 +27,12 @@ class MyPinsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func configureCell(myPins: Pins) {
+        pinTitleLabel.text = myPins.pin_title
+        if let url = URL(string: myPins.pin_photo) {
+            pinImage.kf.setImage(with: url)
+        }
+    }
 
 }
