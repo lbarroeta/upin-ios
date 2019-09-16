@@ -26,10 +26,12 @@ class StepThreeVC: UIViewController, CLLocationManagerDelegate {
     var pin_title = ""
     var short_description = ""
     var pinImage: UIImage!
+    var map_search_description : String = ""
     
     
     let hud = JGProgressHUD(style: .dark)
     let locationManager = CLLocationManager()
+    var coordinate: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,8 +56,15 @@ class StepThreeVC: UIViewController, CLLocationManagerDelegate {
         vc.pin_title = pin_title
         vc.short_description = short_description
         vc.pin_image = pinImage
-        vc.latitude = latitudeLabel.text!
-        vc.longitude = longitudeLabel.text!
+        vc.map_search_description = map_search_description
+        if let double = coordinate?.latitude {
+            vc.latitude = double
+        }
+        
+        if let double = coordinate?.longitude {
+            vc.longitude = double
+        }
+        
         vc.extra_directions = extraDirectionsTextField.text!
     }
 }
@@ -159,18 +168,15 @@ extension StepThreeVC: UITableViewDelegate, UITableViewDataSource {
         return matchingItems.count
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         pinLocationTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
+        map_search_description = tableView.cellForRow(at: indexPath)?.textLabel?.text ?? ""
         let selectedResult = matchingItems[indexPath.row]
         let latitude : Double? = selectedResult.placemark.coordinate.latitude
-        let longitude : Double? = selectedResult.placemark.coordinate.latitude
-        
-        self.longitudeLabel.text! = "\(longitude!)"
-        self.latitudeLabel.text! = "\(latitude!)"
-        
-        
+        let longitude : Double? = selectedResult.placemark.coordinate.longitude
+        coordinate = selectedResult.placemark.coordinate
         animateTableView(shouldShow: false)
-        print("This is latitude: \(latitude!), this is longitude: \(longitude!)")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

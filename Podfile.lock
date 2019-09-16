@@ -74,6 +74,7 @@ PODS:
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 5.2)
     - GTMSessionFetcher/Core (~> 1.1)
+  - FittedSheets (1.4.5)
   - GoogleAppMeasurement (5.7.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2)
     - GoogleUtilities/MethodSwizzler (~> 5.2)
@@ -133,6 +134,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
+  - FittedSheets
   - IQKeyboardManagerSwift
   - JGProgressHUD
   - Kingfisher (~> 5.0)
@@ -151,6 +153,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseMessaging
     - FirebaseStorage
+    - FittedSheets
     - GoogleAppMeasurement
     - GoogleUtilities
     - "gRPC-C++"
@@ -176,6 +179,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: bd6fc5a258884e206fd5c474ebe4f5b00e21770e
   FirebaseMessaging: d740150547f7686b33799f6489f5b69a4706631b
   FirebaseStorage: 29075f874c2b3cf61e5221a62c4ceefc809e5412
+  FittedSheets: 7f754c9f6fb4ea330cbc57c652b594255f2a6819
   GoogleAppMeasurement: 6cf307834da065863f9faf4c0de0a936d81dd832
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   "gRPC-C++": e76441995900ac90e9bd98644ab4733f12521edf
@@ -188,6 +192,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
 
-PODFILE CHECKSUM: 5db6e5500dd2eb25670141b4890a56b65f16d9de
+PODFILE CHECKSUM: 963909c1e6d6b3213d51af58a06ebcfb80d786d6
 
 COCOAPODS: 1.7.5

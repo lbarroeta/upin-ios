@@ -15,5 +15,6 @@ target 'upin-development' do
     pod 'Kingfisher', '~> 5.0'
     pod 'CropViewController'
     pod 'IQKeyboardManagerSwift'
+    pod 'FittedSheets'
 
 end

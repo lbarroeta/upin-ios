@@ -14,6 +14,8 @@ class StepFourVC: UIViewController {
     @IBOutlet weak var startingTimeTextField: UITextField!
     @IBOutlet weak var endingTimeTextField: UITextField!
     @IBOutlet weak var pinImage: UIImageView!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var endingTimeLabel: UILabel!
     
     private var startingDatePicker: UIDatePicker?
     private var endingDatePicker: UIDatePicker?
@@ -22,9 +24,10 @@ class StepFourVC: UIViewController {
     var pin_title = ""
     var short_description = ""
     var pin_image: UIImage!
-    var latitude: String = ""
-    var longitude: String = ""
+    var latitude: Double = 0
+    var longitude: Double = 0
     var extra_directions: String = ""
+    var map_search_description: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +37,15 @@ class StepFourVC: UIViewController {
         setStartingDateTextField()
         setEndingDateTextField()
         
+        setTimeLabels()
+        
         startingTimeTextField.inputView = startingDatePicker
         endingTimeTextField.inputView = endingDatePicker
         
-        
+        print(map_search_description)
         pinImage.image = pin_image
         pinImage.isHidden = true
+        
     }
     
     
@@ -93,10 +99,9 @@ class StepFourVC: UIViewController {
             "extra_directions": extra_directions,
             "starting_time": startingTimeTextField.text!,
             "ending_time": endingTimeTextField.text!,
-            "coordinates": [
-                "latitude": latitude,
-                "longitude": longitude
-            ]
+            "latitude": Double(latitude),
+            "longitude": Double(longitude),
+            "map_search_description": map_search_description,
         ]
         
         documentReference = Firestore.firestore().collection("pins").document()
@@ -159,6 +164,25 @@ class StepFourVC: UIViewController {
         endingTimeTextField.text = dateString
     }
     
+    func setTimeLabels() {
+        let stringStartDate: String = startingTimeTextField.text!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+        let date = dateFormatter.date(from: stringStartDate)
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
+        let nowDate = Date()
+        let textFieldDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
+        let currentDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nowDate)
+    
+        
+        if (textFieldDate.day == currentDate.day) {
+            self.startTimeLabel.text = "Starting today at: "
+        } else if (textFieldDate.day != currentDate.day) {
+            self.startTimeLabel.text = "Starting at:"
+        }
+    }
+    
     
     fileprivate func presentHomeStoryboard() {
         let storyboard = UIStoryboard(name: Storyboards.HomeStoryboard, bundle: nil)
@@ -167,3 +191,5 @@ class StepFourVC: UIViewController {
     }
     
 }
+
+

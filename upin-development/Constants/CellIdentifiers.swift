@@ -15,3 +15,7 @@ struct InterestsCollectionViewCell {
 struct ProfileInterestsCollectionViewCell {
     static let ProfileInterestsCell = "ProfileInterestsCell"
 }
+
+struct NotificationsTableViewCell {
+    static let NotificationsCell = "NotificationsCell"
+}
