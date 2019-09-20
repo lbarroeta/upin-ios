@@ -89,6 +89,7 @@ class PhoneCodeVC: UIViewController {
             "firstName": firstName,
             "lastName": lastName,
             "email": email,
+            "phone_number": userPhoneNumber,
             "created_at": Timestamp(),
             "register_complete": false
         ]

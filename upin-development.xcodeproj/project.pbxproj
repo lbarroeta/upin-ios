@@ -57,12 +57,19 @@
 		46BDB5FE232F30FC00317B00 /* NotificationsPinDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BDB5FD232F30FC00317B00 /* NotificationsPinDetailVC.swift */; };
 		46CCD73C232456B700421688 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CCD73B232456B700421688 /* UserService.swift */; };
 		46CFABE6231E3C1100A3D7B8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CFABE5231E3C1100A3D7B8 /* Images.swift */; };
+		46E0B6D923343FBF00E92F6A /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0B6D823343FBF00E92F6A /* EditProfileVC.swift */; };
+		46E0B6DE2334413F00E92F6A /* InvitationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0B6DD2334413F00E92F6A /* InvitationsVC.swift */; };
+		46E0B6E02334414800E92F6A /* AllVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0B6DF2334414800E92F6A /* AllVC.swift */; };
+		46E0B6E22334454B00E92F6A /* NotificationConnectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0B6E12334454B00E92F6A /* NotificationConnectionsVC.swift */; };
+		46E0B6E62334611300E92F6A /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E0B6E52334611300E92F6A /* Message.storyboard */; };
+		46E0B6E92334625500E92F6A /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0B6E82334625500E92F6A /* ConversationsVC.swift */; };
+		46E0B6EB2334626000E92F6A /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E0B6EA2334626000E92F6A /* MessagesVC.swift */; };
 		46E2694C2326E9920010C138 /* SignInPhoneCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2694B2326E9920010C138 /* SignInPhoneCodeVC.swift */; };
 		46E2694E232721B10010C138 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E2694D232721B10010C138 /* Settings.storyboard */; };
 		46E26952232723B50010C138 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E26951232723B50010C138 /* AccountVC.swift */; };
 		46E26954232728BF0010C138 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E26953232728BF0010C138 /* PrivacyPolicyVC.swift */; };
 		46E26956232759D10010C138 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46E26955232759D10010C138 /* Profile.storyboard */; };
-		46E2695923275AC60010C138 /* ConnectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2695823275AC60010C138 /* ConnectionsVC.swift */; };
+		46E2695923275AC60010C138 /* NotificationsConnectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E2695823275AC60010C138 /* NotificationsConnectionsVC.swift */; };
 		46F817B2232FC55400710FBD /* JoinedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B0232FC55400710FBD /* JoinedVC.swift */; };
 		46F817B7232FD10200710FBD /* CurrentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B6232FD10200710FBD /* CurrentVC.swift */; };
 		46F817B9232FD3DC00710FBD /* RequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B8232FD3DC00710FBD /* RequestedVC.swift */; };
@@ -124,12 +131,19 @@
 		46BDB5FD232F30FC00317B00 /* NotificationsPinDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsPinDetailVC.swift; sourceTree = "<group>"; };
 		46CCD73B232456B700421688 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		46CFABE5231E3C1100A3D7B8 /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		46E0B6D823343FBF00E92F6A /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		46E0B6DD2334413F00E92F6A /* InvitationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationsVC.swift; sourceTree = "<group>"; };
+		46E0B6DF2334414800E92F6A /* AllVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllVC.swift; sourceTree = "<group>"; };
+		46E0B6E12334454B00E92F6A /* NotificationConnectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationConnectionsVC.swift; sourceTree = "<group>"; };
+		46E0B6E52334611300E92F6A /* Message.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Message.storyboard; sourceTree = "<group>"; };
+		46E0B6E82334625500E92F6A /* ConversationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
+		46E0B6EA2334626000E92F6A /* MessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
 		46E2694B2326E9920010C138 /* SignInPhoneCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPhoneCodeVC.swift; sourceTree = "<group>"; };
 		46E2694D232721B10010C138 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		46E26951232723B50010C138 /* AccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		46E26953232728BF0010C138 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
 		46E26955232759D10010C138 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		46E2695823275AC60010C138 /* ConnectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionsVC.swift; sourceTree = "<group>"; };
+		46E2695823275AC60010C138 /* NotificationsConnectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsConnectionsVC.swift; sourceTree = "<group>"; };
 		46F817B0232FC55400710FBD /* JoinedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinedVC.swift; sourceTree = "<group>"; };
 		46F817B6232FD10200710FBD /* CurrentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVC.swift; sourceTree = "<group>"; };
 		46F817B8232FD3DC00710FBD /* RequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedVC.swift; sourceTree = "<group>"; };
@@ -187,14 +201,15 @@
 		46A43CB7231864FC00D6ACDF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				46E0B6DA2334412100E92F6A /* NotificationsVCs */,
 				46F817AF232FC53F00710FBD /* MyPinsVCs */,
 				46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */,
 				46A43CB82318651B00D6ACDF /* HomeVC.swift */,
 				46A43CBE2318707800D6ACDF /* ProfileVC.swift */,
+				46E0B6D823343FBF00E92F6A /* EditProfileVC.swift */,
 				46A43CC0231879AC00D6ACDF /* SettingsVC.swift */,
 				46175D2C23294650003CE608 /* MyPinsVC.swift */,
 				46772904232F150600552C14 /* NotificationsVC.swift */,
-				46BDB5FD232F30FC00317B00 /* NotificationsPinDetailVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -247,6 +262,7 @@
 				46175D2E23294700003CE608 /* MyPins.storyboard */,
 				46E26955232759D10010C138 /* Profile.storyboard */,
 				46E2694D232721B10010C138 /* Settings.storyboard */,
+				46E0B6E52334611300E92F6A /* Message.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -271,6 +287,7 @@
 				46A43CB7231864FC00D6ACDF /* Home */,
 				46B00B8723172459007E9FDC /* LoginStoryboard */,
 				46175D30232948A3003CE608 /* MyPinsStoryboard */,
+				46E0B6E72334623C00E92F6A /* MessageStoryboard */,
 				46E2695723275AA70010C138 /* ProfileStoryboard */,
 				46E269502327236A0010C138 /* SettingsStoryboard */,
 			);
@@ -313,6 +330,26 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		46E0B6DA2334412100E92F6A /* NotificationsVCs */ = {
+			isa = PBXGroup;
+			children = (
+				46BDB5FD232F30FC00317B00 /* NotificationsPinDetailVC.swift */,
+				46E0B6DD2334413F00E92F6A /* InvitationsVC.swift */,
+				46E0B6DF2334414800E92F6A /* AllVC.swift */,
+				46E0B6E12334454B00E92F6A /* NotificationConnectionsVC.swift */,
+			);
+			path = NotificationsVCs;
+			sourceTree = "<group>";
+		};
+		46E0B6E72334623C00E92F6A /* MessageStoryboard */ = {
+			isa = PBXGroup;
+			children = (
+				46E0B6E82334625500E92F6A /* ConversationsVC.swift */,
+				46E0B6EA2334626000E92F6A /* MessagesVC.swift */,
+			);
+			path = MessageStoryboard;
+			sourceTree = "<group>";
+		};
 		46E269502327236A0010C138 /* SettingsStoryboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +363,7 @@
 		46E2695723275AA70010C138 /* ProfileStoryboard */ = {
 			isa = PBXGroup;
 			children = (
-				46E2695823275AC60010C138 /* ConnectionsVC.swift */,
+				46E2695823275AC60010C138 /* NotificationsConnectionsVC.swift */,
 			);
 			path = ProfileStoryboard;
 			sourceTree = "<group>";
@@ -426,6 +463,7 @@
 			files = (
 				46B00B7623171D65007E9FDC /* LaunchScreen.storyboard in Resources */,
 				46175D2F23294700003CE608 /* MyPins.storyboard in Resources */,
+				46E0B6E62334611300E92F6A /* Message.storyboard in Resources */,
 				46B00B7E23171E34007E9FDC /* GoogleService-Info.plist in Resources */,
 				46E26956232759D10010C138 /* Profile.storyboard in Resources */,
 				46B00B7323171D65007E9FDC /* Assets.xcassets in Resources */,
@@ -490,6 +528,7 @@
 				46B00B6E23171D62007E9FDC /* ViewController.swift in Sources */,
 				46175D2D23294650003CE608 /* MyPinsVC.swift in Sources */,
 				4626C0F52317318B0030FA85 /* FirebaseErrorHandler.swift in Sources */,
+				46E0B6E02334414800E92F6A /* AllVC.swift in Sources */,
 				46175D3823294FB4003CE608 /* StepFourVC.swift in Sources */,
 				4626C0E423172A860030FA85 /* Colors.swift in Sources */,
 				46772903232EE9F200552C14 /* PinViewDetailVC.swift in Sources */,
@@ -508,7 +547,9 @@
 				46E2694C2326E9920010C138 /* SignInPhoneCodeVC.swift in Sources */,
 				46175D32232948BA003CE608 /* StepOneVC.swift in Sources */,
 				46175D3623294FA8003CE608 /* StepThreeVC.swift in Sources */,
+				46E0B6EB2334626000E92F6A /* MessagesVC.swift in Sources */,
 				46532DC6232360D400F3EA7F /* InterestsVC.swift in Sources */,
+				46E0B6E22334454B00E92F6A /* NotificationConnectionsVC.swift in Sources */,
 				46532DCA2323656F00F3EA7F /* InterestsCell.swift in Sources */,
 				46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */,
 				4626C0E2231728850030FA85 /* StoryboardsAndVCs.swift in Sources */,
@@ -523,17 +564,20 @@
 				462FF8C82329F316001783AA /* Pins.swift in Sources */,
 				4626C0E623172B140030FA85 /* SignUpVC.swift in Sources */,
 				46B00B8B2317248D007E9FDC /* ActionButton.swift in Sources */,
+				46E0B6D923343FBF00E92F6A /* EditProfileVC.swift in Sources */,
 				4626C0EA23172BEC0030FA85 /* GenderVC.swift in Sources */,
-				46E2695923275AC60010C138 /* ConnectionsVC.swift in Sources */,
+				46E2695923275AC60010C138 /* NotificationsConnectionsVC.swift in Sources */,
 				46BDB5FE232F30FC00317B00 /* NotificationsPinDetailVC.swift in Sources */,
 				46F817B7232FD10200710FBD /* CurrentVC.swift in Sources */,
 				469BADAA232B1E7B0012CBBA /* PinAnnotation.swift in Sources */,
 				4626C0F3231731720030FA85 /* Alerts.swift in Sources */,
+				46E0B6E92334625500E92F6A /* ConversationsVC.swift in Sources */,
 				46187A2F23288A500073C032 /* HelpVC.swift in Sources */,
 				46F817BB232FD49E00710FBD /* PreviousVC.swift in Sources */,
 				46175D3423294CBD003CE608 /* StepTwoVC.swift in Sources */,
 				4626C0F1231731630030FA85 /* Keyboard.swift in Sources */,
 				46A43CC1231879AC00D6ACDF /* SettingsVC.swift in Sources */,
+				46E0B6DE2334413F00E92F6A /* InvitationsVC.swift in Sources */,
 				46532DCC2323666D00F3EA7F /* CellIdentifiers.swift in Sources */,
 				46AF9506231E0CD900F70679 /* User.swift in Sources */,
 			);

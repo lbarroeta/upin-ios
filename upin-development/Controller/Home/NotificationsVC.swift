@@ -14,6 +14,9 @@ class NotificationsVC: UIViewController {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var connectionsView: UIView!
+    @IBOutlet weak var invitationsView: UIView!
+    @IBOutlet weak var allView: UIView!
     
     var myPins = [Pins]()
     var listener: ListenerRegistration!
@@ -68,6 +71,27 @@ class NotificationsVC: UIViewController {
 
         }
     }
+    
+    @IBAction func setSelectedView(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            connectionsView.alpha = 0
+            invitationsView.alpha = 0
+            allView.alpha = 0
+        } else if sender.selectedSegmentIndex == 1 {
+            connectionsView.alpha = 1
+            invitationsView.alpha = 0
+            allView.alpha = 0
+        } else if sender.selectedSegmentIndex == 2 {
+            connectionsView.alpha = 0
+            invitationsView.alpha = 1
+            allView.alpha = 0
+        } else if sender.selectedSegmentIndex == 3 {
+            connectionsView.alpha = 0
+            invitationsView.alpha = 0
+            allView.alpha = 1
+        }
+    }
+    
     
     fileprivate func presentPinDetail() {
         let storyboard = UIStoryboard(name: "MyPins", bundle: nil)

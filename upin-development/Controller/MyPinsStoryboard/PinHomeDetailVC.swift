@@ -37,7 +37,6 @@ class PinHomeDetailVC: UIViewController {
         pinDescriptionLabel.text = pin_description
         startingTimeDateLabel.text = pin_starting_time
         endingTimeDateLabel.text = pin_ending_time
-        
         setTimeLabels()
     }
     

@@ -85,6 +85,7 @@ class StepFourVC: UIViewController {
     func createPinOnFirebase(url: String) {
         guard let currentUser = Auth.auth().currentUser else { return }
         var documentReference: DocumentReference!
+        
         let documentId = Firestore.firestore().collection("pins").document().documentID
         var pinData = [String: Any]()
         
@@ -189,5 +190,3 @@ class StepFourVC: UIViewController {
     }
     
 }
-
-

@@ -165,5 +165,18 @@ extension MyPinsVC: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPin = myPins[indexPath.item]
+        performSegue(withIdentifier: "ToNotificationPinDetailVC", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToNotificationPinDetailVC" {
+            if let destination = segue.destination as? NotificationsPinDetailVC {
+                destination.selectedPin = selectedPin
+            }
+        }
+    }
+    
     
 }

@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ConnectionsVC-->
+        <!--Notifications ConnectionsVC-->
         <scene sceneID="f0M-MP-ekV">
             <objects>
-                <viewController storyboardIdentifier="ConnectionsVC" id="Nuw-kI-Wwa" customClass="ConnectionsVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConnectionsVC" id="Nuw-kI-Wwa" customClass="NotificationsConnectionsVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oRg-Ko-5jt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NC3-59-ED4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ae-1v-vL3">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="55" width="600" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="ZfD-o5-heO"/>
                                         </constraints>
@@ -51,21 +47,21 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" placeholder="Search by connection name or interest" translatesAutoresizingMaskIntoConstraints="NO" id="92z-gF-NZa">
-                                <rect key="frame" x="0.0" y="100" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="100" width="600" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Bee-HK-sIj"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="88l-Mo-R1c">
-                                <rect key="frame" x="0.0" y="160" width="414" height="702"/>
+                                <rect key="frame" x="0.0" y="160" width="600" height="440"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="slF-DA-7wf">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="slF-DA-7wf" id="GwQ-aw-QxE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

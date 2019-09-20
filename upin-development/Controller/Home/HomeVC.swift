@@ -16,17 +16,21 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var pinDetailview: UIView!
+    @IBOutlet weak var searchView: UIView!
+    @IBOutlet weak var mapViewTopConstraint: NSLayoutConstraint!
     
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
     let regionRadius: Double = 1000
     
     var pins = [String: [String: Any]]()
+    var listener: ListenerRegistration!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         pinListener()
+        
 
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -52,6 +56,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         if CLLocationManager.locationServicesEnabled() {
             centerMapOnUserLocation()
+            mapView.showsUserLocation = false
         }
     }
     
@@ -59,15 +64,30 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         if UserService.userListener == nil {
             UserService.getCurrentUserInfo()
             self.centerMapOnUserLocation()
+            mapView.showsUserLocation = false
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        listener.remove()
+        mapView.removeAnnotations(mapView.annotations)
+    }
+    
+    @IBAction func searchButtonPressed(_ sender: Any) {
+        
+    }
+    
+    @IBAction func messageButtonPressed(_ sender: Any) {
+        let storyboard = UIStoryboard(name: Storyboards.MessageStoryboard, bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "ConversationsVC")
+        present(controller, animated: true, completion: nil)
+    }
     
     func centerMapOnUserLocation() {
         guard let coordinate = locationManager.location?.coordinate else { return }
         let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
     }
     
     @IBAction func centerButtonPressed(_ sender: Any) {
@@ -77,7 +97,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     func pinListener() {
-        Firestore.firestore().collection("pins").addSnapshotListener { (snapshot, error) in
+        listener = Firestore.firestore().collection("pins").addSnapshotListener { (snapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -91,20 +111,15 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                     
                     annotations.coordinate.latitude = latitude
                     annotations.coordinate.longitude = longitude
+                    
                     self.pins["\(latitude)-\(longitude)"] = data
-                    
-                    
-                    
                     self.mapView.addAnnotation(annotations)
+                    
                 }
             }
         }
     }
     
-    
-    
-    // design screen and change to ViewContorller
-    //pass the value you want to your new controller
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let controller = UIStoryboard(name: "MyPins", bundle: nil).instantiateViewController(withIdentifier: "PinHomeDetailVC") as! PinHomeDetailVC

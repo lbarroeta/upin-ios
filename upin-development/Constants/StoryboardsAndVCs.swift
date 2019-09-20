@@ -14,6 +14,7 @@ struct Storyboards {
     static let SettingsStoryboard = "Settings"
     static let ProfileStoryboard = "Profile"
     static let MyPinsStoryboard = "MyPins"
+    static let MessageStoryboard = "Message"
 }
 
 struct LoginViewControllers {

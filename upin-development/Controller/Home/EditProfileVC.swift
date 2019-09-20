@@ -1,14 +1,14 @@
 //
-//  ConnectionsVC.swift
+//  EditProfileVC.swift
 //  upin-development
 //
-//  Created by Leonardo Barroeta on 9/9/19.
+//  Created by Leonardo Barroeta on 9/19/19.
 //  Copyright © 2019 Kodim. All rights reserved.
 //
 
 import UIKit
 
-class NotificationsConnectionsVC: UIViewController {
+class EditProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,11 +16,12 @@ class NotificationsConnectionsVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    
-    @IBAction func profileButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        
     }
     
+    @IBAction func editProfileButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }

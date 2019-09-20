@@ -16,6 +16,7 @@ struct User {
     var birthdate: String = ""
     var gender: String = ""
     var otherGender: String = ""
+    var phone_number: String = ""
     
     init(id: String = "",
          firstName: String = "",
@@ -42,6 +43,7 @@ struct User {
         self.email = data["email"] as? String ?? ""
         self.birthdate = data["birthdate"] as? String ?? ""
         self.gender = data["gender"] as? String ?? ""
+        self.phone_number = data["phone_number"] as? String ?? ""
     }
     
     static func modelToData(user: User) -> [String: Any] {
@@ -52,7 +54,8 @@ struct User {
             "email": user.email,
             "birthdate": user.birthdate,
             "gender": user.gender,
-            "otherGender": user.otherGender
+            "otherGender": user.otherGender,
+            "phone_number": user.phone_number
         ]
         
         return data
