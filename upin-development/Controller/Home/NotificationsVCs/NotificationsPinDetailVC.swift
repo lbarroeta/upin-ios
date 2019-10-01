@@ -240,6 +240,9 @@ class NotificationsPinDetailVC: UIViewController {
         } else if segue.identifier == "UserJoinedVC" {
             let vc = segue.destination as! UserJoinedVC
             vc.selectedPin = pin_id!
+        } else if segue.identifier == "UserInvitedVC" {
+            let vc = segue.destination as! UserInvitedVC
+            vc.selectedPin = pin_id!
         }
     }
     

@@ -1348,6 +1348,7 @@
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="invitedButtonPressed:" destination="xeE-LV-ZBI" eventType="touchUpInside" id="hlV-Zu-TI5"/>
+                                                                    <segue destination="A4U-Uq-AL7" kind="show" identifier="UserInvitedVC" id="0tC-vC-FhA"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -1628,6 +1629,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ay-Ee-5Rx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2907" y="2213"/>
+        </scene>
+        <!--UserInvitedVC-->
+        <scene sceneID="Kms-Zp-AOm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyPins" referencedIdentifier="UserInvitedVC" id="A4U-Uq-AL7" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vxk-iv-BcO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1v-Ru-ow1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2941" y="2255"/>
         </scene>
         <!--EditPinVC-->
         <scene sceneID="s7E-jv-Q6A">

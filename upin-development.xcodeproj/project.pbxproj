@@ -41,6 +41,10 @@
 		46772903232EE9F200552C14 /* PinViewDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46772902232EE9F200552C14 /* PinViewDetailVC.swift */; };
 		46772905232F150600552C14 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46772904232F150600552C14 /* NotificationsVC.swift */; };
 		46772907232F158F00552C14 /* NotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46772906232F158F00552C14 /* NotificationsCell.swift */; };
+		46860AEC23438ECA00C5BC8B /* UserInvitedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AEB23438ECA00C5BC8B /* UserInvitedVC.swift */; };
+		46860AEE23438EF700C5BC8B /* UserInvitedProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AED23438EF700C5BC8B /* UserInvitedProfileVC.swift */; };
+		46860AF02343906300C5BC8B /* UserInvitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AEF2343906300C5BC8B /* UserInvitedCell.swift */; };
+		46860AF22343912100C5BC8B /* UserInvited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AF12343912100C5BC8B /* UserInvited.swift */; };
 		469BADAA232B1E7B0012CBBA /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BADA9232B1E7B0012CBBA /* PinAnnotation.swift */; };
 		46A43CB6231864BA00D6ACDF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A43CB5231864BA00D6ACDF /* Home.storyboard */; };
 		46A43CB92318651B00D6ACDF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CB82318651B00D6ACDF /* HomeVC.swift */; };
@@ -127,6 +131,10 @@
 		46772902232EE9F200552C14 /* PinViewDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewDetailVC.swift; sourceTree = "<group>"; };
 		46772904232F150600552C14 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		46772906232F158F00552C14 /* NotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
+		46860AEB23438ECA00C5BC8B /* UserInvitedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvitedVC.swift; sourceTree = "<group>"; };
+		46860AED23438EF700C5BC8B /* UserInvitedProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvitedProfileVC.swift; sourceTree = "<group>"; };
+		46860AEF2343906300C5BC8B /* UserInvitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvitedCell.swift; sourceTree = "<group>"; };
+		46860AF12343912100C5BC8B /* UserInvited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvited.swift; sourceTree = "<group>"; };
 		469BADA9232B1E7B0012CBBA /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		46A43CB4231862E700D6ACDF /* upin-development.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "upin-development.entitlements"; sourceTree = "<group>"; };
 		46A43CB5231864BA00D6ACDF /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -209,6 +217,8 @@
 				462593BC234253450012A058 /* AtPinUserProfileVC.swift */,
 				46EA018F2342FA2F007456C8 /* UserJoinedVC.swift */,
 				46EA019123430266007456C8 /* UserJoinedProfileVC.swift */,
+				46860AEB23438ECA00C5BC8B /* UserInvitedVC.swift */,
+				46860AED23438EF700C5BC8B /* UserInvitedProfileVC.swift */,
 				46EA019923431270007456C8 /* InviteConnectionsVC.swift */,
 			);
 			path = MyPinsStoryboard;
@@ -318,6 +328,7 @@
 				46EA018B2342F827007456C8 /* UserJoinedCell.swift */,
 				46EA019723430AE4007456C8 /* UserConnectionCell.swift */,
 				46EA019B2343146A007456C8 /* InviteConnectionsCell.swift */,
+				46860AEF2343906300C5BC8B /* UserInvitedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +355,7 @@
 				462593BA234242230012A058 /* UserAtPin.swift */,
 				46EA018D2342F997007456C8 /* UserJoined.swift */,
 				46EA019523430A62007456C8 /* UserConnection.swift */,
+				46860AF12343912100C5BC8B /* UserInvited.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -591,10 +603,12 @@
 				46EA019223430266007456C8 /* UserJoinedProfileVC.swift in Sources */,
 				46A43CBF2318707800D6ACDF /* ProfileVC.swift in Sources */,
 				462593B723423AF00012A058 /* UserAtPinCell.swift in Sources */,
+				46860AEE23438EF700C5BC8B /* UserInvitedProfileVC.swift in Sources */,
 				46772905232F150600552C14 /* NotificationsVC.swift in Sources */,
 				46B00B6E23171D62007E9FDC /* ViewController.swift in Sources */,
 				46175D2D23294650003CE608 /* MyPinsVC.swift in Sources */,
 				4626C0F52317318B0030FA85 /* FirebaseErrorHandler.swift in Sources */,
+				46860AF22343912100C5BC8B /* UserInvited.swift in Sources */,
 				46E0B6E02334414800E92F6A /* AllVC.swift in Sources */,
 				46175D3823294FB4003CE608 /* StepFourVC.swift in Sources */,
 				4626C0E423172A860030FA85 /* Colors.swift in Sources */,
@@ -616,6 +630,7 @@
 				46B00B892317246C007E9FDC /* LoginVC.swift in Sources */,
 				46E2694C2326E9920010C138 /* SignInPhoneCodeVC.swift in Sources */,
 				46EA019623430A62007456C8 /* UserConnection.swift in Sources */,
+				46860AEC23438ECA00C5BC8B /* UserInvitedVC.swift in Sources */,
 				46175D32232948BA003CE608 /* StepOneVC.swift in Sources */,
 				46EA019823430AE4007456C8 /* UserConnectionCell.swift in Sources */,
 				46175D3623294FA8003CE608 /* StepThreeVC.swift in Sources */,
@@ -656,6 +671,7 @@
 				46EA01902342FA2F007456C8 /* UserJoinedVC.swift in Sources */,
 				46A43CC1231879AC00D6ACDF /* SettingsVC.swift in Sources */,
 				46E0B6DE2334413F00E92F6A /* InvitationsVC.swift in Sources */,
+				46860AF02343906300C5BC8B /* UserInvitedCell.swift in Sources */,
 				46532DCC2323666D00F3EA7F /* CellIdentifiers.swift in Sources */,
 				46AF9506231E0CD900F70679 /* User.swift in Sources */,
 			);
