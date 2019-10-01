@@ -60,5 +60,16 @@ extension UIViewController {
         }
     }
     
+    func endPinAler(title: String, msg: String, handlerOk: ((UIAlertAction) -> Void)?, handlerCancel: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Yes", style: .default, handler: handlerOk)
+        let actionCancel = UIAlertAction(title: "No", style: .cancel, handler: handlerCancel)
+        alert.addAction(action)
+        alert.addAction(actionCancel)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
 }
 

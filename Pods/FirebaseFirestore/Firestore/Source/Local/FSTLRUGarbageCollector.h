@@ -17,12 +17,13 @@
 #import <Foundation/Foundation.h>
 
 #include <string>
-#include <unordered_map>
 
 #import "FIRFirestoreSettings.h"
 #import "Firestore/Source/Local/FSTQueryData.h"
 #include "Firestore/core/src/firebase/firestore/model/document_key.h"
 #include "Firestore/core/src/firebase/firestore/model/types.h"
+
+@protocol FSTQueryCache;
 
 @class FSTLRUGarbageCollector;
 
@@ -102,14 +103,12 @@ struct LruResults {
  */
 - (int)removeTargetsThroughSequenceNumber:
            (firebase::firestore::model::ListenSequenceNumber)sequenceNumber
-                              liveQueries:
-                                  (const std::unordered_map<firebase::firestore::model::TargetId,
-                                                            FSTQueryData *> &)liveQueries;
+                              liveQueries:(NSDictionary<NSNumber *, FSTQueryData *> *)liveQueries;
 
 - (size_t)byteSize;
 
 /** Returns the number of targets and orphaned documents cached. */
-- (size_t)sequenceNumberCount;
+- (int32_t)sequenceNumberCount;
 
 /** Access to the underlying LRU Garbage collector instance. */
 @property(strong, nonatomic, readonly) FSTLRUGarbageCollector *gc;
@@ -147,9 +146,7 @@ struct LruResults {
  */
 - (int)removeQueriesUpThroughSequenceNumber:
            (firebase::firestore::model::ListenSequenceNumber)sequenceNumber
-                                liveQueries:
-                                    (const std::unordered_map<firebase::firestore::model::TargetId,
-                                                              FSTQueryData *> &)liveQueries;
+                                liveQueries:(NSDictionary<NSNumber *, FSTQueryData *> *)liveQueries;
 
 /**
  * Removes all unreferenced documents from the cache that have a sequence number less than or equal
@@ -161,6 +158,6 @@ struct LruResults {
 - (size_t)byteSize;
 
 - (firebase::firestore::local::LruResults)collectWithLiveTargets:
-    (const std::unordered_map<firebase::firestore::model::TargetId, FSTQueryData *> &)liveTargets;
+    (NSDictionary<NSNumber *, FSTQueryData *> *)liveTargets;
 
 @end

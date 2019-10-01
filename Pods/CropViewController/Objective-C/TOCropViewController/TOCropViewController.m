@@ -364,7 +364,12 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     // If there is no title text, inset the top of the content as high as possible
     if (!self.titleLabel.text.length) {
         if (self.verticalLayout) {
+          if (self.toolbarPosition == TOCropViewControllerToolbarPositionTop) {
+            self.cropView.cropRegionInsets = UIEdgeInsetsMake(0.0f, 0.0f, insets.bottom, 0.0f);
+          }
+          else { // Add padding to the top otherwise
             self.cropView.cropRegionInsets = UIEdgeInsetsMake(insets.top, 0.0f, 0.0, 0.0f);
+          }
         }
         else {
             self.cropView.cropRegionInsets = UIEdgeInsetsMake(0.0f, 0.0f, insets.bottom, 0.0f);
@@ -592,6 +597,12 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
             [itemStrings addObject:itemTitle];
             [ratioValues addObject:allowedRatio];
         }
+    }
+    
+    // If a custom aspect ratio is provided, and a custom name has been given to it, add it as a visible choice
+    if (self.customAspectRatioName.length > 0 && !CGSizeEqualToSize(CGSizeZero, self.customAspectRatio)) {
+        [itemStrings addObject:self.customAspectRatioName];
+        [ratioValues addObject:@(TOCropViewControllerAspectRatioPresetCustom)];
     }
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -830,7 +841,7 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
 #pragma mark - Button Feedback -
 - (void)cancelButtonTapped
 {
-    if (!self.cropView.canBeReset || !self.showCancelConfirmationDialog) {
+    if (!self.showCancelConfirmationDialog) {
         [self dismissCropViewController];
         return;
     }
@@ -838,14 +849,13 @@ static const CGFloat kTOCropViewControllerToolbarHeight = 44.0f;
     // Get the resource bundle depending on the framework/dependency manager we're using
     NSBundle *resourceBundle = TO_CROP_VIEW_RESOURCE_BUNDLE_FOR_OBJECT(self);
 
-    NSString *title = NSLocalizedStringFromTableInBundle(@"Delete Changes?", @"TOCropViewControllerLocalizable", resourceBundle, nil);
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
                                                                              message:nil
                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+    alertController.popoverPresentationController.sourceView = self.toolbar.visibleCancelButton;
 
-
-    NSString *yesButtonTitle = NSLocalizedStringFromTableInBundle(@"Yes", @"TOCropViewControllerLocalizable", resourceBundle, nil);
-    NSString *noButtonTitle = NSLocalizedStringFromTableInBundle(@"No", @"TOCropViewControllerLocalizable", resourceBundle, nil);
+    NSString *yesButtonTitle = NSLocalizedStringFromTableInBundle(@"Delete Changes", @"TOCropViewControllerLocalizable", resourceBundle, nil);
+    NSString *noButtonTitle = NSLocalizedStringFromTableInBundle(@"Cancel", @"TOCropViewControllerLocalizable", resourceBundle, nil);
 
     __weak typeof (self) weakSelf = self;
     UIAlertAction *yesAction = [UIAlertAction actionWithTitle:yesButtonTitle style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {

@@ -8,17 +8,17 @@
 
 import UIKit
 import Firebase
-
-class StepFourVC: UIViewController {
+import CoreLocation
+class StepFourVC: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var startingTimeTextField: UITextField!
     @IBOutlet weak var endingTimeTextField: UITextField!
-    @IBOutlet weak var pinImage: UIImageView!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var endingTimeLabel: UILabel!
     
     private var startingDatePicker: UIDatePicker?
     private var endingDatePicker: UIDatePicker?
+    
     
     // Segue variables
     var pin_title = ""
@@ -28,6 +28,11 @@ class StepFourVC: UIViewController {
     var longitude: Double = 0
     var extra_directions: String = ""
     var map_search_description: String = ""
+    var host_picture: String = ""
+    
+    let locationManager = CLLocationManager()
+    var currentUserlatitude: Double?
+    var currentUserlongitude: Double?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +47,22 @@ class StepFourVC: UIViewController {
         startingTimeTextField.inputView = startingDatePicker
         endingTimeTextField.inputView = endingDatePicker
         
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        
+            
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        currentUserlatitude = location.latitude
+        currentUserlongitude = location.longitude
+        print("\(currentUserlongitude!)\(currentUserlongitude!)")
+    }
     
     @IBAction func dropPinButtonPressed(_ sender: Any) {
         //presentHomeStoryboard()
@@ -84,13 +103,16 @@ class StepFourVC: UIViewController {
     
     func createPinOnFirebase(url: String) {
         guard let currentUser = Auth.auth().currentUser else { return }
-        var documentReference: DocumentReference!
         
+        // Data added to pin collection
+        let documentReference: DocumentReference!
+        let pinsReference = Firestore.firestore().collection("pins")
         let documentId = Firestore.firestore().collection("pins").document().documentID
         var pinData = [String: Any]()
         
         pinData = [
             "pin_id": documentId,
+            "has_ended": false,
             "pin_title": pin_title,
             "short_description": short_description,
             "pin_photo": url,
@@ -112,8 +134,52 @@ class StepFourVC: UIViewController {
                 return
             }
         }
+        
+        // Create users collections for the pin
+        Firestore.firestore().collection("users").document(currentUser.uid).addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return
+            }
+            
+            guard let data = snapshot?.data() else { return }
+            
+            let userId = data["id"] as? String
+            let firstName = data["firstName"] as? String
+            let lastName = data["lastName"] as? String
+            let gender = data["gender"] as? String
+            let interests = data["interests"] as? Array ?? [""]
+            let age = data["age"] as? Int
+            
+            
+            // Profile image URL
+            let profileImagePath = data["profilePictures"] as? [String: Any]
+            guard let mainProfileImagePath = profileImagePath?["mainProfileImage"] as? String else { return }
+            
+            var userData = [String: Any]()
+            
+            userData = [
+                "user_id": userId!,
+                "is_host": true,
+                "latitude": Double(self.currentUserlatitude!),
+                "longitude": Double(self.currentUserlongitude!),
+                "first_name": firstName!,
+                "last_name": lastName!,
+                "gender": gender!,
+                "interests": interests,
+                "age": age!,
+                "profile_image": mainProfileImagePath
+            ]
+            
+            documentReference.collection("users").document().setData(userData, merge: true) { (error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                    return
+                }
+            }
+            
+        }
     }
-    
     
     // Set starting text field to type date/time
     func setStartingDatePicker() {
@@ -173,12 +239,25 @@ class StepFourVC: UIViewController {
         let nowDate = Date()
         let textFieldDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
         let currentDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nowDate)
-    
         
+        
+    
         if (textFieldDate.day == currentDate.day) {
-            self.startTimeLabel.text = "Starting today at: "
-        } else if (textFieldDate.day != currentDate.day) {
-            self.startTimeLabel.text = "Starting at:"
+            if currentDate.hour! >= 12 {
+                self.startingTimeTextField.text = "Today \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
+                self.endingTimeTextField.text = "Today \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
+            } else {
+                self.startingTimeTextField.text = "Today: \(textFieldDate.hour!):\(textFieldDate.minute!)am"
+                self.endingTimeTextField.text = "Today: \(textFieldDate.hour!):\(textFieldDate.minute!)am"
+            }
+        } else if textFieldDate.weekday != currentDate.weekday {
+            if currentDate.hour! >= 12 {
+                self.startingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
+                self.endingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
+            } else {
+                self.startingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)am"
+                self.endingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)am"
+            }
         }
     }
     

@@ -20,8 +20,8 @@
 #import <FirebaseCore/FIRAppInternal.h>
 #import <FirebaseCore/FIRComponent.h>
 #import <FirebaseCore/FIRComponentContainer.h>
+#import <FirebaseCore/FIRComponentRegistrant.h>
 #import <FirebaseCore/FIRDependency.h>
-#import <FirebaseCore/FIRLibrary.h>
 #import <FirebaseCore/FIROptions.h>
 
 #include <memory>
@@ -30,7 +30,6 @@
 
 #import "Firestore/Source/API/FIRFirestore+Internal.h"
 #import "Firestore/Source/Util/FSTUsageValidation.h"
-#include "Firestore/core/include/firebase/firestore/firestore_version.h"
 #include "Firestore/core/src/firebase/firestore/auth/credentials_provider.h"
 #include "Firestore/core/src/firebase/firestore/auth/firebase_credentials_provider_apple.h"
 #include "Firestore/core/src/firebase/firestore/util/async_queue.h"
@@ -46,7 +45,7 @@ using util::ExecutorLibdispatch;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FSTFirestoreComponent () <FIRComponentLifecycleMaintainer, FIRLibrary>
+@interface FSTFirestoreComponent () <FIRComponentLifecycleMaintainer, FIRComponentRegistrant>
 @end
 
 @implementation FSTFirestoreComponent
@@ -118,17 +117,14 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Object Lifecycle
 
 + (void)load {
-  [FIRApp registerInternalLibrary:(Class<FIRLibrary>)self
-                         withName:@"fire-fst"
-                      withVersion:[NSString stringWithUTF8String:firebase::firestore::
-                                                                     kFirestoreVersionString]];
+  [FIRComponentContainer registerAsComponentRegistrant:self];
 }
 
 #pragma mark - Interoperability
 
 + (NSArray<FIRComponent *> *)componentsToRegister {
-  FIRDependency *auth = [FIRDependency dependencyWithProtocol:@protocol(FIRAuthInterop)
-                                                   isRequired:NO];
+  FIRDependency *auth =
+      [FIRDependency dependencyWithProtocol:@protocol(FIRAuthInterop) isRequired:NO];
   FIRComponent *firestoreProvider = [FIRComponent
       componentWithProtocol:@protocol(FSTFirestoreMultiDBProvider)
         instantiationTiming:FIRInstantiationTimingLazy

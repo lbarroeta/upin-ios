@@ -58,8 +58,6 @@ class NativeDnsResolver : public Resolver {
 
   void RequestReresolutionLocked() override;
 
-  void ResetBackoffLocked() override;
-
   void ShutdownLocked() override;
 
  private:
@@ -160,13 +158,6 @@ void NativeDnsResolver::RequestReresolutionLocked() {
   }
 }
 
-void NativeDnsResolver::ResetBackoffLocked() {
-  if (have_next_resolution_timer_) {
-    grpc_timer_cancel(&next_resolution_timer_);
-  }
-  backoff_.Reset();
-}
-
 void NativeDnsResolver::ShutdownLocked() {
   if (have_next_resolution_timer_) {
     grpc_timer_cancel(&next_resolution_timer_);
@@ -247,7 +238,13 @@ void NativeDnsResolver::OnResolvedLocked(void* arg, grpc_error* error) {
 void NativeDnsResolver::MaybeStartResolvingLocked() {
   // If there is an existing timer, the time it fires is the earliest time we
   // can start the next resolution.
-  if (have_next_resolution_timer_) return;
+  if (have_next_resolution_timer_) {
+    // TODO(dgq): remove the following two lines once Pick First stops
+    // discarding subchannels after selecting.
+    ++resolved_version_;
+    MaybeFinishNextLocked();
+    return;
+  }
   if (last_resolution_timestamp_ >= 0) {
     const grpc_millis earliest_next_resolution =
         last_resolution_timestamp_ + min_time_between_resolutions_;
@@ -269,6 +266,10 @@ void NativeDnsResolver::MaybeStartResolvingLocked() {
       self.release();
       grpc_timer_init(&next_resolution_timer_, ms_until_next_resolution,
                       &on_next_resolution_);
+      // TODO(dgq): remove the following two lines once Pick First stops
+      // discarding subchannels after selecting.
+      ++resolved_version_;
+      MaybeFinishNextLocked();
       return;
     }
   }

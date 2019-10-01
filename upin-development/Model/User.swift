@@ -17,6 +17,8 @@ struct User {
     var gender: String = ""
     var otherGender: String = ""
     var phone_number: String = ""
+    var latitude: Double = 0
+    var longitude: Double = 0
     
     init(id: String = "",
          firstName: String = "",
@@ -55,7 +57,9 @@ struct User {
             "birthdate": user.birthdate,
             "gender": user.gender,
             "otherGender": user.otherGender,
-            "phone_number": user.phone_number
+            "phone_number": user.phone_number,
+            "latitude": user.latitude,
+            "longitude": user.longitude
         ]
         
         return data

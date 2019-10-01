@@ -20,6 +20,8 @@ class PinViewDetailVC: UIViewController {
     @IBOutlet weak var endingTimeLabel: UILabel!
     @IBOutlet weak var pinDescriptionLabel: UILabel!
     
+    @IBOutlet weak var startHourLabel: UILabel!
+    @IBOutlet weak var endHourLabel: UILabel!
     
     @IBOutlet weak var addressButton: UIButton!
     

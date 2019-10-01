@@ -57,6 +57,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
         if CLLocationManager.locationServicesEnabled() {
             centerMapOnUserLocation()
             mapView.showsUserLocation = false
+            mapView.addAnnotations(mapView.annotations)
         }
     }
     
@@ -65,12 +66,8 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
             UserService.getCurrentUserInfo()
             self.centerMapOnUserLocation()
             mapView.showsUserLocation = false
+            mapView.addAnnotations(mapView.annotations)
         }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        listener.remove()
-        mapView.removeAnnotations(mapView.annotations)
     }
     
     @IBAction func searchButtonPressed(_ sender: Any) {
@@ -97,12 +94,12 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     }
     
     func pinListener() {
-        listener = Firestore.firestore().collection("pins").addSnapshotListener { (snapshot, error) in
+        let pinReference = Firestore.firestore().collection("pins")
+        pinReference.addSnapshotListener { (snapshot, error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
             } else {
-                // save pin data into a dictionary
                 for document in snapshot!.documents {
                     let annotations = MKPointAnnotation()
                     let data: [String: Any] = document.data()
@@ -114,10 +111,10 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
                     
                     self.pins["\(latitude)-\(longitude)"] = data
                     self.mapView.addAnnotation(annotations)
-                    
                 }
             }
         }
+    
     }
     
     

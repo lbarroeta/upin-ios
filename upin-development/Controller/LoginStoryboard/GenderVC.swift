@@ -40,23 +40,39 @@ class GenderVC: UIViewController {
     func updateGenderAndBirthdate() {
         guard let user = Auth.auth().currentUser else { return }
         
+        // Get age
+        let stringBirthdate: String = birthdateTextField.text!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let date = dateFormatter.date(from: stringBirthdate)
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year], from: date!)
+        let now = Date()
+        let finalYear = calendar.date(from: components)
+        let age = calendar.dateComponents([.year], from: finalYear!, to: now)
+        
+        var userAge = age.year!
+                
         var userData = [String: Any]()
         
         if self.genderSegmentedControl.selectedSegmentIndex == 0 {
             userData = [
                 "gender": "Male",
-                "birthdate": birthdateTextField.text!
+                "birthdate": birthdateTextField.text!,
+                "age": userAge
             ]
         } else if self.genderSegmentedControl.selectedSegmentIndex == 1 {
             userData = [
                 "gender": "Female",
-                "birthdate": birthdateTextField.text!
+                "birthdate": birthdateTextField.text!,
+                "age": userAge
             ]
         } else {
             userData = [
                 "gender": "Other",
                 "otherGenderDescription": otherGenderTextField.text!,
-                "birthdate": birthdateTextField.text!
+                "birthdate": birthdateTextField.text!,
+                "age": userAge
             ]
         }
         
@@ -69,7 +85,7 @@ class GenderVC: UIViewController {
         }
         
     }
-    
+        
     func setDatePicker() {
         birthdatePicker = UIDatePicker()
         birthdatePicker?.datePickerMode = .date

@@ -50,6 +50,8 @@ class SockaddrResolver : public Resolver {
   void NextLocked(grpc_channel_args** result,
                   grpc_closure* on_complete) override;
 
+  void RequestReresolutionLocked() override;
+
   void ShutdownLocked() override;
 
  private:
@@ -85,6 +87,11 @@ void SockaddrResolver::NextLocked(grpc_channel_args** target_result,
   GPR_ASSERT(!next_completion_);
   next_completion_ = on_complete;
   target_result_ = target_result;
+  MaybeFinishNextLocked();
+}
+
+void SockaddrResolver::RequestReresolutionLocked() {
+  published_ = false;
   MaybeFinishNextLocked();
 }
 

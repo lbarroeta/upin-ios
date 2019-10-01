@@ -16,5 +16,7 @@ target 'upin-development' do
     pod 'CropViewController'
     pod 'IQKeyboardManagerSwift'
     pod 'FittedSheets'
+    pod 'Geofirestore'
+    pod 'Firebase/DynamicLinks'
 
 end

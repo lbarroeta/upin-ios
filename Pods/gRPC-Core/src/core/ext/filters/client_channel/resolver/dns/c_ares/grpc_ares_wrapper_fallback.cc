@@ -40,10 +40,7 @@ grpc_ares_request* (*grpc_dns_lookup_ares_locked)(
     grpc_lb_addresses** addrs, bool check_grpclb, char** service_config_json,
     grpc_combiner* combiner) = grpc_dns_lookup_ares_locked_impl;
 
-static void grpc_cancel_ares_request_locked_impl(grpc_ares_request* r) {}
-
-void (*grpc_cancel_ares_request_locked)(grpc_ares_request* r) =
-    grpc_cancel_ares_request_locked_impl;
+void grpc_cancel_ares_request(grpc_ares_request* r) {}
 
 grpc_error* grpc_ares_init(void) { return GRPC_ERROR_NONE; }
 

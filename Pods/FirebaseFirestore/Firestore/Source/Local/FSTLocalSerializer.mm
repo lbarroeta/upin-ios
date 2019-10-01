@@ -17,14 +17,12 @@
 #import "Firestore/Source/Local/FSTLocalSerializer.h"
 
 #include <cinttypes>
-#include <utility>
-#include <vector>
 
 #import "FIRTimestamp.h"
 #import "Firestore/Protos/objc/firestore/local/MaybeDocument.pbobjc.h"
 #import "Firestore/Protos/objc/firestore/local/Mutation.pbobjc.h"
 #import "Firestore/Protos/objc/firestore/local/Target.pbobjc.h"
-#import "Firestore/Protos/objc/google/firestore/v1/Document.pbobjc.h"
+#import "Firestore/Protos/objc/google/firestore/v1beta1/Document.pbobjc.h"
 #import "Firestore/Source/Core/FSTQuery.h"
 #import "Firestore/Source/Local/FSTQueryData.h"
 #import "Firestore/Source/Model/FSTDocument.h"
@@ -69,11 +67,7 @@ using firebase::firestore::model::TargetId;
     proto.hasCommittedMutations = deletedDocument.hasCommittedMutations;
   } else if ([document isKindOfClass:[FSTDocument class]]) {
     FSTDocument *existingDocument = (FSTDocument *)document;
-    if (existingDocument.proto != nil) {
-      proto.document = existingDocument.proto;
-    } else {
-      proto.document = [self encodedDocument:existingDocument];
-    }
+    proto.document = [self encodedDocument:existingDocument];
     proto.hasCommittedMutations = existingDocument.hasCommittedMutations;
   } else if ([document isKindOfClass:[FSTUnknownDocument class]]) {
     FSTUnknownDocument *unknownDocument = (FSTUnknownDocument *)document;
@@ -89,8 +83,8 @@ using firebase::firestore::model::TargetId;
 - (FSTMaybeDocument *)decodedMaybeDocument:(FSTPBMaybeDocument *)proto {
   switch (proto.documentTypeOneOfCase) {
     case FSTPBMaybeDocument_DocumentType_OneOfCase_Document:
-      return [self decodedDocument:proto.document
-            withCommittedMutations:proto.hasCommittedMutations];
+      return
+          [self decodedDocument:proto.document withCommittedMutations:proto.hasCommittedMutations];
 
     case FSTPBMaybeDocument_DocumentType_OneOfCase_NoDocument:
       return [self decodedDeletedDocument:proto.noDocument
@@ -105,8 +99,9 @@ using firebase::firestore::model::TargetId;
 }
 
 /**
- * Encodes a Document for local storage. This differs from the v1 RPC serializer for Documents in
- * that it preserves the updateTime, which is considered an output only value by the server.
+ * Encodes a Document for local storage. This differs from the v1beta1 RPC serializer for
+ * Documents in that it preserves the updateTime, which is considered an output only value by the
+ * server.
  */
 - (GCFSDocument *)encodedDocument:(FSTDocument *)document {
   FSTSerializerBeta *remoteSerializer = self.remoteSerializer;
@@ -184,7 +179,7 @@ using firebase::firestore::model::TargetId;
       encodedTimestamp:Timestamp{batch.localWriteTime.seconds, batch.localWriteTime.nanoseconds}];
 
   NSMutableArray<GCFSWrite *> *writes = proto.writesArray;
-  for (FSTMutation *mutation : [batch mutations]) {
+  for (FSTMutation *mutation in batch.mutations) {
     [writes addObject:[remoteSerializer encodedMutation:mutation]];
   }
   return proto;
@@ -194,9 +189,9 @@ using firebase::firestore::model::TargetId;
   FSTSerializerBeta *remoteSerializer = self.remoteSerializer;
 
   int batchID = batch.batchId;
-  std::vector<FSTMutation *> mutations;
+  NSMutableArray<FSTMutation *> *mutations = [NSMutableArray array];
   for (GCFSWrite *write in batch.writesArray) {
-    mutations.push_back([remoteSerializer decodedMutation:write]);
+    [mutations addObject:[remoteSerializer decodedMutation:write]];
   }
 
   Timestamp localWriteTime = [remoteSerializer decodedTimestamp:batch.localWriteTime];
@@ -205,7 +200,7 @@ using firebase::firestore::model::TargetId;
       initWithBatchID:batchID
        localWriteTime:[FIRTimestamp timestampWithSeconds:localWriteTime.seconds()
                                              nanoseconds:localWriteTime.nanoseconds()]
-            mutations:std::move(mutations)];
+            mutations:mutations];
 }
 
 - (FSTPBTarget *)encodedQueryData:(FSTQueryData *)queryData {
