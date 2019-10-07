@@ -9,8 +9,14 @@
 import UIKit
 import Firebase
 import Geofirestore
+import CoreLocation
 
-class NotificationsPinDetailVC: UIViewController {
+class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    var currentUserlatitude: Double?
+    var currentUserlongitude: Double?
+    var listener: ListenerRegistration!
     
     var selectedPin: Pins!
     var pin_id: String?
@@ -20,12 +26,14 @@ class NotificationsPinDetailVC: UIViewController {
     var pin_ending_time: String?
     var host_id: String?
     
+    @IBOutlet weak var navigationItemTitle: UINavigationItem!
     @IBOutlet weak var pin_photo: UIImageView!
     @IBOutlet weak var pin_title: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var addressButton: UIButton!
     @IBOutlet weak var extraAddressLabel: UILabel!
     @IBOutlet weak var hostPhoto: UIImageView!
+    @IBOutlet weak var milesLabel: UILabel!
     
     @IBOutlet weak var minAgeLabel: UILabel!
     @IBOutlet weak var maxAgeLabel: UILabel!
@@ -47,120 +55,171 @@ class NotificationsPinDetailVC: UIViewController {
         pinListener()
         highestAgeListener()
         lowestAgeListener()
+        
+        // User counters
         usersAtPinListener()
         usersJoinedListener()
+        usersInvitedListener()
+        
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        currentUserlatitude = location.latitude
+        currentUserlongitude = location.longitude
     }
     
     func pinListener() {
         guard let currentUser = Auth.auth().currentUser else { return }
-        // Getting data from selected pin
-        Firestore.firestore().collection("pins").document(selectedPin.id).getDocument(completion: { (snapshot, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-
-            guard let data = snapshot?.data() else { return }
-
-            let pin_id = data["pin_id"] as? String
-            let data_pin_latitude = String(data["latitude"] as! Double)
-            let data_pin_longitude = String(data["longitude"] as! Double)
-            let pin_title = data["pin_title"] as? String
-            let pin_description = data["short_description"] as? String
-            let pin_end_time = data["ending_time"] as? String
-            let pin_start_time = data["starting_time"] as? String
-            let pin_image = data["pin_photo"] as? String
-            let map_search_description = data["map_search_description"] as? String
-            let extra_directions = data["extra_directions"] as? String
-            let host_id = data["host_id"] as? String
-            let has_ended = data["has_ended"] as? Bool
-
-            self.pin_id = pin_id
-            self.endingTimeLabel.text = pin_end_time
-            self.startTimeLabel.text = pin_start_time
-            self.addressButton.setTitle(map_search_description!, for: .normal)
-
-            self.pin_ending_time = pin_end_time
-            self.pin_starting_time = pin_start_time
-
-            self.pin_title.text = pin_title
-            self.descriptionLabel.text = pin_description
-            self.extraAddressLabel.text = extra_directions
-
-            guard let pinImageURL = URL(string: pin_image!) else { return }
-            self.pin_photo.kf.setImage(with: pinImageURL)
-
-            self.pin_latitude = data_pin_latitude
-            self.pin_longitude = data_pin_longitude
-            
-            self.host_id = host_id
-            
-            if (self.host_id == currentUser.uid) && (has_ended == false) {
-                self.endButton.isHidden = false
-                self.endButton.isEnabled = true
-                self.joinButton.isHidden = true
-            } else if (self.host_id == currentUser.uid) && (has_ended == true) {
-                self.endButton.isHidden = false
-                self.endButton.setTitle("This pin has ended", for: .normal)
-                self.endButton.isEnabled = false
-                self.joinButton.isHidden = true
-            } else if (self.host_id != currentUser.uid) && (has_ended == false) {
-                self.joinButton.isHidden = false
-                self.endButton.isHidden = true
-            } else if (self.host_id != currentUser.uid) && (has_ended == true) {
-                self.joinButton.isHidden = true
-                self.endButton.isHidden = true
-            }
-            
-            // Setting host_image.
-            Firestore.firestore().collection("users").document(host_id!).getDocument { (snapshot, error) in
+        let pinReference = Firestore.firestore().collection("pins").document(selectedPin.id)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            pinReference.addSnapshotListener { (snapshot, error) in
                 if let error = error {
                     debugPrint(error.localizedDescription)
                     return
                 }
                 
                 guard let data = snapshot?.data() else { return }
-                let profileImagePath = data["profilePictures"] as? [String: Any]
-                guard let mainProfileImagePath = profileImagePath?["mainProfileImage"] as? String else { return }
-                guard let mainProfileImageURL = URL(string: mainProfileImagePath) else { return }
-                self.hostPhoto.kf.setImage(with: mainProfileImageURL)
-            }
-            
-            // Pin dates
-            let stringStartDate: String = pin_start_time!
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
-            let date = dateFormatter.date(from: stringStartDate)
-            let calendar = Calendar.current
-            let components = calendar.dateComponents([.day, .hour, .minute], from: date!)
-            let nowDate = Date()
-            let pinDate = calendar.dateComponents([.day, .hour, .minute], from: date!)
-            let currentDate = calendar.dateComponents([.day, .hour, .minute], from: nowDate)
-            
-            if pinDate.day == currentDate.day {
-                if currentDate.hour! >= 12 {
-                    self.startingDateLabel.text = "Starting today at"
-                    self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)pm"
-                    
-                    self.endingDateLabel.text = "Ending today at"
-                    self.endingTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)pm"
-                } else {
-                    self.startingDateLabel.text = "Starting today at"
-                    self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)am"
-                    
-                    self.endingDateLabel.text = "Ending today at"
-                    self.endingTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)am"
+                
+                let pin_id = data["pin_id"] as? String
+                let pin_end_time = data["ending_time"] as? String
+                let pin_start_time = data["starting_time"] as? String
+                let map_search_description = data["map_search_description"] as? String
+                let pin_title = data["pin_title"] as? String
+                let pin_description = data["short_description"] as? String
+                let pin_image = data["pin_photo"] as? String
+                let data_pin_latitude = String(data["latitude"] as! Double)
+                let data_pin_longitude = String(data["longitude"] as! Double)
+                let extra_directions = data["extra_directions"] as? String
+                let host_id = data["host_id"] as? String
+                let has_ended = data["has_ended"] as? Bool
+                
+                
+                self.pin_id = pin_id
+                self.endingTimeLabel.text = pin_end_time
+                self.startTimeLabel.text = pin_start_time
+                self.pin_ending_time = pin_end_time
+                self.pin_starting_time = pin_start_time
+                self.addressButton.setTitle(map_search_description!, for: .normal)
+                self.pin_title.text = pin_title
+                self.descriptionLabel.text = pin_description
+                self.navigationItemTitle.title = "\(pin_title!) Details"
+                guard let pinImageURL = URL(string: pin_image!) else { return }
+                self.pin_photo.kf.setImage(with: pinImageURL)
+                self.pin_latitude = data_pin_latitude
+                self.pin_longitude = data_pin_longitude
+                // Requested to not be displayed: self.extraAddressLabel.text = extra_directions
+                self.host_id = host_id
+                
+                
+                if (self.host_id == currentUser.uid) && (has_ended == false) {
+                    self.endButton.isHidden = false
+                    self.endButton.isEnabled = true
+                    self.joinButton.isHidden = true
+                } else if (self.host_id == currentUser.uid) && (has_ended == true) {
+                    self.endButton.isHidden = false
+                    self.endButton.setTitle("This pin has ended", for: .normal)
+                    self.endButton.isEnabled = false
+                    self.joinButton.isHidden = true
+                } else if (self.host_id != currentUser.uid) && (has_ended == false) {
+                    self.joinButton.isHidden = false
+                    self.endButton.isHidden = true
+                } else if (self.host_id != currentUser.uid) && (has_ended == true) {
+                    self.joinButton.isHidden = true
+                    self.endButton.isHidden = true
                 }
                 
-            } else if (pinDate.day != currentDate.day) {
-                self.startingDateLabel.text = "Starting tomorrow at"
-                self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
+                //Pin Location
+                let pinLocation = CLLocation(latitude: Double(data_pin_latitude) as! CLLocationDegrees, longitude: Double(data_pin_longitude) as! CLLocationDegrees)
+                let userLocation = CLLocation(latitude: self.currentUserlatitude!, longitude: self.currentUserlongitude!)
+                let distance = pinLocation.distance(from: userLocation)
+                let convertToMiles = distance * 0.000621371
+                let milesToString = String(format: "%.2f", convertToMiles)
+                self.milesLabel.text = "\(milesToString)"
                 
-                self.endingDateLabel.text = "Ending tomorrow at"
-                self.endingTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
+                //Pin dates
+                let stringStartDate: String = pin_start_time!
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+                let date = dateFormatter.date(from: stringStartDate)
+                let calendar = Calendar.current
+                let components = calendar.dateComponents([.day, .hour, .minute], from: date!)
+                let nowDate = Date()
+                let pinDate = calendar.dateComponents([.day, .hour, .minute], from: date!)
+                let currentDate = calendar.dateComponents([.day, .hour, .minute], from: nowDate)
+
+                let endFirebaseDate: String = pin_end_time!
+                let endDateFormatter = DateFormatter()
+                endDateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
+                let endDate = dateFormatter.date(from: endFirebaseDate)
+                let endCalendar = Calendar.current
+                let endComponents = calendar.dateComponents([.day, .hour, .minute], from: endDate!)
+                let endNowDate = Date()
+                let endPinDate = calendar.dateComponents([.day, .hour, .minute], from: endDate!)
+                let endCurrentDate = calendar.dateComponents([.day, .hour, .minute], from: endNowDate)
+                
+                
+                if pinDate.day == currentDate.day {
+                    if currentDate.hour! >= 12 {
+                        self.startingDateLabel.text = "Today"
+                        self.endingDateLabel.text = "Today"
+
+                        if pinDate.minute! < 10 {
+                            self.startTimeLabel.text = "\(pinDate.hour!):0\(pinDate.minute!)"
+                            self.endingTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
+                        } else {
+                            self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
+                            self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
+                        }
+                    } else {
+                        self.startingDateLabel.text = "Today"
+                        self.endingDateLabel.text = "Today"
+
+                        if pinDate.minute! < 10 {
+                            self.startTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
+                            self.endingTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
+                        } else {
+                            self.startTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
+                            self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
+                        }
+                    }
+
+                } else if (pinDate.day != currentDate.day) {
+                    self.startingDateLabel.text = "Starting at"
+                    self.endingDateLabel.text = "Starting at"
+
+                    if pinDate.minute! < 10 {
+                        self.startTimeLabel.text = "\(pinDate.hour!):0\(pinDate.minute!)"
+                        self.endingTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
+                    } else {
+                        self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
+                        self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
+                    }
+                }
+                
+                Firestore.firestore().collection("users").document(host_id!).getDocument { (snapshot, error) in
+                    if let error = error {
+                        debugPrint(error.localizedDescription)
+                        return
+                    }
+
+                    guard let data = snapshot?.data() else { return }
+                    let profileImagePath = data["profilePictures"] as? [String: Any]
+                    guard let mainProfileImagePath = profileImagePath?["mainProfileImage"] as? String else { return }
+                    guard let mainProfileImageURL = URL(string: mainProfileImagePath) else { return }
+                    self.hostPhoto.kf.setImage(with: mainProfileImageURL)
+                }
+                
             }
-            
-        })
+        }
     }
     
     func highestAgeListener() {
@@ -229,6 +288,19 @@ class NotificationsPinDetailVC: UIViewController {
         }
     }
     
+    func usersInvitedListener() {
+        let pinRefererence = Firestore.firestore().collection("pins").document(selectedPin.id).collection("users").whereField("accepted_invitation", isEqualTo: false)
+        pinRefererence.addSnapshotListener { (snapshot, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return
+            }
+            
+            let counter = snapshot?.count
+            self.invitedButton.setTitle(String(counter!), for: .normal)
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserAtPinVC" {
@@ -257,11 +329,11 @@ class NotificationsPinDetailVC: UIViewController {
     }
     
     @IBAction func joinedButtonPressed(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "UserJoinedVC", sender: self)
     }
     
     @IBAction func invitedButtonPressed(_ sender: Any) {
-        
+        self.performSegue(withIdentifier: "UserInvitedVC", sender: self)
     }
     
     @IBAction func endButtonPressed(_ sender: Any) {

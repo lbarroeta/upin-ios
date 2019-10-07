@@ -24,7 +24,7 @@ class UserInvitedProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setupCollectionView()
+        setupCollectionView()
         userListener()
 
         self.firstNameLabel.text = selectedUser.firstName
@@ -36,10 +36,10 @@ class UserInvitedProfileVC: UIViewController {
         self.profileImage.kf.setImage(with: profileImageURL)
     }
     
-//    func setupCollectionView() {
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//    }
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+    }
     
 
     @IBAction func invitedButtonPressed(_ sender: Any) {
@@ -70,7 +70,7 @@ extension UserInvitedProfileVC: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserJoinedProfileInterestsCell", for: indexPath) as! UserJoinedProfileInterestsCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserInvitedProfileCell", for: indexPath) as! UserInvitedProfileCell
         cell.interestsLabel.text = interestNames[indexPath.item]
         
         if indexPath.item == 0 {

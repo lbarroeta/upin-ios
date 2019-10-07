@@ -12,14 +12,19 @@ import Firebase
 class ConnectionsVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    var users = [UserConnection]()
+    var users: [UserConnection] = []
+    var searchingUsers: [UserConnection] = []
+    var isSearching = false
     var listener: ListenerRegistration!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,6 +59,7 @@ class ConnectionsVC: UIViewController {
                 let data = change.document.data()
                 let user = UserConnection.init(data: data)
                 
+                
                 switch change.type {
                 case .added:
                     self.onUserAdded(change: change, user: user)
@@ -63,7 +69,6 @@ class ConnectionsVC: UIViewController {
                     self.onUserRemoved(change: change)
                 }
             })
-            
         })
     }
 }
@@ -97,36 +102,61 @@ extension ConnectionsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.text != "" {
+            return searchingUsers.count
+        }
+        
         return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "UserConnectionCell", for: indexPath) as? UserConnectionCell {
-            cell.firstInterestLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-            cell.firstInterestLabel.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-            cell.firstInterestLabel.layer.borderWidth = 1.0
-            cell.firstInterestLabel.layer.cornerRadius = 12.5
-            cell.firstInterestLabel.clipsToBounds = true
+            let text: String!
+            
+            if searchBar.text != "" {
+                cell.configureCell(users: searchingUsers[indexPath.row])
+            } else {
+                cell.firstInterestLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+                cell.firstInterestLabel.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+                cell.firstInterestLabel.layer.borderWidth = 1.0
+                cell.firstInterestLabel.layer.cornerRadius = 12.5
+                cell.firstInterestLabel.clipsToBounds = true
+                
+                
+                cell.secondInterestLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+                cell.secondInterestLabel.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+                cell.secondInterestLabel.layer.borderWidth = 1.0
+                cell.secondInterestLabel.layer.cornerRadius = 12.5
+                cell.secondInterestLabel.clipsToBounds = true
+                
+                cell.thirdInterestLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+                cell.thirdInterestLabel.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+                cell.thirdInterestLabel.layer.borderWidth = 1.0
+                cell.thirdInterestLabel.layer.cornerRadius = 12.5
+                cell.thirdInterestLabel.clipsToBounds = true
+                
+                cell.configureCell(users: users[indexPath.item])
+            }
             
             
-            cell.secondInterestLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-            cell.secondInterestLabel.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-            cell.secondInterestLabel.layer.borderWidth = 1.0
-            cell.secondInterestLabel.layer.cornerRadius = 12.5
-            cell.secondInterestLabel.clipsToBounds = true
-            
-            cell.thirdInterestLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-            cell.thirdInterestLabel.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-            cell.thirdInterestLabel.layer.borderWidth = 1.0
-            cell.thirdInterestLabel.layer.cornerRadius = 12.5
-            cell.thirdInterestLabel.clipsToBounds = true
-            
-            cell.configureCell(users: users[indexPath.item])
             return cell
         }
         
         return UITableViewCell()
     }
     
+}
+
+extension ConnectionsVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchingUsers = users.filter({ (lookUser) -> Bool in
+            return lookUser.firstName.lowercased().contains(searchText.lowercased()) || lookUser.lastName.lowercased().contains(searchText.lowercased())
+        })
+        
+        self.tableView.reloadData()
+    }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }

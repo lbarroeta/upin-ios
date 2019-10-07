@@ -46,7 +46,7 @@ class UserInvitedVC: UIViewController {
     }
     
     func userListener() {
-        listener = Firestore.firestore().collection("pins").document(selectedPin).collection("users").whereField("is_host", isEqualTo: false).whereField("accepted_invitation", isEqualTo: false).addSnapshotListener({ (snapshot, error) in
+        listener = Firestore.firestore().collection("pins").document(selectedPin).collection("users").whereField("accepted_invitation", isEqualTo: false).addSnapshotListener({ (snapshot, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
                 return

@@ -326,9 +326,9 @@
 				46AECDE92341578800197F2A /* AtPinCell.swift */,
 				462593B623423AF00012A058 /* UserAtPinCell.swift */,
 				46EA018B2342F827007456C8 /* UserJoinedCell.swift */,
+				46860AEF2343906300C5BC8B /* UserInvitedCell.swift */,
 				46EA019723430AE4007456C8 /* UserConnectionCell.swift */,
 				46EA019B2343146A007456C8 /* InviteConnectionsCell.swift */,
-				46860AEF2343906300C5BC8B /* UserInvitedCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -823,7 +823,7 @@
 				CODE_SIGN_ENTITLEMENTS = "upin-development/upin-development.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9TTV7G6YM8;
 				INFOPLIST_FILE = "upin-development/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -847,7 +847,7 @@
 				CODE_SIGN_ENTITLEMENTS = "upin-development/upin-development.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9TTV7G6YM8;
 				INFOPLIST_FILE = "upin-development/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

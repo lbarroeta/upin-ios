@@ -17,9 +17,10 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
     @IBOutlet weak var pinTitleTextField: UITextField!
     @IBOutlet weak var startingTimeTextField: UITextField!
     @IBOutlet weak var endingTimeTextField: UITextField!
-    @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var scrollingDescriptionTextField: UITextView!
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var extraDirectionsTextField: UITextField!
+    @IBOutlet weak var pinTitleNavigationItem: UINavigationItem!
     
     var selectedPin = ""
     var coordinate: CLLocationCoordinate2D?
@@ -39,6 +40,7 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
         super.viewDidLoad()
         setStartingDatePicker()
         setEndingDatePicker()
+        
         
         startingTimeTextField.inputView = startingDatePicker
         endingTimeTextField.inputView = endingDatePicker
@@ -97,7 +99,7 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
             "longitude": selected_longitude,
             "map_search_description": map_search_description,
             "pin_title": pinTitleTextField.text!,
-            "short_description": descriptionTextField.text!,
+            "short_description": scrollingDescriptionTextField.text!,
             "starting_time": startingTimeTextField.text!,
             "pin_photo": url
         ]
@@ -135,9 +137,10 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
             self.pinTitleTextField.text = pin_title!
             self.startingTimeTextField.text = starting_time!
             self.endingTimeTextField.text = ending_time!
-            self.descriptionTextField.text = short_description!
+            self.scrollingDescriptionTextField.text = short_description!
             self.addressTextField.text = pin_address!
             self.extraDirectionsTextField.text = extra_directions!
+            self.pinTitleNavigationItem.title = "\(pin_title!) Details"
         }
     }
     

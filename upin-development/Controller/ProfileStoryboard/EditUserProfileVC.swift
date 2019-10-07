@@ -17,8 +17,9 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var birthdateTextField: UITextField!
-    @IBOutlet weak var biographyTextField: UITextField!
+    @IBOutlet weak var biographyTextView: UITextView!
     @IBOutlet weak var otherGenderTextField: UITextField!
+    
     
     var interests = [Interests]()
     var listener: ListenerRegistration!
@@ -109,7 +110,7 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
                 "gender": "Male",
                 "firstName": firstNameTextField.text!,
                 "lastName": lastNameTextField.text!,
-                "biography": biographyTextField.text!,
+                "biography": biographyTextView.text!,
                 "birthdate": birthdateTextField.text!,
                 "profilePictures": [
                     "mainProfileImage": url,
@@ -120,7 +121,7 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
                 "gender": "Female",
                 "firstName": firstNameTextField.text!,
                 "lastName": lastNameTextField.text!,
-                "biography": biographyTextField.text!,
+                "biography": biographyTextView.text!,
                 "birthdate": birthdateTextField.text!,
                 "profilePictures": [
                     "mainProfileImage": url,
@@ -132,7 +133,7 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
                 "otherGenderDescription": otherGenderTextField.text!,
                 "firstName": firstNameTextField.text!,
                 "lastName": lastNameTextField.text!,
-                "biography": biographyTextField.text!,
+                "biography": biographyTextView.text!,
                 "birthdate": birthdateTextField.text!,
                 "profilePictures": [
                     "mainProfileImage": url,
@@ -177,7 +178,7 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
             self.firstNameTextField.text = firstName
             self.lastNameTextField.text = lastName
             self.birthdateTextField.text = birthdate
-            self.biographyTextField.text = biography
+            self.biographyTextView.text = biography
             
             
             
@@ -332,4 +333,6 @@ extension EditUserProfileVC: UICollectionViewDelegate, UICollectionViewDataSourc
     
     
 }
+
+
 

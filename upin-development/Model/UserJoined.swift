@@ -25,5 +25,4 @@ struct UserJoined {
         self.interests = data["interests"] as? Array ?? [""]
         self.profileImage = data["profile_image"] as? String ?? ""
         self.age = data["age"] as? Int ?? 0
-    }
-}
+    }}

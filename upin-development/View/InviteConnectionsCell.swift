@@ -42,24 +42,4 @@ class InviteConnectionsCell: UITableViewCell {
 
 }
 
-class UserInvitedProfileCell: UICollectionViewCell {
-    @IBOutlet weak var mainBackgroundView: UIView!
-    @IBOutlet weak var interestsLabel: UILabel!
-    @IBOutlet weak var counterBackgroundView: UIView!
-    @IBOutlet weak var interestsCountLabel: UILabel!
 
-    func configureCell(interests: Interests) {
-        interestsLabel.text = interests.name
-    }
-
-    override func awakeFromNib() {
-        mainBackgroundView.layer.borderWidth = 1
-        mainBackgroundView.layer.cornerRadius = 20
-        
-        counterBackgroundView.layer.borderWidth = 0.5
-        counterBackgroundView.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.8666666667, blue: 0.6941176471, alpha: 1)
-        counterBackgroundView.layer.cornerRadius = 10
-        
-        counterBackgroundView.isHidden = true
-    }
-}
