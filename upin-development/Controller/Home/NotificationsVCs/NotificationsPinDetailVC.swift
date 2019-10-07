@@ -151,50 +151,39 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
                 dateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
                 let date = dateFormatter.date(from: stringStartDate)
                 let calendar = Calendar.current
-                let components = calendar.dateComponents([.day, .hour, .minute], from: date!)
+                let components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
                 let nowDate = Date()
-                let pinDate = calendar.dateComponents([.day, .hour, .minute], from: date!)
-                let currentDate = calendar.dateComponents([.day, .hour, .minute], from: nowDate)
+                let pinDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
+                let currentDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nowDate)
 
                 let endFirebaseDate: String = pin_end_time!
                 let endDateFormatter = DateFormatter()
                 endDateFormatter.dateFormat = "MM/dd/yyyy HH:mm"
                 let endDate = dateFormatter.date(from: endFirebaseDate)
                 let endCalendar = Calendar.current
-                let endComponents = calendar.dateComponents([.day, .hour, .minute], from: endDate!)
+                let endComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: endDate!)
                 let endNowDate = Date()
-                let endPinDate = calendar.dateComponents([.day, .hour, .minute], from: endDate!)
-                let endCurrentDate = calendar.dateComponents([.day, .hour, .minute], from: endNowDate)
+                let endPinDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: endDate!)
+                let endCurrentDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: endNowDate)
                 
                 
-                if pinDate.day == currentDate.day {
-                    if currentDate.hour! >= 12 {
-                        self.startingDateLabel.text = "Today"
-                        self.endingDateLabel.text = "Today"
-
-                        if pinDate.minute! < 10 {
-                            self.startTimeLabel.text = "\(pinDate.hour!):0\(pinDate.minute!)"
-                            self.endingTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
-                        } else {
-                            self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
-                            self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
-                        }
+                if (pinDate.day! - currentDate.day!) == 0 {
+                    if pinDate.minute! < 10 {
+                        self.startingDateLabel.text = "Today at:"
+                        self.endingDateLabel.text = "Today at:"
+                        
+                        self.startTimeLabel.text = "\(pinDate.hour!):0\(pinDate.minute!)"
+                        self.endingTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
                     } else {
-                        self.startingDateLabel.text = "Today"
-                        self.endingDateLabel.text = "Today"
-
-                        if pinDate.minute! < 10 {
-                            self.startTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
-                            self.endingTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
-                        } else {
-                            self.startTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
-                            self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
-                        }
+                        self.startingDateLabel.text = "Today at:"
+                        self.endingDateLabel.text = "Today at:"
+                        
+                        self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
+                        self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
                     }
-
-                } else if (pinDate.day != currentDate.day) {
-                    self.startingDateLabel.text = "Starting at"
-                    self.endingDateLabel.text = "Starting at"
+                } else if (pinDate.day! - currentDate.day!) == 1 {
+                    self.startingDateLabel.text = "Tomorrow at"
+                    self.endingDateLabel.text = "Tomorrow at"
 
                     if pinDate.minute! < 10 {
                         self.startTimeLabel.text = "\(pinDate.hour!):0\(pinDate.minute!)"
@@ -202,6 +191,17 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
                     } else {
                         self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
                         self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
+                    }
+                } else if (pinDate.day! - currentDate.day!) == 2 {
+                    self.startingDateLabel.text = "Starting at"
+                    self.endingDateLabel.text = "Starting at"
+                    
+                    if pinDate.minute! < 10 {
+                        self.startTimeLabel.text = "\(pinDate.month!)/\(pinDate.day!)/\(pinDate.year!)  \(pinDate.hour!):0\(pinDate.minute!)"
+                        self.endingTimeLabel.text = "\(endPinDate.month!)/\(endPinDate.day!)/\(endPinDate.year!)  \(endPinDate.hour!):0\(endPinDate.minute!)"
+                    } else {
+                        self.startTimeLabel.text = "\(pinDate.month!)/\(pinDate.day!)/\(pinDate.year!)  \(pinDate.hour!):\(pinDate.minute!)"
+                        self.endingTimeLabel.text = "\(endPinDate.month!)/\(endPinDate.day!)/\(endPinDate.year!)  \(endPinDate.hour!):\(endPinDate.minute!)"
                     }
                 }
                 
