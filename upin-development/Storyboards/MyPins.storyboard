@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <!--Pin Home DetailVC-->
         <scene sceneID="Vp8-fY-Cqe">
             <objects>
-                <viewController storyboardIdentifier="PinHomeDetailVC" id="Emv-Br-o7A" customClass="PinHomeDetailVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PinHomeDetailVC" id="Emv-Br-o7A" customClass="PinHomeDetailVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8eE-pT-Yue">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,7 +229,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuG-Wi-8jM" customClass="ActionButton" customModule="upin_development" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uuG-Wi-8jM" customClass="ActionButton" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="95" y="286.33333333333337" width="215" height="50"/>
                                         <color key="backgroundColor" red="0.25490196079999999" green="0.86666666670000003" blue="0.69411764710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -320,7 +320,7 @@
         <!--Pin View DetailVC-->
         <scene sceneID="Vkq-tL-h3x">
             <objects>
-                <viewController storyboardIdentifier="PinViewDetailVC" modalPresentationStyle="fullScreen" id="DdG-VQ-Qaw" customClass="PinViewDetailVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PinViewDetailVC" modalPresentationStyle="fullScreen" id="DdG-VQ-Qaw" customClass="PinViewDetailVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O2E-tg-4ky">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -475,7 +475,7 @@
                                     <constraint firstAttribute="height" constant="1" id="etA-fK-c8C"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro0-1k-QwN" customClass="ActionButton" customModule="upin_development" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ro0-1k-QwN" customClass="ActionButton" customModule="Upin_Development" customModuleProvider="target">
                                 <rect key="frame" x="100" y="708" width="175" height="50"/>
                                 <color key="backgroundColor" red="0.93631356954574585" green="0.43616294860839844" blue="0.39335989952087402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -697,7 +697,7 @@
         <!--Step OneVC-->
         <scene sceneID="Fv1-ro-HoL">
             <objects>
-                <viewController storyboardIdentifier="StepOneVC" modalPresentationStyle="fullScreen" id="Osb-0w-nWT" customClass="StepOneVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StepOneVC" modalPresentationStyle="fullScreen" id="Osb-0w-nWT" customClass="StepOneVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4jr-UQ-tCK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -746,7 +746,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="9TO-Cg-RKX">
                                 <rect key="frame" x="20" y="228" width="335" height="41"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Pin title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eIc-7y-HUX">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="  Pin title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eIc-7y-HUX">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="iHF-Kw-f6y"/>
@@ -773,14 +773,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="WUw-cX-eIE">
                                 <rect key="frame" x="20" y="279" width="335" height="41"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Short description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kGP-7N-WLz">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Short description" translatesAutoresizingMaskIntoConstraints="NO" id="i6Z-iT-s7e">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="h6M-4B-oCn"/>
+                                            <constraint firstAttribute="height" constant="40" id="40J-xq-gcS"/>
                                         </constraints>
+                                        <color key="textColor" red="0.6267704368" green="0.64672976729999998" blue="0.67166846989999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
-                                    </textField>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWr-mv-vnS">
                                         <rect key="frame" x="0.0" y="40" width="335" height="1"/>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -790,11 +792,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="kGP-7N-WLz" firstAttribute="top" secondItem="WUw-cX-eIE" secondAttribute="top" id="OHb-Es-S16"/>
-                                    <constraint firstAttribute="trailing" secondItem="kGP-7N-WLz" secondAttribute="trailing" id="Ttq-i5-20Q"/>
                                     <constraint firstAttribute="trailing" secondItem="DWr-mv-vnS" secondAttribute="trailing" id="ZGi-De-alJ"/>
-                                    <constraint firstItem="DWr-mv-vnS" firstAttribute="top" secondItem="kGP-7N-WLz" secondAttribute="bottom" id="aOk-oa-jUI"/>
-                                    <constraint firstItem="kGP-7N-WLz" firstAttribute="leading" secondItem="WUw-cX-eIE" secondAttribute="leading" id="miH-nR-BLH"/>
+                                    <constraint firstAttribute="trailing" secondItem="i6Z-iT-s7e" secondAttribute="trailing" id="bnr-Pk-O3S"/>
+                                    <constraint firstItem="i6Z-iT-s7e" firstAttribute="leading" secondItem="WUw-cX-eIE" secondAttribute="leading" id="jvr-WL-NTG"/>
                                     <constraint firstItem="DWr-mv-vnS" firstAttribute="leading" secondItem="WUw-cX-eIE" secondAttribute="leading" id="tV5-dK-2EG"/>
                                 </constraints>
                             </stackView>
@@ -843,7 +843,7 @@
                     <connections>
                         <outlet property="pinTitleTextField" destination="eIc-7y-HUX" id="mDW-FU-dWj"/>
                         <outlet property="shortDescriptionCounterLabel" destination="VZJ-co-60j" id="bw1-Zg-U9o"/>
-                        <outlet property="shortDescriptionTextField" destination="kGP-7N-WLz" id="mOS-aV-bch"/>
+                        <outlet property="shortDescriptionTextField" destination="i6Z-iT-s7e" id="40Q-OV-xdQ"/>
                         <segue destination="Kj3-xQ-wnV" kind="show" identifier="ToStepTwoVC" id="e8r-pT-JEV"/>
                     </connections>
                 </viewController>
@@ -854,7 +854,7 @@
         <!--User At PinVC-->
         <scene sceneID="kAZ-xJ-D3U">
             <objects>
-                <viewController storyboardIdentifier="UserAtPinVC" modalPresentationStyle="fullScreen" id="r2O-Ic-s9l" customClass="UserAtPinVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserAtPinVC" modalPresentationStyle="fullScreen" id="r2O-Ic-s9l" customClass="UserAtPinVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hUA-iw-nD4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -863,7 +863,7 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserAtPinCell" rowHeight="100" id="fq0-Y5-spi" customClass="UserAtPinCell" customModule="upin_development" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserAtPinCell" rowHeight="100" id="fq0-Y5-spi" customClass="UserAtPinCell" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fq0-Y5-spi" id="uah-f2-rY5">
@@ -887,7 +887,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IaY-hd-BuH" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IaY-hd-BuH" customClass="RoundedImage" customModule="Upin_Development" customModuleProvider="target">
                                                     <rect key="frame" x="25" y="25" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="XeO-qW-q3F"/>
@@ -1008,7 +1008,7 @@
         <!--User JoinedVC-->
         <scene sceneID="sH5-RK-k2O">
             <objects>
-                <viewController storyboardIdentifier="UserJoinedVC" modalPresentationStyle="fullScreen" id="W2v-5G-WmM" customClass="UserJoinedVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserJoinedVC" modalPresentationStyle="fullScreen" id="W2v-5G-WmM" customClass="UserJoinedVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xii-Uf-4F9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1049,7 +1049,7 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserJoinedCell" rowHeight="100" id="jIp-FD-sxD" customClass="UserJoinedCell" customModule="upin_development" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserJoinedCell" rowHeight="100" id="jIp-FD-sxD" customClass="UserJoinedCell" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jIp-FD-sxD" id="CUW-Ye-ZU1">
@@ -1073,7 +1073,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="44X-Xn-1Dn" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="44X-Xn-1Dn" customClass="RoundedImage" customModule="Upin_Development" customModuleProvider="target">
                                                     <rect key="frame" x="25" y="25" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="26E-8a-fgv"/>
@@ -1162,7 +1162,7 @@
         <!--Step TwoVC-->
         <scene sceneID="zLS-OQ-TXc">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Kj3-xQ-wnV" customClass="StepTwoVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Kj3-xQ-wnV" customClass="StepTwoVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fB1-aw-hw3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1241,7 +1241,7 @@
         <!--Step ThreeVC-->
         <scene sceneID="ErH-H5-zdz">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BS3-cv-Cf9" customClass="StepThreeVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BS3-cv-Cf9" customClass="StepThreeVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p2t-9h-VTf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1395,7 +1395,7 @@
         <!--Step FourVC-->
         <scene sceneID="ZbY-Dn-Q7b">
             <objects>
-                <viewController storyboardIdentifier="StepFourVC" modalPresentationStyle="fullScreen" id="Gtp-jx-hdt" customClass="StepFourVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="StepFourVC" modalPresentationStyle="fullScreen" id="Gtp-jx-hdt" customClass="StepFourVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fUO-Ng-f0P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1559,7 +1559,7 @@
         <!--Edit PinVC-->
         <scene sceneID="EkF-e6-k4b">
             <objects>
-                <viewController storyboardIdentifier="EditPinVC" modalPresentationStyle="fullScreen" id="vIF-Wy-AMu" customClass="EditPinVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditPinVC" modalPresentationStyle="fullScreen" id="vIF-Wy-AMu" customClass="EditPinVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o1G-d9-vMG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1602,14 +1602,14 @@
                                     <constraint firstItem="TeF-uf-D6Z" firstAttribute="leading" secondItem="d9w-M1-sMG" secondAttribute="leading" id="vk1-PQ-dyq"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-Ba-UFU">
-                                <rect key="frame" x="20" y="120" width="335" height="180"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="W3g-Ba-UFU">
+                                <rect key="frame" x="20" y="120" width="335" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="o6L-fP-D4E"/>
+                                    <constraint firstAttribute="height" constant="150" id="o6L-fP-D4E"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C6X-Ha-IiF">
-                                <rect key="frame" x="20" y="359" width="335" height="40"/>
+                                <rect key="frame" x="20" y="319" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="XqK-Gt-PDd"/>
                                 </constraints>
@@ -1618,30 +1618,30 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oea-3F-na6">
-                                <rect key="frame" x="20" y="404" width="335" height="1"/>
+                                <rect key="frame" x="20" y="364" width="335" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="D51-F5-fEc"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Starting time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4R-l5-9Iw">
-                                <rect key="frame" x="19.999999999999993" y="415" width="109.33333333333331" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <rect key="frame" x="20" y="375" width="98" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i4A-Dk-yKq">
-                                <rect key="frame" x="155" y="410.33333333333331" width="200" height="30"/>
+                                <rect key="frame" x="155" y="369" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="XPD-2M-apQ"/>
                                     <constraint firstAttribute="height" constant="30" id="rXd-Ly-h1Z"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u8L-ex-x75">
-                                <rect key="frame" x="155" y="445.33333333333331" width="200" height="1"/>
+                                <rect key="frame" x="155" y="404" width="200" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="48i-DO-bb3"/>
@@ -1649,30 +1649,30 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7sE-b9-b9a">
-                                <rect key="frame" x="155" y="451.33333333333331" width="200" height="30"/>
+                                <rect key="frame" x="155" y="410" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2WG-dl-PKA"/>
                                     <constraint firstAttribute="width" constant="200" id="juI-yu-ESO"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ending about:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5xL-3J-9a7">
-                                <rect key="frame" x="20.000000000000007" y="456" width="110.66666666666669" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <rect key="frame" x="19.999999999999993" y="416" width="99.333333333333314" height="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvt-72-Ooy">
-                                <rect key="frame" x="20" y="491.33333333333331" width="335" height="1"/>
+                                <rect key="frame" x="20" y="450" width="335" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ZdH-ii-AJ1"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="bUW-Gt-GQC">
-                                <rect key="frame" x="313.33333333333331" y="607.33333333333337" width="41.666666666666686" height="17"/>
+                                <rect key="frame" x="313.33333333333331" y="546" width="41.666666666666686" height="17"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buc-kq-SK3">
                                         <rect key="frame" x="0.0" y="0.0" width="9" height="17"/>
@@ -1695,14 +1695,14 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xit-i4-Its">
-                                <rect key="frame" x="20" y="629.33333333333337" width="335" height="1"/>
+                                <rect key="frame" x="20" y="681" width="335" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="NFV-ix-8nu"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzB-ns-oO0">
-                                <rect key="frame" x="20" y="635.33333333333337" width="335" height="30"/>
+                                <rect key="frame" x="20" y="687" width="335" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="rBU-Ic-zPE"/>
                                 </constraints>
@@ -1711,14 +1711,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nIa-OY-Dqq">
-                                <rect key="frame" x="20" y="670.33333333333337" width="335" height="1"/>
+                                <rect key="frame" x="20" y="722" width="335" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Uap-8H-IVV"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kPc-KG-FcB">
-                                <rect key="frame" x="20" y="676.33333333333337" width="335" height="30"/>
+                                <rect key="frame" x="20" y="728" width="335" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="w8c-DC-u1m"/>
                                 </constraints>
@@ -1727,7 +1727,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSE-SM-gsX">
-                                <rect key="frame" x="153.66666666666666" y="310" width="68" height="29"/>
+                                <rect key="frame" x="153.66666666666666" y="280" width="68" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Edit image">
                                     <color key="titleColor" red="0.37240120770000001" green="0.86488568779999997" blue="0.6968715191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1737,13 +1737,13 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wJM-aK-spd">
-                                <rect key="frame" x="20" y="497.33333333333326" width="335" height="100"/>
+                                <rect key="frame" x="20" y="456" width="335" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="UeR-l4-sM8"/>
+                                    <constraint firstAttribute="height" constant="80" id="UeR-l4-sM8"/>
                                 </constraints>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -1751,6 +1751,7 @@
                         <constraints>
                             <constraint firstItem="5xL-3J-9a7" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" constant="20" id="1l7-C8-gxe"/>
                             <constraint firstItem="y16-a7-sU5" firstAttribute="trailing" secondItem="wJM-aK-spd" secondAttribute="trailing" constant="20" id="2cr-V4-X5Z"/>
+                            <constraint firstItem="EzB-ns-oO0" firstAttribute="top" secondItem="xit-i4-Its" secondAttribute="bottom" constant="5" id="35R-NJ-0Pa"/>
                             <constraint firstItem="EzB-ns-oO0" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" constant="20" id="36x-Fj-uoq"/>
                             <constraint firstItem="nIa-OY-Dqq" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" constant="20" id="3JJ-HI-QSO"/>
                             <constraint firstItem="Jvt-72-Ooy" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" constant="20" id="5qv-1v-cQm"/>
@@ -1775,7 +1776,7 @@
                             <constraint firstItem="W3g-Ba-UFU" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" constant="20" id="VWb-tM-xzK"/>
                             <constraint firstItem="d9w-M1-sMG" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" id="WCB-C3-QZd"/>
                             <constraint firstItem="wJM-aK-spd" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" constant="20" id="WX8-Oj-fLe"/>
-                            <constraint firstItem="C6X-Ha-IiF" firstAttribute="top" secondItem="HSE-SM-gsX" secondAttribute="bottom" constant="20" id="XXr-W9-8Fh"/>
+                            <constraint firstItem="C6X-Ha-IiF" firstAttribute="top" secondItem="HSE-SM-gsX" secondAttribute="bottom" constant="10" id="XXr-W9-8Fh"/>
                             <constraint firstItem="5xL-3J-9a7" firstAttribute="centerY" secondItem="7sE-b9-b9a" secondAttribute="centerY" id="ZC0-XS-xWj"/>
                             <constraint firstItem="y16-a7-sU5" firstAttribute="trailing" secondItem="u8L-ex-x75" secondAttribute="trailing" constant="20" id="ZIC-Wg-HHW"/>
                             <constraint firstItem="C6X-Ha-IiF" firstAttribute="centerX" secondItem="W3g-Ba-UFU" secondAttribute="centerX" id="b0g-oY-6Tp"/>
@@ -1786,12 +1787,11 @@
                             <constraint firstItem="d9w-M1-sMG" firstAttribute="trailing" secondItem="y16-a7-sU5" secondAttribute="trailing" id="dkm-fw-JHb"/>
                             <constraint firstItem="wJM-aK-spd" firstAttribute="top" secondItem="Jvt-72-Ooy" secondAttribute="bottom" constant="5" id="fpn-2w-nLo"/>
                             <constraint firstItem="y16-a7-sU5" firstAttribute="trailing" secondItem="EzB-ns-oO0" secondAttribute="trailing" constant="20" id="fsW-Oi-gJN"/>
-                            <constraint firstItem="xit-i4-Its" firstAttribute="top" secondItem="bUW-Gt-GQC" secondAttribute="bottom" constant="5" id="hia-65-Vqi"/>
                             <constraint firstItem="Oea-3F-na6" firstAttribute="top" secondItem="C6X-Ha-IiF" secondAttribute="bottom" constant="5" id="mif-Yz-m7R"/>
-                            <constraint firstItem="EzB-ns-oO0" firstAttribute="top" secondItem="xit-i4-Its" secondAttribute="bottom" constant="5" id="plw-Ht-lgn"/>
                             <constraint firstItem="Oea-3F-na6" firstAttribute="leading" secondItem="y16-a7-sU5" secondAttribute="leading" constant="20" id="t1E-z7-pNr"/>
                             <constraint firstItem="y16-a7-sU5" firstAttribute="trailing" secondItem="Jvt-72-Ooy" secondAttribute="trailing" constant="20" id="toZ-An-EoA"/>
                             <constraint firstItem="y16-a7-sU5" firstAttribute="trailing" secondItem="C6X-Ha-IiF" secondAttribute="trailing" constant="20" id="uaS-yZ-w6a"/>
+                            <constraint firstItem="y16-a7-sU5" firstAttribute="bottom" secondItem="kPc-KG-FcB" secondAttribute="bottom" constant="20" id="wy3-WO-Ebd"/>
                             <constraint firstItem="y16-a7-sU5" firstAttribute="trailing" secondItem="i4A-Dk-yKq" secondAttribute="trailing" constant="20" id="ycv-hv-OJG"/>
                             <constraint firstItem="HSE-SM-gsX" firstAttribute="top" secondItem="W3g-Ba-UFU" secondAttribute="bottom" constant="10" id="yyi-fL-hsQ"/>
                         </constraints>
@@ -1815,7 +1815,7 @@
         <!--Profile-->
         <scene sceneID="Ae2-UA-Zcz">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Gey-6E-0AC" customClass="AtPinUserProfileVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Gey-6E-0AC" customClass="AtPinUserProfileVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wp7-Nb-ThJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1852,7 +1852,7 @@
                                     <constraint firstAttribute="height" constant="100" id="rx5-88-5cc"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LRd-Xf-3ov" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="LRd-Xf-3ov" customClass="RoundedImage" customModule="Upin_Development" customModuleProvider="target">
                                 <rect key="frame" x="147.66666666666666" y="130" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="dUI-Po-Pxc"/>
@@ -1929,7 +1929,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AtPinUserProfileInterestsCell" id="AOK-G5-ElH" customClass="AtPinUserProfileInterestsCell" customModule="upin_development" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AtPinUserProfileInterestsCell" id="AOK-G5-ElH" customClass="AtPinUserProfileInterestsCell" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vju-4M-e5Q">
@@ -2112,7 +2112,7 @@
         <!--Profile-->
         <scene sceneID="hGL-oi-QB4">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="HAS-D0-fPF" customClass="UserJoinedProfileVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="HAS-D0-fPF" customClass="UserJoinedProfileVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nzq-g5-p7K">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2149,7 +2149,7 @@
                                     <constraint firstAttribute="bottom" secondItem="zvB-z6-o4E" secondAttribute="bottom" id="WOn-nY-oxX"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6Tc-yn-EuK" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6Tc-yn-EuK" customClass="RoundedImage" customModule="Upin_Development" customModuleProvider="target">
                                 <rect key="frame" x="147.66666666666666" y="130" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="5te-nf-tPv"/>
@@ -2226,7 +2226,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserJoinedProfileInterestsCell" id="TuD-Iz-chE" customClass="UserJoinedProfileInterestsCell" customModule="upin_development" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserJoinedProfileInterestsCell" id="TuD-Iz-chE" customClass="UserJoinedProfileInterestsCell" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ocz-Mc-FXN">
@@ -2413,7 +2413,7 @@
         <!--Invite ConnectionsVC-->
         <scene sceneID="yx1-7L-Fc3">
             <objects>
-                <viewController storyboardIdentifier="InviteConnectionsVC" modalPresentationStyle="fullScreen" id="LQf-Xa-hxc" customClass="InviteConnectionsVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InviteConnectionsVC" modalPresentationStyle="fullScreen" id="LQf-Xa-hxc" customClass="InviteConnectionsVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="p7P-S9-iwh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2461,14 +2461,14 @@
                                 <rect key="frame" x="0.0" y="160" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteConnectionsCell" rowHeight="120" id="BwR-30-3G3" customClass="InviteConnectionsCell" customModule="upin_development" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteConnectionsCell" rowHeight="120" id="BwR-30-3G3" customClass="InviteConnectionsCell" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BwR-30-3G3" id="FMN-Gc-cqQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cji-kf-t3n" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cji-kf-t3n" customClass="RoundedImage" customModule="Upin_Development" customModuleProvider="target">
                                                     <rect key="frame" x="15" y="35" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="UgE-f3-N3I"/>
@@ -2573,7 +2573,7 @@
         <!--User InvitedVC-->
         <scene sceneID="ZjJ-FA-wWv">
             <objects>
-                <viewController storyboardIdentifier="UserInvitedVC" modalPresentationStyle="fullScreen" id="5ta-Pz-170" customClass="UserInvitedVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInvitedVC" modalPresentationStyle="fullScreen" id="5ta-Pz-170" customClass="UserInvitedVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XIA-4X-gcs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2582,7 +2582,7 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="712"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInvitedCell" rowHeight="100" id="0wf-I4-nSr" customClass="UserInvitedCell" customModule="upin_development" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserInvitedCell" rowHeight="100" id="0wf-I4-nSr" customClass="UserInvitedCell" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0wf-I4-nSr" id="5B9-1m-ZPi">
@@ -2606,7 +2606,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c7a-1T-tic" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c7a-1T-tic" customClass="RoundedImage" customModule="Upin_Development" customModuleProvider="target">
                                                     <rect key="frame" x="25" y="25" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Vca-og-1uh"/>
@@ -2727,7 +2727,7 @@
         <!--Profile-->
         <scene sceneID="o1U-OO-IRb">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="K0Z-dh-55j" customClass="UserInvitedProfileVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="K0Z-dh-55j" customClass="UserInvitedProfileVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9aj-4R-tsK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2764,7 +2764,7 @@
                                     <constraint firstItem="Unx-6X-ksX" firstAttribute="leading" secondItem="gQN-rs-Ya1" secondAttribute="leading" id="Na1-Kb-45Y"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-SE-uk4" customClass="RoundedImage" customModule="upin_development" customModuleProvider="target">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePicLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-SE-uk4" customClass="RoundedImage" customModule="Upin_Development" customModuleProvider="target">
                                 <rect key="frame" x="147.66666666666666" y="130" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="cGI-H2-edY"/>
@@ -2841,7 +2841,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserInvitedProfileCell" id="Xyc-qB-8C5" customClass="UserInvitedProfileCell" customModule="upin_development" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="UserInvitedProfileCell" id="Xyc-qB-8C5" customClass="UserInvitedProfileCell" customModule="Upin_Development" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Tqw-YJ-9Th">

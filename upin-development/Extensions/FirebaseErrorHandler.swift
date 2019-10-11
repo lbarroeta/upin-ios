@@ -42,6 +42,12 @@ extension AuthErrorCode {
             return "Invalid phone number, please verify."
         case .userDisabled:
             return "User has been disabled, please try again later."
+        case .tooManyRequests:
+            return "Has done too many requests, please try again later."
+        case .operationNotAllowed:
+            return "Operation not allowed, please try again later."
+        case .missingPhoneNumber:
+            return "There's not phone number, please verify your information."
         default:
             return "Sorry, something went wrong, please try again."
         }

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +11,7 @@
         <!--AccountVC-->
         <scene sceneID="2JQ-aM-Qma">
             <objects>
-                <viewController storyboardIdentifier="AccountVC" id="1Ul-aX-iIZ" customClass="AccountVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AccountVC" modalPresentationStyle="fullScreen" id="1Ul-aX-iIZ" customClass="AccountVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1TQ-op-Khb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -119,7 +117,7 @@
         <!--Privacy PolicyVC-->
         <scene sceneID="2T9-bR-dm0">
             <objects>
-                <viewController storyboardIdentifier="PrivacyPolicyVC" id="Z6P-h6-AME" customClass="PrivacyPolicyVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacyPolicyVC" modalPresentationStyle="fullScreen" id="Z6P-h6-AME" customClass="PrivacyPolicyVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ba2-we-wJe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,8 +176,8 @@
                                 <rect key="frame" x="20" y="209" width="374" height="650"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NON-sz-tbK">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="1045.5"/>
-                                        <string key="text">Thank you for choosing to be part of our community at, Upin ('Company', 'we', 'us' or 'our'). We are commited to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regars to your personal information, please contact us at upin@getupin.com.
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="1203"/>
+                                        <mutableString key="text">Thank you for choosing to be part of our community at, Upin ('Company', 'we', 'us' or 'our'). We are commited to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regars to your personal information, please contact us at upin@getupin.com.
 
 When you visit our mobile application, and use our services, you trust us with your personal information. We take your privacy very seriously. In this privacy notice, we describe our privacy policy. We seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our Apps and your services.
 
@@ -200,7 +198,18 @@ This software application and Upin website is operated by Upin, Mintz Holding LL
 
 ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
 
-</string>
+
+
+
+
+
+
+
+
+
+
+
+</mutableString>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -240,7 +249,7 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
         <!--HelpVC-->
         <scene sceneID="Uvs-hz-6QK">
             <objects>
-                <viewController storyboardIdentifier="HelpVC" id="QUz-Y0-HNv" customClass="HelpVC" customModule="upin_development" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HelpVC" modalPresentationStyle="fullScreen" id="QUz-Y0-HNv" customClass="HelpVC" customModule="Upin_Development" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ih1-Oc-2Cg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,7 +315,6 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Yhq-JM-X5r"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -322,7 +330,6 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9KZ-cw-Apt"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>

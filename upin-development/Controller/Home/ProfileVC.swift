@@ -24,6 +24,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var biographyLabel: UILabel!
     @IBOutlet weak var connectionsCounterLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     
     
     var interests = [Interests]()
@@ -41,6 +42,9 @@ class ProfileVC: UIViewController {
         hud.textLabel.text = "Loading your information"
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 1.5, animated: true)
+        
+        self.navigationBar.isTranslucent = true
+        self.navigationBar.backgroundColor = .clear
 
     }
     

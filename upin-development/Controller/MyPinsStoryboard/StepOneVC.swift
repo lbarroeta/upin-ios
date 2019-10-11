@@ -9,15 +9,20 @@
 import UIKit
 import Firebase
 
-class StepOneVC: UIViewController, UITextFieldDelegate {
+class StepOneVC: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var pinTitleTextField: UITextField!
-    @IBOutlet weak var shortDescriptionTextField: UITextField!
+    @IBOutlet weak var shortDescriptionTextField: UITextView!
     @IBOutlet weak var shortDescriptionCounterLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         shortDescriptionTextField.delegate = self
+        
+        shortDescriptionTextField.text = "Short description"
+        shortDescriptionTextField.textColor = UIColor.lightGray
+        
+        
     }
     
     @IBAction func nextButtonPressed(_ sender: Any) {
@@ -35,19 +40,27 @@ class StepOneVC: UIViewController, UITextFieldDelegate {
         vc.short_description = self.shortDescriptionTextField.text!
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let currentText = textField.text ?? ""
+        
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
         guard let stringRange = Range(range, in: currentText) else {
             return false
         }
         
-        let updateText = currentText.replacingCharacters(in: stringRange, with: string)
+        let updateText = currentText.replacingCharacters(in: stringRange, with: text)
         shortDescriptionCounterLabel.text = "\(0 + updateText.count)"
         return updateText.count < 300
     }
     
-    @IBAction func cancelButtonPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if shortDescriptionTextField.textColor == UIColor.lightGray {
+            shortDescriptionTextField.text = nil
+            shortDescriptionTextField.textColor = UIColor.black
+        }
     }
     
 }

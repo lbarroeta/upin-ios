@@ -46,7 +46,6 @@
 		46860AF02343906300C5BC8B /* UserInvitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AEF2343906300C5BC8B /* UserInvitedCell.swift */; };
 		46860AF22343912100C5BC8B /* UserInvited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AF12343912100C5BC8B /* UserInvited.swift */; };
 		469BADAA232B1E7B0012CBBA /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BADA9232B1E7B0012CBBA /* PinAnnotation.swift */; };
-		46A43CB6231864BA00D6ACDF /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46A43CB5231864BA00D6ACDF /* Home.storyboard */; };
 		46A43CB92318651B00D6ACDF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CB82318651B00D6ACDF /* HomeVC.swift */; };
 		46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */; };
 		46A43CBF2318707800D6ACDF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CBE2318707800D6ACDF /* ProfileVC.swift */; };
@@ -93,6 +92,8 @@
 		46F817B7232FD10200710FBD /* CurrentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B6232FD10200710FBD /* CurrentVC.swift */; };
 		46F817B9232FD3DC00710FBD /* RequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B8232FD3DC00710FBD /* RequestedVC.swift */; };
 		46F817BB232FD49E00710FBD /* PreviousVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817BA232FD49E00710FBD /* PreviousVC.swift */; };
+		46FCAC18235007F5007D2638 /* Layout Helper in Resources */ = {isa = PBXBuildFile; fileRef = 46FCAC17235007F5007D2638 /* Layout Helper */; };
+		46FCAC1923500867007D2638 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46FCAC1B23500867007D2638 /* Home.storyboard */; };
 		D44E3845FFC4669DEE0DD8C5 /* Pods_upin_development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */; };
 /* End PBXBuildFile section */
 
@@ -137,7 +138,6 @@
 		46860AF12343912100C5BC8B /* UserInvited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvited.swift; sourceTree = "<group>"; };
 		469BADA9232B1E7B0012CBBA /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		46A43CB4231862E700D6ACDF /* upin-development.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "upin-development.entitlements"; sourceTree = "<group>"; };
-		46A43CB5231864BA00D6ACDF /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		46A43CB82318651B00D6ACDF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		46A43CBE2318707800D6ACDF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		46AECDE92341578800197F2A /* AtPinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtPinCell.swift; sourceTree = "<group>"; };
 		46AECDEB23416C4A00197F2A /* EditPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPinVC.swift; sourceTree = "<group>"; };
 		46AF9505231E0CD900F70679 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		46B00B6823171D62007E9FDC /* upin-development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "upin-development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		46B00B6823171D62007E9FDC /* Upin-Development.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upin-Development.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B00B6B23171D62007E9FDC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B00B6D23171D62007E9FDC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		46B00B7023171D62007E9FDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -186,6 +186,8 @@
 		46F817B6232FD10200710FBD /* CurrentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVC.swift; sourceTree = "<group>"; };
 		46F817B8232FD3DC00710FBD /* RequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedVC.swift; sourceTree = "<group>"; };
 		46F817BA232FD49E00710FBD /* PreviousVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousVC.swift; sourceTree = "<group>"; };
+		46FCAC17235007F5007D2638 /* Layout Helper */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Layout Helper"; sourceTree = "<group>"; };
+		46FCAC1A23500867007D2638 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		82A17A7ECCEC8498F181D778 /* Pods-upin-development.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.debug.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.debug.xcconfig"; sourceTree = "<group>"; };
 		E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_upin_development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0EB23FD1A36EA0F1C9BAD63 /* Pods-upin-development.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.release.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.release.xcconfig"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		46B00B5F23171D62007E9FDC = {
 			isa = PBXGroup;
 			children = (
+				46FCAC17235007F5007D2638 /* Layout Helper */,
 				46B00B6A23171D62007E9FDC /* upin-development */,
 				46B00B6923171D62007E9FDC /* Products */,
 				6668486248938A9CA8B3385F /* Pods */,
@@ -272,7 +275,7 @@
 		46B00B6923171D62007E9FDC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				46B00B6823171D62007E9FDC /* upin-development.app */,
+				46B00B6823171D62007E9FDC /* Upin-Development.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,7 +305,7 @@
 		46B00B7F231722D0007E9FDC /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				46A43CB5231864BA00D6ACDF /* Home.storyboard */,
+				46FCAC1B23500867007D2638 /* Home.storyboard */,
 				46B00B80231722EA007E9FDC /* Login.storyboard */,
 				46175D2E23294700003CE608 /* MyPins.storyboard */,
 				46E26955232759D10010C138 /* Profile.storyboard */,
@@ -473,7 +476,7 @@
 			);
 			name = "upin-development";
 			productName = "upin-development";
-			productReference = 46B00B6823171D62007E9FDC /* upin-development.app */;
+			productReference = 46B00B6823171D62007E9FDC /* Upin-Development.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -523,9 +526,10 @@
 				46175D2F23294700003CE608 /* MyPins.storyboard in Resources */,
 				46E0B6E62334611300E92F6A /* Message.storyboard in Resources */,
 				46B00B7E23171E34007E9FDC /* GoogleService-Info.plist in Resources */,
+				46FCAC18235007F5007D2638 /* Layout Helper in Resources */,
 				46E26956232759D10010C138 /* Profile.storyboard in Resources */,
 				46B00B7323171D65007E9FDC /* Assets.xcassets in Resources */,
-				46A43CB6231864BA00D6ACDF /* Home.storyboard in Resources */,
+				46FCAC1923500867007D2638 /* Home.storyboard in Resources */,
 				46B00B81231722EA007E9FDC /* Login.storyboard in Resources */,
 				46B00B7123171D62007E9FDC /* Main.storyboard in Resources */,
 				46E2694E232721B10010C138 /* Settings.storyboard in Resources */,
@@ -696,6 +700,14 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		46FCAC1B23500867007D2638 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46FCAC1A23500867007D2638 /* Base */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -832,7 +844,7 @@
 				);
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = upin.development;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Upin-Development";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -856,7 +868,7 @@
 				);
 				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = upin.development;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Upin-Development";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
