@@ -21,8 +21,6 @@ class StepThreeVC: UIViewController, CLLocationManagerDelegate {
     
     var tableView = UITableView()
     var matchingItems: [MKMapItem] = [MKMapItem]()
-    var searchCompleter = MKLocalSearchCompleter()
-    var searchResults = [MKLocalSearchCompletion]()
 
     
     // Segue variables
@@ -39,7 +37,7 @@ class StepThreeVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         pinLocationTextField.delegate = self
-        searchCompleter.delegate = self
+        
 
     }
     
@@ -97,7 +95,7 @@ extension StepThreeVC: MKMapViewDelegate {
 }
 
 extension StepThreeVC: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField, searchText: String) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == pinLocationTextField {
             
             tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 170)
@@ -128,6 +126,7 @@ extension StepThreeVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         if pinLocationTextField.text == "" {
+            performSearch()
             animateTableView(shouldShow: false)
         }
     }
@@ -198,9 +197,3 @@ extension StepThreeVC: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension StepThreeVC: MKLocalSearchCompleterDelegate {
-    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        searchResults = completer.results
-        tableView.reloadData()
-    }
-}
