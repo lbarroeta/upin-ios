@@ -17,6 +17,7 @@ class NotificationsVC: UIViewController {
     @IBOutlet weak var connectionsView: UIView!
     @IBOutlet weak var invitationsView: UIView!
     @IBOutlet weak var allView: UIView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var myPins = [Pins]()
     var listener: ListenerRegistration!
@@ -25,6 +26,9 @@ class NotificationsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
 
         setUpTableView()
     }
@@ -42,6 +46,7 @@ class NotificationsVC: UIViewController {
         listener.remove()
         myPins.removeAll()
         tableView.reloadData()
+        
     }
 
 

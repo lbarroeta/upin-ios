@@ -26,6 +26,7 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
     var pin_ending_time: String?
     var host_id: String?
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navigationItemTitle: UINavigationItem!
     @IBOutlet weak var pin_photo: UIImageView!
     @IBOutlet weak var pin_title: UILabel!
@@ -52,6 +53,10 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        
         pinListener()
         highestAgeListener()
         lowestAgeListener()
@@ -169,14 +174,14 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
                 
                 if (pinDate.day! - currentDate.day!) == 0 {
                     if pinDate.minute! < 10 {
-                        self.startingDateLabel.text = "Starting today at"
-                        self.endingDateLabel.text = "Starting today at"
+                        self.startingDateLabel.text = "Today at"
+                        self.endingDateLabel.text = "Today at"
                         
                         self.startTimeLabel.text = "\(pinDate.hour!):0\(pinDate.minute!)"
                         self.endingTimeLabel.text = "\(endPinDate.hour!):0\(endPinDate.minute!)"
                     } else {
-                        self.startingDateLabel.text = "Starting today at"
-                        self.endingDateLabel.text = "Starting today at"
+                        self.startingDateLabel.text = "Today at"
+                        self.endingDateLabel.text = "Today at"
                         
                         self.startTimeLabel.text = "\(pinDate.hour!):\(pinDate.minute!)"
                         self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
@@ -193,8 +198,9 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
                         self.endingTimeLabel.text = "\(endPinDate.hour!):\(endPinDate.minute!)"
                     }
                 } else if (pinDate.day! - currentDate.day!) >= 2 {
-                    self.startingDateLabel.text = "Starting"
-                    self.endingDateLabel.text = "Starting"
+                    
+                    self.startingDateLabel.text = "Starting at"
+                    self.endingDateLabel.text = "Starting at"
                     
                     if pinDate.minute! < 10 {
                         self.startTimeLabel.text = "\(pinDate.month!)/\(pinDate.day!)/\(pinDate.year!)  \(pinDate.hour!):0\(pinDate.minute!)"
@@ -204,9 +210,10 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
                         self.endingTimeLabel.text = "\(endPinDate.month!)/\(endPinDate.day!)/\(endPinDate.year!)  \(endPinDate.hour!):\(endPinDate.minute!)"
                     }
                 } else {
-                    self.startingDateLabel.text = "Starting:"
-                    self.endingDateLabel.text = "Starting:"
                     
+                    self.startingDateLabel.text = "Starting at"
+                    self.endingDateLabel.text = "Starting at"
+                
                     if pinDate.minute! < 10 {
                         self.startTimeLabel.text = "\(pinDate.month!)/\(pinDate.day!)/\(pinDate.year!)  \(pinDate.hour!):0\(pinDate.minute!)"
                         self.endingTimeLabel.text = "\(endPinDate.month!)/\(endPinDate.day!)/\(endPinDate.year!)  \(endPinDate.hour!):0\(endPinDate.minute!)"

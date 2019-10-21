@@ -12,6 +12,7 @@ import Firebase
 class UserAtPinVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var users = [UserAtPin]()
     var selectedPin = ""
@@ -22,6 +23,8 @@ class UserAtPinVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
 
         setupTableView()
     }

@@ -51,7 +51,7 @@ class GenderVC: UIViewController {
         let finalYear = calendar.date(from: components)
         let age = calendar.dateComponents([.year], from: finalYear!, to: now)
         
-        var userAge = age.year!
+        let userAge = age.year!
                 
         var userData = [String: Any]()
         
@@ -59,12 +59,14 @@ class GenderVC: UIViewController {
             userData = [
                 "gender": "Male",
                 "birthdate": birthdateTextField.text!,
+                "birthdate_change_count": 0,
                 "age": userAge
             ]
         } else if self.genderSegmentedControl.selectedSegmentIndex == 1 {
             userData = [
                 "gender": "Female",
                 "birthdate": birthdateTextField.text!,
+                "birthdate_change_count": 0,
                 "age": userAge
             ]
         } else {
@@ -72,6 +74,7 @@ class GenderVC: UIViewController {
                 "gender": "Other",
                 "otherGenderDescription": otherGenderTextField.text!,
                 "birthdate": birthdateTextField.text!,
+                "birthdate_change_count": 0,
                 "age": userAge
             ]
         }

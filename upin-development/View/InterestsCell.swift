@@ -22,6 +22,9 @@ class InterestsCell: UICollectionViewCell {
             if selectedCell == false {
                 numberBackgroundView.isHidden = false
                 selectedCell = true
+            } else {
+                numberBackgroundView.isHidden = true
+                selectedCell = false
             }
         }
     }

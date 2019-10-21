@@ -18,5 +18,7 @@ target 'upin-development' do
     pod 'FittedSheets'
     pod 'Geofirestore'
     pod 'Firebase/DynamicLinks'
+    pod 'GooglePlacesSearchController'
+    pod 'GooglePlaces'
 
 end

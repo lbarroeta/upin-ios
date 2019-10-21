@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1G-PS-kgK">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csW-SC-fTv">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="35" width="414" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="5tA-8r-jKa"/>
                                         </constraints>
@@ -50,37 +50,37 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="csW-SC-fTv" secondAttribute="trailing" id="1wQ-ir-Odh"/>
                                     <constraint firstAttribute="bottom" secondItem="csW-SC-fTv" secondAttribute="bottom" id="G4G-MX-JQY"/>
-                                    <constraint firstAttribute="height" constant="100" id="McC-UW-KZc"/>
+                                    <constraint firstAttribute="height" constant="80" id="McC-UW-KZc"/>
                                     <constraint firstItem="csW-SC-fTv" firstAttribute="leading" secondItem="z1G-PS-kgK" secondAttribute="leading" id="xdo-Oo-AtN"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3v-QP-Bdo">
-                                <rect key="frame" x="20" y="120" width="112" height="21"/>
+                                <rect key="frame" x="20" y="100" width="112" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+593979258160" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9V-bF-7Ww">
-                                <rect key="frame" x="264" y="120" width="130" height="21"/>
+                                <rect key="frame" x="264" y="100" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MUY-Oj-tcK">
-                                <rect key="frame" x="20" y="151" width="374" height="1"/>
+                                <rect key="frame" x="20" y="131" width="374" height="1"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="OBz-S6-IdR"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Png-8z-ROP">
-                                <rect key="frame" x="20" y="162" width="41" height="21"/>
+                                <rect key="frame" x="20" y="142" width="41" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="leonardo@stackitgroup.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcQ-os-3TT">
-                                <rect key="frame" x="178.5" y="162" width="215.5" height="21"/>
+                                <rect key="frame" x="178.5" y="142" width="215.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -123,10 +123,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkg-Hz-Qjz">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WfS-2f-RSz">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="35" width="414" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="lou-50-I3y"/>
                                         </constraints>
@@ -149,13 +149,13 @@
                                 <color key="backgroundColor" red="0.46138572690000001" green="0.88912636040000004" blue="0.79186606410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="WfS-2f-RSz" secondAttribute="bottom" id="5aE-rJ-hcF"/>
-                                    <constraint firstAttribute="height" constant="100" id="CT3-Qg-BGk"/>
+                                    <constraint firstAttribute="height" constant="80" id="CT3-Qg-BGk"/>
                                     <constraint firstItem="WfS-2f-RSz" firstAttribute="leading" secondItem="Zkg-Hz-Qjz" secondAttribute="leading" id="a38-zE-xic"/>
                                     <constraint firstAttribute="trailing" secondItem="WfS-2f-RSz" secondAttribute="trailing" id="bLR-NJ-N4l"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mkm-El-fjB">
-                                <rect key="frame" x="91.5" y="130" width="231.5" height="59"/>
+                                <rect key="frame" x="91.5" y="110" width="231.5" height="59"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YtG-Le-ebX">
                                         <rect key="frame" x="0.0" y="0.0" width="231.5" height="36"/>
@@ -173,11 +173,11 @@
                                 </subviews>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYH-Cf-KCK">
-                                <rect key="frame" x="20" y="209" width="374" height="650"/>
+                                <rect key="frame" x="20" y="189" width="374" height="650"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NON-sz-tbK">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="1203"/>
-                                        <mutableString key="text">Thank you for choosing to be part of our community at, Upin ('Company', 'we', 'us' or 'our'). We are commited to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regars to your personal information, please contact us at upin@getupin.com.
+                                        <string key="text">Thank you for choosing to be part of our community at, Upin ('Company', 'we', 'us' or 'our'). We are commited to protecting your personal information and your right to privacy. If you have any questions or concerns about our policy, or our practices with regars to your personal information, please contact us at upin@getupin.com.
 
 When you visit our mobile application, and use our services, you trust us with your personal information. We take your privacy very seriously. In this privacy notice, we describe our privacy policy. We seek to explain to you in the clearest way possible what information we collect, how we use it and what rights you have in relation to it. We hope you take some time to read through it carefully, as it is important. If there are any terms in this privacy policy that you do not agree with, please discontinue use of our Apps and your services.
 
@@ -209,7 +209,7 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
 
 
 
-</mutableString>
+</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -255,10 +255,10 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAO-Tc-xYq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                 <subviews>
                                     <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVe-RF-GAv">
-                                        <rect key="frame" x="0.0" y="55" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="35" width="414" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Imp-xk-6Xa"/>
                                         </constraints>
@@ -287,13 +287,13 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                                 <color key="backgroundColor" red="0.46138572690000001" green="0.88912636040000004" blue="0.79186606410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="rVe-RF-GAv" secondAttribute="trailing" id="Agc-Tm-aDk"/>
-                                    <constraint firstAttribute="height" constant="100" id="Czw-S1-tIu"/>
+                                    <constraint firstAttribute="height" constant="80" id="Czw-S1-tIu"/>
                                     <constraint firstAttribute="bottom" secondItem="rVe-RF-GAv" secondAttribute="bottom" id="kCN-9o-jNB"/>
                                     <constraint firstItem="rVe-RF-GAv" firstAttribute="leading" secondItem="iAO-Tc-xYq" secondAttribute="leading" id="sve-n4-KcX"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="r4N-YV-ZDt">
-                                <rect key="frame" x="20" y="130" width="374" height="77"/>
+                                <rect key="frame" x="20" y="110" width="374" height="77"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylk-wk-zdV">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="36"/>
@@ -311,7 +311,7 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                                 </subviews>
                             </stackView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F52-He-xHK">
-                                <rect key="frame" x="20" y="287" width="374" height="40"/>
+                                <rect key="frame" x="20" y="267" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Yhq-JM-X5r"/>
                                 </constraints>
@@ -319,14 +319,14 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-m2-ykY">
-                                <rect key="frame" x="20" y="327" width="374" height="1"/>
+                                <rect key="frame" x="20" y="307" width="374" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Xjv-cW-AOx"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0X-BK-h5f">
-                                <rect key="frame" x="20" y="338" width="374" height="40"/>
+                                <rect key="frame" x="20" y="318" width="374" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9KZ-cw-Apt"/>
                                 </constraints>
@@ -334,7 +334,7 @@ ACCESSING THE SOFTWARE APPLICATION AND ACCOUNT SECURITY:
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mK4-xx-bzK">
-                                <rect key="frame" x="20" y="378" width="374" height="1"/>
+                                <rect key="frame" x="20" y="358" width="374" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="mn8-Ok-eGc"/>

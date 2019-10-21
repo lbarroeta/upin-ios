@@ -18,12 +18,18 @@ class UserInvitedProfileVC: UIViewController {
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     
     var selectedUser: UserInvited!
     var interestNames = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        
         setupCollectionView()
         userListener()
 

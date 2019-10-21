@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import CoreLocation
+import JGProgressHUD
+
 class StepFourVC: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var startingTimeTextField: UITextField!
@@ -36,6 +38,8 @@ class StepFourVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(map_search_description)
         setStartingDatePicker()
         setEndingDatePicker()
         
@@ -53,19 +57,21 @@ class StepFourVC: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
-        
-            
     }
+    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         currentUserlatitude = location.latitude
         currentUserlongitude = location.longitude
-        print("\(currentUserlongitude!)\(currentUserlongitude!)")
+        
     }
     
     @IBAction func dropPinButtonPressed(_ sender: Any) {
-        //presentHomeStoryboard()
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Creating pin..."
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 5.0)
         self.uploadImageToFirebaseStorage()
     }
     
@@ -240,25 +246,6 @@ class StepFourVC: UIViewController, CLLocationManagerDelegate {
         let textFieldDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: date!)
         let currentDate = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: nowDate)
         
-        
-    
-        if (textFieldDate.day == currentDate.day) {
-            if currentDate.hour! >= 12 {
-                self.startingTimeTextField.text = "Today \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
-                self.endingTimeTextField.text = "Today \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
-            } else {
-                self.startingTimeTextField.text = "Today: \(textFieldDate.hour!):\(textFieldDate.minute!)am"
-                self.endingTimeTextField.text = "Today: \(textFieldDate.hour!):\(textFieldDate.minute!)am"
-            }
-        } else if textFieldDate.weekday != currentDate.weekday {
-            if currentDate.hour! >= 12 {
-                self.startingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
-                self.endingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)pm"
-            } else {
-                self.startingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)am"
-                self.endingTimeTextField.text = "Starting at \(textFieldDate.hour!):\(textFieldDate.minute!)am"
-            }
-        }
     }
     
     

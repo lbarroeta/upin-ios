@@ -11,9 +11,13 @@ import Firebase
 
 class SettingsVC: UIViewController {
 
+    @IBOutlet weak var navBar: UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
         
     }
     

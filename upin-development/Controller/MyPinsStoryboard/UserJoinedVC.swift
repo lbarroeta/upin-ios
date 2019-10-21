@@ -12,6 +12,7 @@ import Firebase
 class UserJoinedVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var users = [UserJoined]()
     var selectedUser: UserJoined!
@@ -20,6 +21,10 @@ class UserJoinedVC: UIViewController {
     
 
     override func viewDidLoad() {
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        
         super.viewDidLoad()
         setupTableView()
         

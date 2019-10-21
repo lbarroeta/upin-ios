@@ -18,6 +18,7 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet weak var pinDetailview: UIView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var mapViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     let locationManager = CLLocationManager()
     let authorizationStatus = CLLocationManager.authorizationStatus()
@@ -28,6 +29,10 @@ class HomeVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        navBar.layer.borderColor = .none
         
         pinListener()
         

@@ -18,6 +18,7 @@ class MyPinsVC: UIViewController {
     @IBOutlet weak var joinedView: UIView!
     @IBOutlet weak var requestedView: UIView!
     @IBOutlet weak var previousView: UIView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var myPins = [Pins]()
     var listener: ListenerRegistration!
@@ -25,6 +26,10 @@ class MyPinsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        
         setupTableView()
     }
     

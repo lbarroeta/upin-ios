@@ -40,7 +40,7 @@ class StepTwoVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as! StepThreeVC
+        let vc = segue.destination as! StepThreeVC2
         vc.pinImage = pinImage.image
         vc.pin_title = pin_title
         vc.short_description = short_description
@@ -57,12 +57,34 @@ extension StepTwoVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     func launchImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let galleryOption = UIAlertAction(title: "Gallery", style: .default) { (action) in
+            imagePicker.sourceType = .photoLibrary
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        let cameraOption = UIAlertAction(title: "Camera", style: .default) { (action) in
+            imagePicker.sourceType = .camera
+            imagePicker.delegate = self
+            self.present(imagePicker, animated: true, completion: nil)
+        }
+        
+        actionSheet.addAction(cameraOption)
+        actionSheet.addAction(galleryOption)
+        actionSheet.addAction(cancel)
+        
+        
+        present(actionSheet, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else { return }
-        pinImage.contentMode = .scaleToFill
+        pinImage.contentMode = .scaleAspectFill
+        pinImage.clipsToBounds = true
         pinImage.image = image
         
         if pinImage.image == image {

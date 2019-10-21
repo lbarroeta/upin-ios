@@ -8,22 +8,38 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var birthdateTextField: UITextField!
-    @IBOutlet weak var biographyTextView: UITextView!
-    @IBOutlet weak var otherGenderTextField: UITextField!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var otherGenderTextField: UITextField!
+        
+    @IBOutlet weak var birthdateTextField: UITextField!
+    @IBOutlet weak var birthdateChangeFirstLabel: UILabel!
+    @IBOutlet weak var birthdateChangeCounterLabel: UILabel!
+    @IBOutlet weak var birthdateChangeLastLabel: UILabel!
+    
+    @IBOutlet weak var biographyTextViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var biographyTextView: UITextView!
+    @IBOutlet weak var biographyCounterLabel: UILabel!
     
     var interests = [Interests]()
+    var userCurrentInterests = [Interests]()
+    var userInterestsNames = [String]()
     var listener: ListenerRegistration!
     var userInterests = [String]()
+    var birthdayChanged = false
+    var birthdayChangeFirebaseCounter: NSNumber = 0.0
+    var userBirthdate = ""
+    
+    let hud = JGProgressHUD(style: .dark)
     
     private var birthdatePicker: UIDatePicker?
     
@@ -31,8 +47,9 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
         super.viewDidLoad()
 
         let font: [AnyHashable : Any] = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 8)]
-        segmentedControl.setTitleTextAttributes(font as! [NSAttributedString.Key : Any], for: .normal)
+        segmentedControl.setTitleTextAttributes(font as? [NSAttributedString.Key : Any], for: .normal)
         
+        biographyTextView.delegate = self
     
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -40,8 +57,8 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
         setDatePicker()
         birthdateTextField.inputView = birthdatePicker
         
-        interestsListener()
         currentUserListener()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,10 +85,25 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        uploadImageToFirebase()
         
+        self.hud.textLabel.text = "Updating your profile..."
+        self.hud.show(in: self.view)
+        self.hud.dismiss(afterDelay: 1.5, animated: true)
+        
+        uploadImageToFirebase()
     }
     
+   
+    @IBAction func birthdateTextFieldChanged(_ sender: UITextField) {
+        if self.birthdateTextField.text != self.userBirthdate {
+            // Birthdate changed
+            self.birthdayChanged = true
+        } else {
+            // Birthdate didn't changed
+            self.birthdayChanged = false
+        }
+    }
+
     func uploadImageToFirebase() {
         guard let currentUser = Auth.auth().currentUser else { return }
         guard let image = profileImage.image else { return }
@@ -95,7 +127,7 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
                 guard let url = url else { return }
                 self.updateProfileOnFirebase(url: url.absoluteString)
             }
-            
+
             self.dismiss(animated: true, completion: nil)
         }
     }
@@ -105,13 +137,14 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
         let currentUserReference = Firestore.firestore().collection("users").document(currentUser.uid)
         var userData = [String: Any]()
         
-        if self.segmentedControl.selectedSegmentIndex == 0 {
+        if (self.segmentedControl.selectedSegmentIndex == 0)  {
             userData = [
                 "gender": "Male",
                 "firstName": firstNameTextField.text!,
                 "lastName": lastNameTextField.text!,
                 "biography": biographyTextView.text!,
                 "birthdate": birthdateTextField.text!,
+                "birthdate_change_count": 1,
                 "profilePictures": [
                     "mainProfileImage": url,
                 ]
@@ -141,11 +174,19 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
             ]
         }
         
+        // Updating the rest of the data
         currentUserReference.updateData(userData) { (error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
                 return
             }
+        }
+        
+        // Updating birthdate change counter
+        if birthdayChanged == true {
+            currentUserReference.updateData([
+                "birthdate_change_counter": Int(truncating: self.birthdayChangeFirebaseCounter) + 1
+            ])
         }
     }
     
@@ -170,18 +211,32 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
             let lastName = data["lastName"] as? String
             let gender = data["gender"] as? String
             let birthdate = data["birthdate"] as? String
+            let birthdate_change_counter = data["birthdate_change_counter"] as? NSNumber
             let biography = data["biography"] as? String
             let otherGenderDescription = data["otherGenderDescription"] as? String
             self.userInterests = data["interests"] as? Array ?? [""]
+            self.userInterestsNames = data["interests"] as? Array ?? [""]
+            self.collectionView.reloadData()
             
             self.profileImage.kf.setImage(with: mainProfileImageURL)
             self.firstNameTextField.text = firstName
             self.lastNameTextField.text = lastName
-            self.birthdateTextField.text = birthdate
+            
+            
             self.biographyTextView.text = biography
+            self.biographyTextViewHeightConstraint.constant = self.biographyTextView.contentSize.height
             
+            self.birthdateTextField.text = birthdate
+            self.birthdayChangeFirebaseCounter = birthdate_change_counter!
+            self.birthdateChangeCounterLabel.text = String(3 - Int(truncating: self.birthdayChangeFirebaseCounter))
+            self.userBirthdate = birthdate!
             
+            // Counting the characters coming from database for biography, so we can set the counter label from start.
+            let biographyCharacterCount: String = self.biographyTextView.text!
+            let intbiographyCharacterCount = Int(biographyCharacterCount.count)
+            self.biographyCounterLabel.text = "\(intbiographyCharacterCount)"
             
+            //Setting the segmented control based on the gender from database
             if gender == "Male" {
                 self.segmentedControl.selectedSegmentIndex = 0
             } else if gender == "Female" {
@@ -191,34 +246,38 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
                 self.otherGenderTextField.isHidden = false
                 self.otherGenderTextField.text = otherGenderDescription
             }
+            
+            // Setting the message based on the birthdate change counter
+            if self.birthdayChangeFirebaseCounter == 3 {
+                self.birthdateTextField.isEnabled = false
+                self.birthdateChangeFirstLabel.text = "You've reached the maximum of birthdate changes"
+                self.birthdateChangeCounterLabel.isHidden = true
+                self.birthdateChangeLastLabel.isHidden = true
+            } else if self.birthdayChangeFirebaseCounter == 2 {
+                self.birthdateTextField.isEnabled = true
+                self.birthdateChangeFirstLabel.text = "You can only change your birthdate"
+                self.birthdateChangeCounterLabel.isHidden = false
+                self.birthdateChangeLastLabel.isHidden = false
+                self.birthdateChangeLastLabel.text = "more time"
+            } else if self.birthdayChangeFirebaseCounter == 1 {
+                self.birthdateTextField.isEnabled = true
+                self.birthdateChangeFirstLabel.text = "You can only change your birthdate"
+                self.birthdateChangeCounterLabel.isHidden = false
+                self.birthdateChangeLastLabel.isHidden = false
+                self.birthdateChangeLastLabel.text = "more times"
+            } else if self.birthdayChangeFirebaseCounter == 0 {
+                self.birthdateTextField.isEnabled = true
+                self.birthdateChangeFirstLabel.text = "You can only change your birthdate"
+                self.birthdateChangeCounterLabel.isHidden = false
+                self.birthdateChangeLastLabel.isHidden = false
+                self.birthdateChangeLastLabel.text = "more times"
+            }
+            
         }
         
         self.collectionView.reloadData()
     }
-    
-    func interestsListener() {
-        Firestore.firestore().collection("interests").whereField("is_active", isEqualTo: true).order(by: "name", descending: false).addSnapshotListener({ (snapshot, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            
-            snapshot?.documentChanges.forEach({ (change) in
-                let data = change.document.data()
-                let interest = Interests.init(data: data)
-                
-                switch change.type {
-                case .added:
-                    self.onInterestAdded(change: change, interest: interest)
-                case .modified:
-                    self.onInterestModified(change: change, interest: interest)
-                case .removed:
-                    self.onInterestRemoved(change: change)
-                }
-            })
-        })
-    }
-    
+        
     func setDatePicker() {
         birthdatePicker = UIDatePicker()
         birthdatePicker?.datePickerMode = .date
@@ -272,67 +331,90 @@ class EditUserProfileVC: UIViewController, UIImagePickerControllerDelegate, UINa
 }
 
 extension EditUserProfileVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    func onInterestAdded(change: DocumentChange, interest: Interests) {
-        let newIndex = Int(change.newIndex)
-        interests.insert(interest, at: newIndex)
-        collectionView.insertItems(at: [IndexPath.init(item: newIndex, section: 0)])
-    }
-    
-    func onInterestModified(change: DocumentChange, interest: Interests) {
-        if change.newIndex == change.oldIndex {
-            let index = Int(change.newIndex)
-            interests[index] = interest
-            collectionView.reloadItems(at: [IndexPath(item: index, section: 0)])
-        } else {
-            let oldIndex = Int(change.oldIndex)
-            let newIndex = Int(change.newIndex)
-            interests.remove(at: oldIndex)
-            interests.insert(interest, at: newIndex)
-            
-            collectionView.moveItem(at: IndexPath(item: oldIndex, section: 0), to: IndexPath(item: newIndex, section: 0))
-        }
-    }
-    
-    func onInterestRemoved(change: DocumentChange) {
-        let oldIndex = Int(change.oldIndex)
-        interests.remove(at: oldIndex)
-        collectionView.deleteItems(at: [IndexPath.init(item: oldIndex, section: 0)])
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return interests.count
+        return userInterestsNames.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditProfileInterestCell", for: indexPath) as? EditProfileInterestCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditUserProfileInterests", for: indexPath) as! ProfileInterestsCell
+        cell.interestsLabel.text = userInterestsNames[indexPath.item]
+       
+        if indexPath.item == 0 {
+            cell.mainBackgroundView.layer.borderColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.mainBackgroundView.layer.cornerRadius = 20
+            cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.interestsLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    
+            cell.counterBackgroundView.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.counterBackgroundView.layer.cornerRadius = 10
             
-            let fireBaseInterest = interests[indexPath.item]
+            cell.counterBackgroundView.isHidden = false
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                if !self.userInterests.contains(fireBaseInterest.name) {
-                    cell.interestNameLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-                    cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                    cell.mainBackgroundView.layer.borderWidth = 0.5
-                    cell.mainBackgroundView.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-                    cell.mainBackgroundView.layer.cornerRadius = 15
-                } else {
-                    cell.interestNameLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                    cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
-                    cell.mainBackgroundView.layer.cornerRadius = 15
-                }
-            }
-                       
-            cell.configureCell(interests: interests[indexPath.item])
+            cell.interestsCountLabel.textColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.interestsCountLabel.text = "1"
+        } else if indexPath.item == 1 {
+            cell.mainBackgroundView.layer.borderColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.mainBackgroundView.layer.cornerRadius = 20
+            cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.interestsLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+    
+            cell.counterBackgroundView.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.counterBackgroundView.layer.cornerRadius = 10
             
-            return cell
+            cell.counterBackgroundView.isHidden = false
+            cell.interestsCountLabel.textColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.interestsCountLabel.text = "2"
+        } else if indexPath.item == 2 {
+
+            cell.mainBackgroundView.layer.borderColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.mainBackgroundView.layer.cornerRadius = 20
+            cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.interestsLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+
+            cell.counterBackgroundView.layer.borderColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.counterBackgroundView.layer.cornerRadius = 10
+            
+            cell.counterBackgroundView.isHidden = false
+            cell.interestsCountLabel.textColor = #colorLiteral(red: 0.9327976704, green: 0.7618982792, blue: 0.1620329022, alpha: 1)
+            cell.interestsCountLabel.text = "3"
+            
+        } else if 3...7 ~= indexPath.item {
+            cell.mainBackgroundView.layer.borderColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+            cell.mainBackgroundView.layer.cornerRadius = 20
+            cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.interestsLabel.textColor = #colorLiteral(red: 0.3724012077, green: 0.8648856878, blue: 0.6968715191, alpha: 1)
+            cell.counterBackgroundView.isHidden = true
         }
         
-        return UICollectionViewCell()
+        return cell
     }
-    
     
 }
 
-
+extension EditUserProfileVC: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+           let currentText = textView.text ?? ""
+           guard let stringRange = Range(range, in: currentText) else {
+               return false
+           }
+           
+           let updateText = currentText.replacingCharacters(in: stringRange, with: text)
+           biographyCounterLabel.text = "\(0 + updateText.count)"
+           return updateText.count <= 300
+       }
+   
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: 335, height: .max)
+        let estimatedSize = textView.sizeThatFits(size)
+        
+        textView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+        }
+    }
+}
 

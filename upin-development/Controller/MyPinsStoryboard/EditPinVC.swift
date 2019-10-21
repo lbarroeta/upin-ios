@@ -10,20 +10,33 @@ import UIKit
 import Firebase
 import CoreLocation
 import MapKit
+import JGProgressHUD
 
 class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var pinImage: UIImageView!
-    @IBOutlet weak var pinTitleTextField: UITextField!
+    
     @IBOutlet weak var startingTimeTextField: UITextField!
     @IBOutlet weak var endingTimeTextField: UITextField!
-    @IBOutlet weak var scrollingDescriptionTextField: UITextView!
-    @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var extraDirectionsTextField: UITextField!
     @IBOutlet weak var pinTitleNavigationItem: UINavigationItem!
     
-    var selectedPin = ""
+    @IBOutlet weak var addressSearchBar: UISearchBar!
+    @IBOutlet weak var searchTableView: UITableView!
+    
+    @IBOutlet weak var pinTitleTextField: UITextField!
+    @IBOutlet weak var pinTitleCounterLabel: UILabel!
+    
+    @IBOutlet weak var shortDescriptionTextField: UITextView!
+    @IBOutlet weak var shortDescriptionCounterLabel: UILabel!
+    @IBOutlet weak var shortDescriptionHeighConstraint: NSLayoutConstraint!
+    
+    var searchCompleter = MKLocalSearchCompleter()
+    var searchResults = [MKLocalSearchCompletion]()
     var coordinate: CLLocationCoordinate2D?
+    
+    var selectedPin = ""
     var selected_latitude: Double = 0.0
     var selected_longitude: Double = 0.0
     var tableView = UITableView()
@@ -32,23 +45,51 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
     
     let locationManager = CLLocationManager()
     
-    
     private var startingDatePicker: UIDatePicker?
     private var endingDatePicker: UIDatePicker?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        
+        pinListener()
+    
         setStartingDatePicker()
         setEndingDatePicker()
-        
-        
         startingTimeTextField.inputView = startingDatePicker
         endingTimeTextField.inputView = endingDatePicker
         
-        addressTextField.delegate = self
-
-        pinListener()
+        shortDescriptionTextField.delegate = self
+        pinTitleTextField.delegate = self
+        
+        searchCompleter.delegate = self
+        searchTableView.isHidden = true
+        
+        addressSearchBar.isTranslucent = true
+        addressSearchBar.setImage(UIImage(), for: .search, state: .normal)
+        
+        if let textfield = addressSearchBar.value(forKey: "searchField") as? UITextField {
+            textfield.textColor = .lightGray
+            textfield.backgroundColor = .none
+            
+            //textfield.tintColorDidChange()
+            textfield.borderStyle = .none
+            textfield.textAlignment = .left
+            textfield.tintColor = .blue
+            textfield.font?.withSize(10)
+            
+        }
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
     }
+    
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -85,6 +126,10 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Updating pin..."
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 5.0)
         uploadImageToFirebaseStorage()
     }
     
@@ -99,7 +144,7 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
             "longitude": selected_longitude,
             "map_search_description": map_search_description,
             "pin_title": pinTitleTextField.text!,
-            "short_description": scrollingDescriptionTextField.text!,
+            "short_description": shortDescriptionTextField.text!,
             "starting_time": startingTimeTextField.text!,
             "pin_photo": url
         ]
@@ -114,7 +159,7 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
     
     
     func pinListener() {
-        var pinReference = Firestore.firestore().collection("pins").document(selectedPin)
+        let pinReference = Firestore.firestore().collection("pins").document(selectedPin)
         pinReference.addSnapshotListener { (snapshot, error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
@@ -137,10 +182,19 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
             self.pinTitleTextField.text = pin_title!
             self.startingTimeTextField.text = starting_time!
             self.endingTimeTextField.text = ending_time!
-            self.scrollingDescriptionTextField.text = short_description!
-            self.addressTextField.text = pin_address!
+            self.shortDescriptionTextField.text = short_description!
+            self.addressSearchBar.text = pin_address!
             self.extraDirectionsTextField.text = extra_directions!
             self.pinTitleNavigationItem.title = "\(pin_title!) Details"
+            self.shortDescriptionHeighConstraint.constant = self.shortDescriptionTextField.contentSize.height
+            
+            let shortDescriptionCharacterCount: String = self.shortDescriptionTextField.text!
+            let intShortDescCharacterCounter = Int(shortDescriptionCharacterCount.count)
+            self.shortDescriptionCounterLabel.text = "\(intShortDescCharacterCounter)"
+            
+            let pinTitleCharacterCount: String = self.pinTitleTextField.text!
+            let intPinTitleCharacterCounter = Int(pinTitleCharacterCount.count)
+            self.pinTitleCounterLabel.text = "\(intPinTitleCharacterCounter)"
         }
     }
     
@@ -208,127 +262,205 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
         endingTimeTextField.text = dateFormatter.string(from: endDatePicker.date)
     }
     
+    func getUserLocation() {
+        guard let coordinate = locationManager.location?.coordinate else { return }
+        self.addressSearchBar.text = coordinate.latitude.description
+        self.addressSearchBar.endEditing(true)
+        self.searchTableView.isHidden = true
+        
+        let address = CLGeocoder.init()
+        address.reverseGeocodeLocation(CLLocation.init(latitude: coordinate.latitude, longitude: coordinate.longitude)) { (places, error) in
+            if error == nil {
+                if places != nil {
+                    var placemark: CLPlacemark!
+                    var components = [String]()
+                    
+                    placemark = places?.first
+
+                    if let data = placemark.thoroughfare {
+                        components.append(data)
+                    }
+                    
+                    if let data = placemark.subLocality {
+                        components.append(data)
+                    }
+                    
+                    
+                    if let data = placemark.subAdministrativeArea {
+                        components.append(data)
+                    }
+                    
+                    if let data = placemark.locality {
+                        components.append(data)
+                    }
+                    
+                    if let data = placemark.country {
+                        components.append(data)
+                    }
+                    
+                    self.addressSearchBar?.text = components.joined(separator: ", ")
+                    self.map_search_description = components.joined(separator: ", ")
+
+                }
+            }
+        }
+        
+        self.coordinate = coordinate
+    }
+    
 }
 
-extension EditPinVC: MKMapViewDelegate {
-    func performSearch() {
-        matchingItems.removeAll()
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = addressTextField.text
+
+extension EditPinVC: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar == addressSearchBar {
+            searchCompleter.queryFragment = searchText
+        }
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if searchBar == addressSearchBar {
+            searchTableView.isHidden = false
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        if addressSearchBar.text == "" {
+            searchTableView.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar == addressSearchBar {
+            view.endEditing(true)
+        }
+    }
+    
+    
+}
+
+extension EditPinVC: MKLocalSearchCompleterDelegate {
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        searchResults = completer.results
+        searchTableView.reloadData()
+    }
+}
+
+extension EditPinVC: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = searchResults.count
+        return count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let search = MKLocalSearch(request: request)
+        if indexPath.item == 0 {
+            return self.searchTableView.dequeueReusableCell(withIdentifier: "locationCell")!
+        }
+        
+        let addressCell = UITableViewCell(style: .subtitle, reuseIdentifier: "addressCell")
+        let searchResult = searchResults[indexPath.row - 1]
+        
+        addressCell.textLabel?.text = searchResult.title
+        addressCell.detailTextLabel?.text = searchResult.subtitle
+        
+        return addressCell
+    }
+}
+
+extension EditPinVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        if indexPath.item == 0 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            return getUserLocation()
+        }
+        
+        let completion = searchResults[indexPath.row - 1]
+        let searchRequest = MKLocalSearch.Request(completion: completion)
+        let search = MKLocalSearch(request: searchRequest)
+        
         search.start { (response, error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-            } else if response!.mapItems.count == 0 {
-                print("No results")
-            } else {
-                for mapItem in response!.mapItems {
-                    self.matchingItems.append(mapItem as MKMapItem)
-                    self.tableView.reloadData()
+            let coordinates = response?.mapItems[0].placemark.coordinate
+            self.coordinate = coordinates
+            
+            if response != nil {
+                
+                var components = [String]()
+                
+                let placemark = response?.mapItems[0].placemark
+
+                if let data = placemark?.thoroughfare {
+                    components.append(data)
                 }
+                
+                if let data = placemark?.subLocality {
+                    components.append(data)
+                }
+                
+                if let data = placemark?.subAdministrativeArea {
+                    components.append(data)
+                }
+                if let data = placemark?.locality {
+                    components.append(data)
+                }
+                                
+                self.addressSearchBar?.text = components.joined(separator: ", ")
+                self.map_search_description = components.joined(separator: ", ")
+
+            }
+             
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        self.addressSearchBar.endEditing(true)
+        self.searchTableView.isHidden = true
+    }
+}
+
+extension EditPinVC: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
+        }
+        
+        let updateText = currentText.replacingCharacters(in: stringRange, with: text)
+        shortDescriptionCounterLabel.text = "\(0 + updateText.count)"
+        return updateText.count <= 300
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if shortDescriptionTextField.textColor == UIColor.lightGray {
+            shortDescriptionTextField.text = nil
+            shortDescriptionTextField.textColor = .black
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: 335, height: .max)
+        let estimatedSize = textView.sizeThatFits(size)
+        
+        textView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
             }
         }
     }
 }
 
 extension EditPinVC: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == addressTextField {
-            tableView.frame = CGRect(x: 20, y: view.frame.height, width: view.frame.width - 40, height: view.frame.height - 170)
-            tableView.layer.cornerRadius = 5.0
-            tableView.register(UITableViewCell.self, forCellReuseIdentifier: "LocationCell")
-            
-            tableView.delegate = self
-            tableView.dataSource = self
-            
-            tableView.tag = 1
-            tableView.rowHeight = 60
-            
-            view.addSubview(tableView)
-            
-            animateTableView(shouldShow: true)
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
         }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == addressTextField {
-            performSearch()
-            view.endEditing(true)
-        }
-        return true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        if addressTextField.text == "" {
-            animateTableView(shouldShow: false)
-        }
-    }
-    
-    func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        matchingItems = []
-        tableView.reloadData()
-        animateTableView(shouldShow: false)
-        return true
-    }
-    
-    func animateTableView(shouldShow: Bool) {
-        if shouldShow {
-            UIView.animate(withDuration: 0.2) {
-                self.tableView.frame = CGRect(x: 20, y: 660, width: self.view.frame.width - 20, height: self.view.frame.height - 50)
-            }
-        } else {
-            UIView.animate(withDuration: 0.2, animations: {
-                self.tableView.frame = CGRect(x: 20, y: self.view.frame.height, width: self.view.frame.width - 40, height: self.view.frame.height - 50)
-            }) { (finished) in
-                for subview in self.view.subviews {
-                    if subview.tag == 1 {
-                        subview.removeFromSuperview()
-                    }
-                }
-            }
-        }
-    }
-}
-
-extension EditPinVC: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "LocationCell")
-        let mapItem = matchingItems[indexPath.row]
-        cell.textLabel?.text = mapItem.name
-        cell.detailTextLabel?.text = mapItem.placemark.title
-        return cell
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matchingItems.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        addressTextField.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
-        map_search_description = tableView.cellForRow(at: indexPath)?.textLabel?.text ?? ""
-        let selectedResult = matchingItems[indexPath.row]
-        let latitude : Double? = selectedResult.placemark.coordinate.latitude
-        let longitude : Double? = selectedResult.placemark.coordinate.longitude
-        coordinate = selectedResult.placemark.coordinate
-        selected_latitude = selectedResult.placemark.coordinate.latitude
-        selected_longitude = selectedResult.placemark.coordinate.longitude
-        animateTableView(shouldShow: false)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        view.endEditing(true)
-    }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if addressTextField.text == "" {
-            animateTableView(shouldShow: false)
-        }
+        
+        let updateText = currentText.replacingCharacters(in: stringRange, with: string)
+        self.pinTitleCounterLabel.text = "\(0 + updateText.count)"
+        return updateText.count <= 35
     }
 }

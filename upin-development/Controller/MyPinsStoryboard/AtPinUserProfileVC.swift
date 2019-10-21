@@ -18,6 +18,7 @@ class AtPinUserProfileVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     
     var selectedUser: UserAtPin!
@@ -25,6 +26,10 @@ class AtPinUserProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        
         setupCollectionView()
         userListener()
 

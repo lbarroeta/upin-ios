@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460CC89D2357F8F4007322CF /* StepThreeVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460CC89C2357F8F4007322CF /* StepThreeVC2.swift */; };
 		4612A1D9233D24C000E2A22B /* EditProfileInterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612A1D8233D24BF00E2A22B /* EditProfileInterestCell.swift */; };
 		4612A1DD233D299100E2A22B /* EditUserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612A1DC233D299100E2A22B /* EditUserProfileVC.swift */; };
 		46175D2B23294639003CE608 /* MyPinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46175D2A23294639003CE608 /* MyPinsCell.swift */; };
@@ -14,7 +15,6 @@
 		46175D2F23294700003CE608 /* MyPins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46175D2E23294700003CE608 /* MyPins.storyboard */; };
 		46175D32232948BA003CE608 /* StepOneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46175D31232948BA003CE608 /* StepOneVC.swift */; };
 		46175D3423294CBD003CE608 /* StepTwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46175D3323294CBD003CE608 /* StepTwoVC.swift */; };
-		46175D3623294FA8003CE608 /* StepThreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46175D3523294FA8003CE608 /* StepThreeVC.swift */; };
 		46175D3823294FB4003CE608 /* StepFourVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46175D3723294FB4003CE608 /* StepFourVC.swift */; };
 		46187A2F23288A500073C032 /* HelpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46187A2E23288A500073C032 /* HelpVC.swift */; };
 		462593B723423AF00012A058 /* UserAtPinCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462593B623423AF00012A058 /* UserAtPinCell.swift */; };
@@ -33,10 +33,13 @@
 		4626C0F52317318B0030FA85 /* FirebaseErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4626C0F42317318B0030FA85 /* FirebaseErrorHandler.swift */; };
 		462B4823231AC796009B6895 /* PhoneCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B4822231AC795009B6895 /* PhoneCodeVC.swift */; };
 		462FF8C82329F316001783AA /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FF8C72329F316001783AA /* Pins.swift */; };
+		46455447235D3F8000950DC7 /* EditUserInterestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46455446235D3F8000950DC7 /* EditUserInterestsVC.swift */; };
 		46532DC6232360D400F3EA7F /* InterestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46532DC5232360D400F3EA7F /* InterestsVC.swift */; };
 		46532DC82323644700F3EA7F /* Interests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46532DC72323644700F3EA7F /* Interests.swift */; };
 		46532DCA2323656F00F3EA7F /* InterestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46532DC92323656F00F3EA7F /* InterestsCell.swift */; };
 		46532DCC2323666D00F3EA7F /* CellIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46532DCB2323666D00F3EA7F /* CellIdentifiers.swift */; };
+		467030EE2357B78D00717BC1 /* DefaultTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467030ED2357B78D00717BC1 /* DefaultTextField.swift */; };
+		467030F02357BDCC00717BC1 /* AddressSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467030EF2357BDCC00717BC1 /* AddressSearchCell.swift */; };
 		46772901232ED3DD00552C14 /* PinHomeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46772900232ED3DD00552C14 /* PinHomeDetailVC.swift */; };
 		46772903232EE9F200552C14 /* PinViewDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46772902232EE9F200552C14 /* PinViewDetailVC.swift */; };
 		46772905232F150600552C14 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46772904232F150600552C14 /* NotificationsVC.swift */; };
@@ -45,6 +48,7 @@
 		46860AEE23438EF700C5BC8B /* UserInvitedProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AED23438EF700C5BC8B /* UserInvitedProfileVC.swift */; };
 		46860AF02343906300C5BC8B /* UserInvitedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AEF2343906300C5BC8B /* UserInvitedCell.swift */; };
 		46860AF22343912100C5BC8B /* UserInvited.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46860AF12343912100C5BC8B /* UserInvited.swift */; };
+		4687B62B23512B6400524620 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4687B62A23512B6400524620 /* LocationCell.swift */; };
 		469BADAA232B1E7B0012CBBA /* PinAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469BADA9232B1E7B0012CBBA /* PinAnnotation.swift */; };
 		46A43CB92318651B00D6ACDF /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CB82318651B00D6ACDF /* HomeVC.swift */; };
 		46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A43CBC23186D3C00D6ACDF /* TabBarVC.swift */; };
@@ -92,12 +96,12 @@
 		46F817B7232FD10200710FBD /* CurrentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B6232FD10200710FBD /* CurrentVC.swift */; };
 		46F817B9232FD3DC00710FBD /* RequestedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817B8232FD3DC00710FBD /* RequestedVC.swift */; };
 		46F817BB232FD49E00710FBD /* PreviousVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F817BA232FD49E00710FBD /* PreviousVC.swift */; };
-		46FCAC18235007F5007D2638 /* Layout Helper in Resources */ = {isa = PBXBuildFile; fileRef = 46FCAC17235007F5007D2638 /* Layout Helper */; };
 		46FCAC1923500867007D2638 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46FCAC1B23500867007D2638 /* Home.storyboard */; };
 		D44E3845FFC4669DEE0DD8C5 /* Pods_upin_development.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		460CC89C2357F8F4007322CF /* StepThreeVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepThreeVC2.swift; sourceTree = "<group>"; };
 		4612A1D8233D24BF00E2A22B /* EditProfileInterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInterestCell.swift; sourceTree = "<group>"; };
 		4612A1DC233D299100E2A22B /* EditUserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserProfileVC.swift; sourceTree = "<group>"; };
 		46175D2A23294639003CE608 /* MyPinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPinsCell.swift; sourceTree = "<group>"; };
@@ -105,7 +109,6 @@
 		46175D2E23294700003CE608 /* MyPins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPins.storyboard; sourceTree = "<group>"; };
 		46175D31232948BA003CE608 /* StepOneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepOneVC.swift; sourceTree = "<group>"; };
 		46175D3323294CBD003CE608 /* StepTwoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwoVC.swift; sourceTree = "<group>"; };
-		46175D3523294FA8003CE608 /* StepThreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepThreeVC.swift; sourceTree = "<group>"; };
 		46175D3723294FB4003CE608 /* StepFourVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepFourVC.swift; sourceTree = "<group>"; };
 		46187A2E23288A500073C032 /* HelpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpVC.swift; sourceTree = "<group>"; };
 		462593B623423AF00012A058 /* UserAtPinCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAtPinCell.swift; sourceTree = "<group>"; };
@@ -124,10 +127,13 @@
 		4626C0F42317318B0030FA85 /* FirebaseErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseErrorHandler.swift; sourceTree = "<group>"; };
 		462B4822231AC795009B6895 /* PhoneCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCodeVC.swift; sourceTree = "<group>"; };
 		462FF8C72329F316001783AA /* Pins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
+		46455446235D3F8000950DC7 /* EditUserInterestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInterestsVC.swift; sourceTree = "<group>"; };
 		46532DC5232360D400F3EA7F /* InterestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsVC.swift; sourceTree = "<group>"; };
 		46532DC72323644700F3EA7F /* Interests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interests.swift; sourceTree = "<group>"; };
 		46532DC92323656F00F3EA7F /* InterestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsCell.swift; sourceTree = "<group>"; };
 		46532DCB2323666D00F3EA7F /* CellIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellIdentifiers.swift; sourceTree = "<group>"; };
+		467030ED2357B78D00717BC1 /* DefaultTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTextField.swift; sourceTree = "<group>"; };
+		467030EF2357BDCC00717BC1 /* AddressSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchCell.swift; sourceTree = "<group>"; };
 		46772900232ED3DD00552C14 /* PinHomeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinHomeDetailVC.swift; sourceTree = "<group>"; };
 		46772902232EE9F200552C14 /* PinViewDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewDetailVC.swift; sourceTree = "<group>"; };
 		46772904232F150600552C14 /* NotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 		46860AED23438EF700C5BC8B /* UserInvitedProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvitedProfileVC.swift; sourceTree = "<group>"; };
 		46860AEF2343906300C5BC8B /* UserInvitedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvitedCell.swift; sourceTree = "<group>"; };
 		46860AF12343912100C5BC8B /* UserInvited.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInvited.swift; sourceTree = "<group>"; };
+		4687B62A23512B6400524620 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		469BADA9232B1E7B0012CBBA /* PinAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinAnnotation.swift; sourceTree = "<group>"; };
 		46A43CB4231862E700D6ACDF /* upin-development.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "upin-development.entitlements"; sourceTree = "<group>"; };
 		46A43CB82318651B00D6ACDF /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -186,7 +193,6 @@
 		46F817B6232FD10200710FBD /* CurrentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentVC.swift; sourceTree = "<group>"; };
 		46F817B8232FD3DC00710FBD /* RequestedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedVC.swift; sourceTree = "<group>"; };
 		46F817BA232FD49E00710FBD /* PreviousVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousVC.swift; sourceTree = "<group>"; };
-		46FCAC17235007F5007D2638 /* Layout Helper */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Layout Helper"; sourceTree = "<group>"; };
 		46FCAC1A23500867007D2638 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		82A17A7ECCEC8498F181D778 /* Pods-upin-development.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-upin-development.debug.xcconfig"; path = "Target Support Files/Pods-upin-development/Pods-upin-development.debug.xcconfig"; sourceTree = "<group>"; };
 		E79DCA2B71BBC08EFD92A05F /* Pods_upin_development.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_upin_development.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,7 +216,7 @@
 			children = (
 				46175D31232948BA003CE608 /* StepOneVC.swift */,
 				46175D3323294CBD003CE608 /* StepTwoVC.swift */,
-				46175D3523294FA8003CE608 /* StepThreeVC.swift */,
+				460CC89C2357F8F4007322CF /* StepThreeVC2.swift */,
 				46175D3723294FB4003CE608 /* StepFourVC.swift */,
 				46772900232ED3DD00552C14 /* PinHomeDetailVC.swift */,
 				46772902232EE9F200552C14 /* PinViewDetailVC.swift */,
@@ -222,6 +228,7 @@
 				46860AEB23438ECA00C5BC8B /* UserInvitedVC.swift */,
 				46860AED23438EF700C5BC8B /* UserInvitedProfileVC.swift */,
 				46EA019923431270007456C8 /* InviteConnectionsVC.swift */,
+				4687B62A23512B6400524620 /* LocationCell.swift */,
 			);
 			path = MyPinsStoryboard;
 			sourceTree = "<group>";
@@ -264,7 +271,6 @@
 		46B00B5F23171D62007E9FDC = {
 			isa = PBXGroup;
 			children = (
-				46FCAC17235007F5007D2638 /* Layout Helper */,
 				46B00B6A23171D62007E9FDC /* upin-development */,
 				46B00B6923171D62007E9FDC /* Products */,
 				6668486248938A9CA8B3385F /* Pods */,
@@ -332,6 +338,8 @@
 				46860AEF2343906300C5BC8B /* UserInvitedCell.swift */,
 				46EA019723430AE4007456C8 /* UserConnectionCell.swift */,
 				46EA019B2343146A007456C8 /* InviteConnectionsCell.swift */,
+				467030ED2357B78D00717BC1 /* DefaultTextField.swift */,
+				467030EF2357BDCC00717BC1 /* AddressSearchCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -424,6 +432,7 @@
 			children = (
 				4612A1DC233D299100E2A22B /* EditUserProfileVC.swift */,
 				46EA0193234308E5007456C8 /* ConnectionsVC.swift */,
+				46455446235D3F8000950DC7 /* EditUserInterestsVC.swift */,
 			);
 			path = ProfileStoryboard;
 			sourceTree = "<group>";
@@ -526,7 +535,6 @@
 				46175D2F23294700003CE608 /* MyPins.storyboard in Resources */,
 				46E0B6E62334611300E92F6A /* Message.storyboard in Resources */,
 				46B00B7E23171E34007E9FDC /* GoogleService-Info.plist in Resources */,
-				46FCAC18235007F5007D2638 /* Layout Helper in Resources */,
 				46E26956232759D10010C138 /* Profile.storyboard in Resources */,
 				46B00B7323171D65007E9FDC /* Assets.xcassets in Resources */,
 				46FCAC1923500867007D2638 /* Home.storyboard in Resources */,
@@ -605,6 +613,7 @@
 				462593B923423BD90012A058 /* UserAtPinVC.swift in Sources */,
 				4612A1DD233D299100E2A22B /* EditUserProfileVC.swift in Sources */,
 				46EA019223430266007456C8 /* UserJoinedProfileVC.swift in Sources */,
+				46455447235D3F8000950DC7 /* EditUserInterestsVC.swift in Sources */,
 				46A43CBF2318707800D6ACDF /* ProfileVC.swift in Sources */,
 				462593B723423AF00012A058 /* UserAtPinCell.swift in Sources */,
 				46860AEE23438EF700C5BC8B /* UserInvitedProfileVC.swift in Sources */,
@@ -615,6 +624,7 @@
 				46860AF22343912100C5BC8B /* UserInvited.swift in Sources */,
 				46E0B6E02334414800E92F6A /* AllVC.swift in Sources */,
 				46175D3823294FB4003CE608 /* StepFourVC.swift in Sources */,
+				467030EE2357B78D00717BC1 /* DefaultTextField.swift in Sources */,
 				4626C0E423172A860030FA85 /* Colors.swift in Sources */,
 				46772903232EE9F200552C14 /* PinViewDetailVC.swift in Sources */,
 				462B4823231AC796009B6895 /* PhoneCodeVC.swift in Sources */,
@@ -637,10 +647,10 @@
 				46860AEC23438ECA00C5BC8B /* UserInvitedVC.swift in Sources */,
 				46175D32232948BA003CE608 /* StepOneVC.swift in Sources */,
 				46EA019823430AE4007456C8 /* UserConnectionCell.swift in Sources */,
-				46175D3623294FA8003CE608 /* StepThreeVC.swift in Sources */,
 				46E0B6EB2334626000E92F6A /* MessagesVC.swift in Sources */,
 				46532DC6232360D400F3EA7F /* InterestsVC.swift in Sources */,
 				46E0B6E22334454B00E92F6A /* NotificationConnectionsVC.swift in Sources */,
+				4687B62B23512B6400524620 /* LocationCell.swift in Sources */,
 				46532DCA2323656F00F3EA7F /* InterestsCell.swift in Sources */,
 				46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */,
 				4626C0E2231728850030FA85 /* StoryboardsAndVCs.swift in Sources */,
@@ -657,8 +667,10 @@
 				46772901232ED3DD00552C14 /* PinHomeDetailVC.swift in Sources */,
 				462FF8C82329F316001783AA /* Pins.swift in Sources */,
 				4626C0E623172B140030FA85 /* SignUpVC.swift in Sources */,
+				467030F02357BDCC00717BC1 /* AddressSearchCell.swift in Sources */,
 				46EA018C2342F827007456C8 /* UserJoinedCell.swift in Sources */,
 				46B00B8B2317248D007E9FDC /* ActionButton.swift in Sources */,
+				460CC89D2357F8F4007322CF /* StepThreeVC2.swift in Sources */,
 				4626C0EA23172BEC0030FA85 /* GenderVC.swift in Sources */,
 				46AECDEA2341578800197F2A /* AtPinCell.swift in Sources */,
 				46BDB5FE232F30FC00317B00 /* NotificationsPinDetailVC.swift in Sources */,
@@ -835,7 +847,7 @@
 				CODE_SIGN_ENTITLEMENTS = "upin-development/upin-development.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 9TTV7G6YM8;
 				INFOPLIST_FILE = "upin-development/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -859,7 +871,7 @@
 				CODE_SIGN_ENTITLEMENTS = "upin-development/upin-development.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 9TTV7G6YM8;
 				INFOPLIST_FILE = "upin-development/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

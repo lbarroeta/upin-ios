@@ -12,6 +12,7 @@ import Firebase
 class UserInvitedVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var users = [UserInvited]()
     var selectedUser: UserInvited!
@@ -19,8 +20,12 @@ class UserInvitedVC: UIViewController {
     var listener: ListenerRegistration!
     
     override func viewDidLoad() {
-       super.viewDidLoad()
-       setupTableView()
+    
+        navBar.isTranslucent = true
+        navBar.backgroundColor = .clear
+        
+        super.viewDidLoad()
+        setupTableView()
     }
        
 
