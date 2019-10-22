@@ -327,7 +327,11 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
         } else if segue.identifier == "EditPinVC" {
             let vc = segue.destination as! EditPinVC
             vc.selectedPin = pin_id!
-        } else if segue.identifier == "UserJoinedVC" {
+        } else if segue.identifier == "EditMyPinVC" {
+            let vc = segue.destination as! EditMyPinVC
+            vc.selectedPin = pin_id!
+        }
+        else if segue.identifier == "UserJoinedVC" {
             let vc = segue.destination as! UserJoinedVC
             vc.selectedPin = pin_id!
         } else if segue.identifier == "UserInvitedVC" {
@@ -338,7 +342,7 @@ class NotificationsPinDetailVC: UIViewController, CLLocationManagerDelegate {
     
     
     @IBAction func editButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "EditPinVC", sender: self)
+        self.performSegue(withIdentifier: "EditMyPinVC", sender: self)
     }
     
     

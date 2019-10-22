@@ -1,8 +1,8 @@
 //
-//  EditPinVC.swift
+//  EditMyPinVC.swift
 //  upin-development
 //
-//  Created by Leonardo Barroeta on 9/29/19.
+//  Created by Leonardo Barroeta on 10/21/19.
 //  Copyright © 2019 Kodim. All rights reserved.
 //
 
@@ -12,18 +12,15 @@ import CoreLocation
 import MapKit
 import JGProgressHUD
 
-class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+class EditMyPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var pinTitleNavigationItem: UINavigationItem!
     @IBOutlet weak var pinImage: UIImageView!
     
     @IBOutlet weak var startingTimeTextField: UITextField!
     @IBOutlet weak var endingTimeTextField: UITextField!
-    
-    @IBOutlet weak var extraDirectionsTextField: UITextView!
-    @IBOutlet weak var extraDirectionsHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var extraDirectionsCounterLabel: UILabel!
+    @IBOutlet weak var extraDirectionsTextField: UITextField!
+    @IBOutlet weak var pinTitleNavigationItem: UINavigationItem!
     
     @IBOutlet weak var addressSearchBar: UISearchBar!
     @IBOutlet weak var searchTableView: UITableView!
@@ -40,8 +37,8 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
     var coordinate: CLLocationCoordinate2D?
     
     var selectedPin = ""
-    var selected_latitude: Double = 0
-    var selected_longitude: Double = 0
+    var selected_latitude: Double = 0.0
+    var selected_longitude: Double = 0.0
     var tableView = UITableView()
     var matchingItems: [MKMapItem] = [MKMapItem]()
     var map_search_description: String = ""
@@ -50,10 +47,10 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
     
     private var startingDatePicker: UIDatePicker?
     private var endingDatePicker: UIDatePicker?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navBar.isTranslucent = true
         navBar.backgroundColor = .clear
         
@@ -76,8 +73,6 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
         if let textfield = addressSearchBar.value(forKey: "searchField") as? UITextField {
             textfield.textColor = .lightGray
             textfield.backgroundColor = .none
-            
-            //textfield.tintColorDidChange()
             textfield.borderStyle = .none
             textfield.textAlignment = .left
             textfield.tintColor = .blue
@@ -90,9 +85,15 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
-        
     }
     
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Updating pin..."
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 5.0)
+        uploadImageToFirebaseStorage()
+    }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -128,38 +129,29 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
         
     }
     
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Updating pin..."
-        hud.show(in: self.view)
-        hud.dismiss(afterDelay: 5.0)
-        uploadImageToFirebaseStorage()
-    }
-    
-    func updateDataToFirebase(url: String) {
-        let pinReference = Firestore.firestore().collection("pins").document(selectedPin)
-        var pinData = [String: Any]()
-        
-        pinData = [
-            "ending_time": endingTimeTextField.text!,
-            "extra_directions": extraDirectionsTextField.text!,
-            "latitude": coordinate?.latitude,
-            "longitude": coordinate?.longitude,
-            "map_search_description": map_search_description,
-            "pin_title": pinTitleTextField.text!,
-            "short_description": shortDescriptionTextField.text!,
-            "starting_time": startingTimeTextField.text!,
-            "pin_photo": url
-        ]
-        
-        pinReference.updateData(pinData) { (error) in
+   func updateDataToFirebase(url: String) {
+       let pinReference = Firestore.firestore().collection("pins").document(selectedPin)
+       var pinData = [String: Any]()
+       
+       pinData = [
+           "ending_time": endingTimeTextField.text!,
+           "extra_directions": extraDirectionsTextField.text!,
+           "latitude": selected_latitude,
+           "longitude": selected_longitude,
+           "map_search_description": map_search_description,
+           "pin_title": pinTitleTextField.text!,
+           "short_description": shortDescriptionTextField.text!,
+           "starting_time": startingTimeTextField.text!,
+           "pin_photo": url
+       ]
+       
+       pinReference.updateData(pinData) { (error) in
             if let error = error {
                 debugPrint(error.localizedDescription)
                 return
             }
         }
     }
-    
     
     func pinListener() {
         let pinReference = Firestore.firestore().collection("pins").document(selectedPin)
@@ -188,17 +180,12 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
             self.shortDescriptionTextField.text = short_description!
             self.addressSearchBar.text = pin_address!
             self.extraDirectionsTextField.text = extra_directions!
-            self.extraDirectionsHeightConstraint.constant = self.extraDirectionsTextField.contentSize.height
             self.pinTitleNavigationItem.title = "\(pin_title!) Details"
             self.shortDescriptionHeighConstraint.constant = self.shortDescriptionTextField.contentSize.height
             
             let shortDescriptionCharacterCount: String = self.shortDescriptionTextField.text!
             let intShortDescCharacterCounter = Int(shortDescriptionCharacterCount.count)
             self.shortDescriptionCounterLabel.text = "\(intShortDescCharacterCounter)"
-            
-            let extraDirectionCharacterCount: String = self.extraDirectionsTextField.text!
-            let intExtraDirectionCharacterCount = Int(extraDirectionCharacterCount.count)
-            self.extraDirectionsCounterLabel.text = "\(intExtraDirectionCharacterCount)"
             
             let pinTitleCharacterCount: String = self.pinTitleTextField.text!
             let intPinTitleCharacterCounter = Int(pinTitleCharacterCount.count)
@@ -241,7 +228,6 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-    
     
     func setStartingDatePicker() {
         startingDatePicker = UIDatePicker()
@@ -315,11 +301,10 @@ class EditPinVC: UIViewController, CLLocationManagerDelegate, UIImagePickerContr
         
         self.coordinate = coordinate
     }
-    
+
 }
 
-
-extension EditPinVC: UISearchBarDelegate {
+extension EditMyPinVC: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar == addressSearchBar {
@@ -348,14 +333,14 @@ extension EditPinVC: UISearchBarDelegate {
     
 }
 
-extension EditPinVC: MKLocalSearchCompleterDelegate {
+extension EditMyPinVC: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
         searchResults = completer.results
         searchTableView.reloadData()
     }
 }
 
-extension EditPinVC: UITableViewDataSource {
+extension EditMyPinVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = searchResults.count
@@ -378,7 +363,7 @@ extension EditPinVC: UITableViewDataSource {
     }
 }
 
-extension EditPinVC: UITableViewDelegate {
+extension EditMyPinVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
         if indexPath.item == 0 {
@@ -429,30 +414,16 @@ extension EditPinVC: UITableViewDelegate {
     }
 }
 
-extension EditPinVC: UITextViewDelegate {
+extension EditMyPinVC: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if textView == shortDescriptionTextField {
-            let currentText = textView.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            
-            let updateText = currentText.replacingCharacters(in: stringRange, with: text)
-            shortDescriptionCounterLabel.text = "\(0 + updateText.count)"
-            return updateText.count < 300
-        } else if textView == extraDirectionsTextField {
-            let currentText = textView.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            
-            let updateText = currentText.replacingCharacters(in: stringRange, with: text)
-            extraDirectionsCounterLabel.text = "\(0 + updateText.count)"
-            return updateText.count < 150
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
         }
         
-        return true
-        
+        let updateText = currentText.replacingCharacters(in: stringRange, with: text)
+        shortDescriptionCounterLabel.text = "\(0 + updateText.count)"
+        return updateText.count <= 300
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -474,7 +445,7 @@ extension EditPinVC: UITextViewDelegate {
     }
 }
 
-extension EditPinVC: UITextFieldDelegate {
+extension EditMyPinVC: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let currentText = textField.text ?? ""
         guard let stringRange = Range(range, in: currentText) else {
@@ -483,6 +454,6 @@ extension EditPinVC: UITextFieldDelegate {
         
         let updateText = currentText.replacingCharacters(in: stringRange, with: string)
         self.pinTitleCounterLabel.text = "\(0 + updateText.count)"
-        return updateText.count < 35
+        return updateText.count <= 35
     }
 }

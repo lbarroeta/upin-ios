@@ -1085,7 +1085,7 @@
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <connections>
                                                         <action selector="editButtonPressed:" destination="xeE-LV-ZBI" id="Khx-jV-WhA"/>
-                                                        <segue destination="DGF-J1-XTz" kind="show" identifier="EditPinVC" id="Kiq-f1-XmX"/>
+                                                        <segue destination="DGF-J1-XTz" kind="show" identifier="EditPinVC" id="1px-l3-4gT"/>
                                                     </connections>
                                                 </barButtonItem>
                                             </navigationItem>
@@ -1699,6 +1699,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cxh-7B-Vnx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3270" y="2213"/>
+        </scene>
+        <!--EditMyPinVC-->
+        <scene sceneID="jZF-vP-nZu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyPins" referencedIdentifier="EditMyPinVC" id="geJ-5J-t5a" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fLY-rR-g3M"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8R-Zo-lCb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3272" y="2259"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3hw-PI-Px6">

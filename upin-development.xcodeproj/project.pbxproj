@@ -34,6 +34,7 @@
 		462B4823231AC796009B6895 /* PhoneCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462B4822231AC795009B6895 /* PhoneCodeVC.swift */; };
 		462FF8C82329F316001783AA /* Pins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462FF8C72329F316001783AA /* Pins.swift */; };
 		46455447235D3F8000950DC7 /* EditUserInterestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46455446235D3F8000950DC7 /* EditUserInterestsVC.swift */; };
+		4647BEEA235E6B5D003078DE /* EditMyPinVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647BEE9235E6B5D003078DE /* EditMyPinVC.swift */; };
 		46532DC6232360D400F3EA7F /* InterestsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46532DC5232360D400F3EA7F /* InterestsVC.swift */; };
 		46532DC82323644700F3EA7F /* Interests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46532DC72323644700F3EA7F /* Interests.swift */; };
 		46532DCA2323656F00F3EA7F /* InterestsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46532DC92323656F00F3EA7F /* InterestsCell.swift */; };
@@ -128,6 +129,7 @@
 		462B4822231AC795009B6895 /* PhoneCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCodeVC.swift; sourceTree = "<group>"; };
 		462FF8C72329F316001783AA /* Pins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pins.swift; sourceTree = "<group>"; };
 		46455446235D3F8000950DC7 /* EditUserInterestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserInterestsVC.swift; sourceTree = "<group>"; };
+		4647BEE9235E6B5D003078DE /* EditMyPinVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMyPinVC.swift; sourceTree = "<group>"; };
 		46532DC5232360D400F3EA7F /* InterestsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsVC.swift; sourceTree = "<group>"; };
 		46532DC72323644700F3EA7F /* Interests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interests.swift; sourceTree = "<group>"; };
 		46532DC92323656F00F3EA7F /* InterestsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsCell.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				46860AED23438EF700C5BC8B /* UserInvitedProfileVC.swift */,
 				46EA019923431270007456C8 /* InviteConnectionsVC.swift */,
 				4687B62A23512B6400524620 /* LocationCell.swift */,
+				4647BEE9235E6B5D003078DE /* EditMyPinVC.swift */,
 			);
 			path = MyPinsStoryboard;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				46E0B6EB2334626000E92F6A /* MessagesVC.swift in Sources */,
 				46532DC6232360D400F3EA7F /* InterestsVC.swift in Sources */,
 				46E0B6E22334454B00E92F6A /* NotificationConnectionsVC.swift in Sources */,
+				4647BEEA235E6B5D003078DE /* EditMyPinVC.swift in Sources */,
 				4687B62B23512B6400524620 /* LocationCell.swift in Sources */,
 				46532DCA2323656F00F3EA7F /* InterestsCell.swift in Sources */,
 				46A43CBD23186D3C00D6ACDF /* TabBarVC.swift in Sources */,
@@ -847,7 +851,7 @@
 				CODE_SIGN_ENTITLEMENTS = "upin-development/upin-development.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 9TTV7G6YM8;
 				INFOPLIST_FILE = "upin-development/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -871,7 +875,7 @@
 				CODE_SIGN_ENTITLEMENTS = "upin-development/upin-development.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 9TTV7G6YM8;
 				INFOPLIST_FILE = "upin-development/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

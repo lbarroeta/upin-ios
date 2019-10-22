@@ -143,6 +143,28 @@ extension EditUserInterestsVC: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EditInterestsCell", for: indexPath) as? InterestsCell {
             cell.configureCell(interests: interests[indexPath.item])
+            
+            if let index = selectedInterestsArray.firstIndex(of: cell.interestsLabel.text!) {
+                cell.numberBackgroundView.isHidden = true
+                cell.numberLabel.text = "\(index + 1)"
+                switch index {
+                case 0..<3:
+                    cell.numberBackgroundView.isHidden = false
+                    cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.9412322044, green: 0.7829019427, blue: 0.1854074299, alpha: 1)
+                    cell.numberBackgroundView.backgroundColor = #colorLiteral(red: 0.9636644721, green: 0.9492474198, blue: 0.978384912, alpha: 1)
+                    
+                case 3..<7:
+                    cell.numberBackgroundView.isHidden = false
+                    cell.numberBackgroundView.backgroundColor = #colorLiteral(red: 0.9636644721, green: 0.9492474198, blue: 0.978384912, alpha: 1)
+                    cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.8666666667, blue: 0.6941176471, alpha: 1)
+                    
+                default: break
+                }
+            } else {
+                cell.numberBackgroundView.isHidden = true
+                cell.mainBackgroundView.backgroundColor = .white
+            }
+            
             return cell
         }
         
@@ -159,38 +181,17 @@ extension EditUserInterestsVC: UICollectionViewDelegate, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? InterestsCell else { return }
-        if !selectedInterestsArray.contains(cell.interestsLabel.text!) && cell.isSelected {
-            if 0...2 ~= selectedInterestsArray.count {
-                let index = selectedInterestsArray.count
-                
-                selectedInterestsArray.append(cell.interestsLabel.text!)
-                selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
-                saveButton.isEnabled = true
-                
-                cell.numberLabel.text = "\(index + 1)"
-                cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.9412322044, green: 0.7829019427, blue: 0.1854074299, alpha: 1)
-                cell.numberBackgroundView.backgroundColor = #colorLiteral(red: 0.9636644721, green: 0.9492474198, blue: 0.978384912, alpha: 1)
-            } else if 3...6 ~= selectedInterestsArray.count {
-                let index = selectedInterestsArray.count
-                
-                selectedInterestsArray.append(cell.interestsLabel.text!)
-                selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
-                saveButton.isEnabled = true
-                cell.numberLabel.text = "\(index + 1)"
-                cell.numberBackgroundView.backgroundColor = #colorLiteral(red: 0.9636644721, green: 0.9492474198, blue: 0.978384912, alpha: 1)
-                cell.mainBackgroundView.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.8666666667, blue: 0.6941176471, alpha: 1)
-            } else {
-                cell.numberLabel.isHidden = true
-                cell.numberBackgroundView.isHidden = true
-            }
+        if let index = selectedInterestsArray.firstIndex(of: cell.interestsLabel.text!) {
+            selectedInterestsArray.remove(at: index)
         } else {
-            selectedInterestsArray = selectedInterestsArray.filter({ $0 != cell.interestsLabel.text! })
-            selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
-            if selectedInterestsArray.count == 0 {
-                saveButton.isEnabled = false
-                selectedInterestCountLabel.text = "0"
-            }
+            if selectedInterestsArray.count >= 7 { return }
+            selectedInterestsArray.append(cell.interestsLabel.text!)
         }
+        
+        selectedInterestCountLabel.text = "\(selectedInterestsArray.count)"
+        saveButton.isEnabled = !selectedInterestsArray.isEmpty
+        
+        self.collectionView.reloadData()
     }
     
 }

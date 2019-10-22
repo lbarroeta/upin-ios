@@ -15,21 +15,7 @@ class InterestsCell: UICollectionViewCell {
     @IBOutlet weak var interestsLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     
-    var selectedCell = false
-    
-    override var isSelected: Bool {
-        didSet {
-            if selectedCell == false {
-                numberBackgroundView.isHidden = false
-                selectedCell = true
-            } else {
-                numberBackgroundView.isHidden = true
-                selectedCell = false
-            }
-        }
-    }
-    
-    
+
     override func awakeFromNib() {
         mainBackgroundView.layer.borderWidth = 1
         mainBackgroundView.layer.borderColor = #colorLiteral(red: 0.2549019608, green: 0.8666666667, blue: 0.6941176471, alpha: 1)

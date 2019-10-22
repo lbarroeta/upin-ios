@@ -27,11 +27,14 @@ class StepThreeVC2: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var addressSearchBar: UISearchBar!
-    @IBOutlet weak var extraDirectionsTextField: UITextField!
+    @IBOutlet weak var extraDirectionsTextField: UITextView!
+    @IBOutlet weak var extraDirectionsCounterLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        extraDirectionsTextField.textColor = UIColor.lightGray
         
         let topButton = UIButton()
         self.searchTableView.tableHeaderView = topButton
@@ -248,4 +251,38 @@ extension StepThreeVC2: UITableViewDelegate {
         self.addressSearchBar.endEditing(true)
         self.searchTableView.isHidden = true
     }
+}
+
+extension StepThreeVC2: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
+        }
+        
+        let updateText = currentText.replacingCharacters(in: stringRange, with: text)
+        extraDirectionsCounterLabel.text = "\(0 + updateText.count)"
+        return updateText.count < 150
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if extraDirectionsTextField.textColor == UIColor.lightGray {
+            extraDirectionsTextField.text = nil
+            extraDirectionsTextField.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: 335, height: .max)
+        let estimatedSize = textView.sizeThatFits(size)
+        
+        textView.constraints.forEach { (constraint) in
+            if constraint.firstAttribute == .height {
+                constraint.constant = estimatedSize.height
+            }
+        }
+        
+    }
+    
 }
